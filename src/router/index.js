@@ -5,12 +5,18 @@ import OurStoryPage from '../views/OurStoryPage.vue'
 import LocationPage from '../views/LocationPage.vue'
 import NewsPage from '../views/NewsPage.vue'
 import ReservationPage from '../views/ReservationPage.vue'
+import AdminMenuManager from '@/admin/views/AdminMenuManager.vue'
 
 const routes = [
   {
     path: '/',
     name: 'Home',
     component: HomePage
+  },
+  {
+path:'/admin',
+name:"AdminDashboard",
+component: AdminMenuManager
   },
   {
     path: '/menu',
