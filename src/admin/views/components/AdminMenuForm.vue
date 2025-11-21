@@ -34,7 +34,7 @@
 
 <script>
 import { ref, watch } from "vue"; // реактивность и наблюдение
-import { db } from "@/firebase"; // подключение Firestore
+import { db } from "@/firebase/firebase"; // подключение Firestore
 import { collection, addDoc, updateDoc, doc } from "firebase/firestore"; // функции для работы с документами
 import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from "firebase/storage"; // функции для работы с файлами
 

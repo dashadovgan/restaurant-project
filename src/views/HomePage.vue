@@ -24,16 +24,40 @@
 </div>
 
   </section>
+ <ChefFavorites />
+ <reviews-section />
+ <section class="contact-section">
+  <div class="contact-container">
+  <ContactUs />
+  <InfoContact />
+  </div>
+ </section>
+<section class="mapsection">
+<MapLocation />
+</section>
+<section class="FAQ-container">
+  <FAQSection />
+</section>
+<section class="news-container">
+<StoriesBlock />
+</section>
 </template>
 
 <script>
 import ReserveButton from '@/components/ReserveButton.vue';
 import BackgroundSection from '@/components/BackgroundSection.vue';
 import ExperienceBlock from '@/components/ExperienceBlock.vue';
+import ChefFavorites from '@/components/ChefFavorites.vue';
+import ReviewsSection from '@/components/ReviewsSection.vue';
+import ContactUs from '@/components/ContactUs.vue';
+import InfoContact from '@/components/InfoContact.vue';
+import MapLocation from '@/components/MapLocation.vue';
+import FAQSection from '@/components/FAQSection.vue';
+import StoriesBlock from '@/components/StoriesBlock.vue';
 export default {
   name: 'HomePage',
   components: {
-    'reserve-button': ReserveButton,BackgroundSection,ExperienceBlock,
+    'reserve-button': ReserveButton,BackgroundSection,ExperienceBlock, ChefFavorites, ReviewsSection, ContactUs, InfoContact, MapLocation, FAQSection, StoriesBlock
   }
 }
 </script>   
@@ -65,7 +89,10 @@ export default {
   font-size: 16px;
 margin-right: 50px;
 }
-
+.contact-section{
+  background-color:#f9f9f9;
+  padding: 60pz 20px;
+}
 .welcome{
   flex-direction: column;
   text-align: center;
@@ -115,6 +142,14 @@ height: 194px;
   width: 90%;
   align-items: flex-start;
 }
+.news-container{
+  padding-top: 30px;
+  display:flex;
+  flex-direction: row;
+  gap:40px;
+  width: 90%;
+  align-items: flex-start;
+}
 .aboutUs h3{
   color: white;
   font-size: 48px;
@@ -147,10 +182,70 @@ height: 194px;
   gap: 20px;
 }
 
+.contact-section {
+  background-color: #05131F; /* темный фон */
+  padding: 5% 5%; /* отступы в процентах */
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.FAQ-container {
+ background-color: #05131F; /* темный фон */
+  padding: 5% 5%; /* отступы в процентах */
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.contact-container {
+  display: flex;
+  width: 100%;
+  max-width: 1200px; /* ограничение по ширине */
+  gap: 5%; /* расстояние между колонками в процентах */
+  flex-wrap: nowrap; /* держим колонки в строке */
+  align-items: stretch; /* равная высота колонок */
+  flex-direction: row !important ;  
+}
 
+.contact-container > * {
+  flex: 1 1 0; /* колонки одинаковой ширины, растягиваются */
+  min-width: 40%; /* минимальная ширина для каждой колонки */
+}
+.mapsection{
+  display: flex;
+   justify-content: center;
+    background-color: #05131F;
+  width: 100%;
+  padding: 60px 60px;
+}
+.mapsection #map{
+  
+   width: 80% !important;                 /* карта занимает 80% ширины */
+  height: 400px;              /* высота карты */
+  border-radius: 12px;        /* скруглённые края для красоты */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* тень */
+ 
+}
 
 
 @media(max-width:480px){
+  .mapsection #map{
+  
+   width: 100% !important;                 /* карта занимает 80% ширины */
+  height: 900px;              /* высота карты */
+  border-radius: 12px;        /* скруглённые края для красоты */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* тень */
+ 
+}
+.mapsection{
+  
+  display: flex;
+  justify-content: center;
+  background-color: #05131F;
+  width: 100%;
+  padding: 20px; /* можно уменьшить сверху/снизу на мобилке */
+}
+
+
   .home {
   width: 100%;
   height: auto;
@@ -241,5 +336,10 @@ text-align: center;
 .aboutUsContent{
     width: 100%;
   }
+  .contact-container {
+    flex-direction: column !important ;
+    gap: 30px;
+  }
 }
+
 </style>

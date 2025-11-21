@@ -36,21 +36,27 @@
       </table>
 
       <AdminMenuForm v-if="editingDish" :initialDish="editingDish" @dish-saved="onEditSaved" />
+      <AdminUserList />
     </div>                                        
   </AdminLayout>
+  <section class="story-container">
+<AdminPostsStories />
+  </section>
 </template>
 
 <script>
 import AdminLayout from './components/AdminLayout.vue';
 import AdminMenuForm from './components/AdminMenuForm.vue';
+import AdminUserList from './components/AdminUserList.vue';
 import { ref, onMounted } from "vue";
 import { deleteDoc, doc } from 'firebase/firestore';
-import { db } from "@/firebase";
+import { db } from "@/firebase/firebase";
 import { collection, getDocs } from "firebase/firestore";
+import AdminPostsStories from './components/AdminPostsStories.vue';
 
 export default {
   name: "AdminMenuManager",
-  components: { AdminLayout, AdminMenuForm },
+  components: { AdminLayout, AdminMenuForm, AdminUserList, AdminPostsStories},
   setup() {
     const menu = ref([]);
     const editingDish = ref(null);

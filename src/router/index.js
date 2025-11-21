@@ -6,6 +6,7 @@ import LocationPage from '../views/LocationPage.vue'
 import NewsPage from '../views/NewsPage.vue'
 import ReservationPage from '../views/ReservationPage.vue'
 import AdminMenuManager from '@/admin/views/AdminMenuManager.vue'
+import AdminPostsStories from '@/admin/views/components/AdminPostsStories.vue'
 
 const routes = [
   {
@@ -42,6 +43,14 @@ component: AdminMenuManager
     path: '/reservation',
     name: 'Reservation',
     component: ReservationPage
+  },
+  {
+    
+  path: "/admin/posts",
+  name: "AdminPostsStories",
+  component: AdminPostsStories
+
+
   }
 ]
 
