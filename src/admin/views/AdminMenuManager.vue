@@ -37,11 +37,21 @@
 
       <AdminMenuForm v-if="editingDish" :initialDish="editingDish" @dish-saved="onEditSaved" />
       <AdminUserList />
-    </div>                                        
-  </AdminLayout>
-  <section class="story-container">
+         <section class="story-container">
 <AdminPostsStories />
-  </section>
+ 
+  </section>  
+  <AdminPostList />
+  <AdminPostEditor />
+  <AdminReservation />
+  <AdminAddChef />
+    </div>    
+  
+ 
+  </AdminLayout>
+ 
+
+
 </template>
 
 <script>
@@ -53,10 +63,16 @@ import { deleteDoc, doc } from 'firebase/firestore';
 import { db } from "@/firebase/firebase";
 import { collection, getDocs } from "firebase/firestore";
 import AdminPostsStories from './components/AdminPostsStories.vue';
+import AdminPostEditor from './components/AdminPostEditor.vue';
+import AdminPostList from './components/AdminPostList.vue';
+import AdminReservation from './components/AdminReservation.vue';
+import AdminAddChef from './components/AdminAddChef.vue';
+
+
 
 export default {
   name: "AdminMenuManager",
-  components: { AdminLayout, AdminMenuForm, AdminUserList, AdminPostsStories},
+  components: { AdminLayout, AdminMenuForm, AdminUserList, AdminPostsStories, AdminPostEditor, AdminPostList, AdminReservation, AdminAddChef},
   setup() {
     const menu = ref([]);
     const editingDish = ref(null);

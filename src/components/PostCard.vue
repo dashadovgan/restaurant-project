@@ -1,55 +1,103 @@
 <template>
-  <div class="post-card" @click="$router.push(`/news/${post.id}`)">
-    <img :src="post.image" alt="Post image" class="post-image" />
-    <div class="post-info">
-      <h3>{{ post.title }}</h3>
-      <p>{{ post.excerpt }}</p>
+  <router-link
+    class="post-card"
+    :to="`/post/${post.id}`"
+  >
+    <!-- Фото -->
+    <div class="image" v-if="post.coverImage">
+      <img :src="post.coverImage" alt="" />
     </div>
-  </div>
+
+    <div class="content">
+      <!-- Дата -->
+      <span class="date">{{ formattedDate }}</span>
+      
+      <h3>{{ post.title }}</h3>
+      
+      <!-- Ограниченный текст -->
+      <p v-if="post.intro">{{ truncatedText }}</p>
+    </div>
+  </router-link>
 </template>
 
-<script setup>
-/* eslint-disable no-undef */
-defineProps({
-  post: {
-    type: Object,
-    required: true
-  }
+<script>
+import { computed } from "vue";
+
+export default {
+  name: "PostCard",
+  props: {
+    post: {
+      type: Object,
+      required: true,
+    },
+  },
+  setup(props) {
+    const formattedDate = computed(() => {
+  if (!props.post.date) return ""; 
+  const date = props.post.date.toDate ? props.post.date.toDate() : new Date(props.post.date);
+  return date.toLocaleDateString("en-GB", {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+  });
 });
+
+
+    const truncatedText = computed(() => {
+      const limit = 140;
+      if (!props.post.intro) return "";
+      return props.post.intro.length > limit
+        ? props.post.intro.slice(0, limit) + "..."
+        : props.post.intro;
+    });
+
+    return { formattedDate, truncatedText };
+  },
+};
 </script>
 
 <style scoped>
 .post-card {
-  background-color: #0b1a25;
-  color: white;
-  border-radius: 16px;
+  width: 30%;
+  background: #000000;
+  border-radius: 12px;
   overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.3s ease;
+  text-decoration: none;
+  color: white;
 }
 
-.post-card:hover {
-  transform: translateY(-4px);
+.image {
+  display: flex;           /* делаем flex-контейнером */
+  justify-content: center; /* горизонтальное центрирование */
+  align-items: center; 
+  padding-top: 10px;
+  border-radius: 20px;    /* вертикальное центрирование, если нужно */
 }
 
-.post-image {
-  width: 100%;
-  height: 220px;
+.image img {
+  width: 90%;             /* оставляем ширину 90% */
+  height: 200px;
   object-fit: cover;
 }
 
-.post-info {
-  padding: 16px;
+
+.content {
+  padding: 12px;
 }
 
-.post-info h3 {
-  font-size: 1.4rem;
-  margin-bottom: 8px;
-  font-family: 'Cormorant Garamond', serif;
+.date {
+  font-size: 12px;
+  color: gray;
+  display: block;
+  margin-bottom: 6px;
 }
 
-.post-info p {
-  font-size: 0.95rem;
-  opacity: 0.8;
+h3 {
+  margin: 0 0 8px;
+}
+
+p {
+  margin: 0;
+  opacity: 0.7;
 }
 </style>

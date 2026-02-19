@@ -75,7 +75,7 @@ const toggle = (index) => {
   background-color: #05131F;
   color: #ffffff;
   text-align: center;
-  padding: 100px 16px;
+  padding:  16px;
   display: flex;
   flex-direction: column;
   align-items: center;

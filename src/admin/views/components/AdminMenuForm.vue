@@ -45,7 +45,6 @@ export default {
   props: { initialDish: Object },
 
   setup(props, { emit }) { // setup — основная логика компонента
-    // режим: редактируем или добавляем
     const isEdit = ref(!!props.initialDish);
 
     // объект блюда

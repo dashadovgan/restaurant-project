@@ -56,6 +56,8 @@ export default {
     const slidesPerView = ref(window.innerWidth <= 480 ? 1 : 3);
     const paginationOptions = { el: ".custom-pagination", clickable: true };
 
+    
+
     const updateSlides = () => {
       slidesPerView.value = window.innerWidth <= 480 ? 1 : 3;
     };

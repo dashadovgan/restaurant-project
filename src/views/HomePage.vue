@@ -5,10 +5,13 @@
 <h3>Welcome to the restourant</h3>
 <p>Savor exquisite culinary creations prepared with fresh, local ingredients. Each dish celebrates vibrant flavors, presented in an ambiance of sophistication. Join us for an unforgettable dining experience where every bite tells a story.</p>
   <h1>A Symphony of Flavors in Every Bite</h1>
-  <div class="offersbtn">
-<button class="ourMenu">Our Menu</button>
-   <reserve-button></reserve-button>
-  </div>
+<div class="offersbtn">
+  <router-link to="/menu" class="ourMenu">
+    Our Menu
+  </router-link>
+
+  <reserve-button></reserve-button>
+</div>
 </section>
   </background-section>
   <section class="aboutUs">
@@ -38,9 +41,20 @@
 <section class="FAQ-container">
   <FAQSection />
 </section>
-<section class="news-container">
-<StoriesBlock />
+<section class="news-section">
+  <div class="stories-wrapper">
+    <StoriesBlock :maxPosts="3" />
+  </div>
+  <div class="news-button">
+    <router-link to="/news">
+      View All
+    </router-link>
+  </div>
 </section>
+
+
+
+
 </template>
 
 <script>
@@ -54,45 +68,97 @@ import InfoContact from '@/components/InfoContact.vue';
 import MapLocation from '@/components/MapLocation.vue';
 import FAQSection from '@/components/FAQSection.vue';
 import StoriesBlock from '@/components/StoriesBlock.vue';
+
 export default {
   name: 'HomePage',
   components: {
     'reserve-button': ReserveButton,BackgroundSection,ExperienceBlock, ChefFavorites, ReviewsSection, ContactUs, InfoContact, MapLocation, FAQSection, StoriesBlock
   }
+  
 }
 </script>   
 
 <style scoped>
+.news-container{
+  display:flex;
+  flex-direction: row;
+  gap:40px;
+  width: 100%;
+  align-items: flex-start;
+    background-color: #01101D;
+}
+.news-section{
+  background-color: #05131F;
+}
+.stories-wrapper {
+  display: flex;
+  flex-direction: row; /* карточки в ряд */
+  flex-wrap: wrap;     /* переход на новую строку при необходимости */
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.news-button {
+  display: flex;
+  justify-content: center; /* кнопка по центру под карточками */
+
+  width: 100%;
+}
+
+.news-button a {
+  background-color: #F4C73F;
+  color: black;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 28px;
+  font-size: 18px;
+  cursor: pointer;
+  font-family: 'Lora', sans-serif;
+  font-weight: 500;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.news-button a:hover {
+  background-color: #c7980c;
+}
+
+
 .offersbtn{
   display: flex;
   margin-top: 20px;
   justify-content:center;
   
 }
-.offersbtn .ourMenu:hover {
- font-weight: 600;
- border: black;
-}
-.offersbtn .ourMenu{
-    background-color: black;
-; /* можно подкорректировать цвет */
+.offersbtn .ourMenu {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: black;
   border: none;
   padding: 8px 16px;
   border-radius: 30px;
   color: white;
   cursor: pointer;
-  font-family: 'Lora', sans-serif !important;
+
+  font-family: 'Lora', sans-serif;
   line-height: 24px;
   width: 153px;
   height: 48px;
   font-weight: 400;
   font-size: 16px;
-margin-right: 50px;
+
+  margin-right: 50px;
+  text-decoration: none; /* важно для router-link */
 }
-.contact-section{
-  background-color:#f9f9f9;
-  padding: 60pz 20px;
+
+.offersbtn .ourMenu:hover {
+  font-weight: 600;
 }
+
+
 .welcome{
   flex-direction: column;
   text-align: center;
@@ -142,14 +208,7 @@ height: 194px;
   width: 90%;
   align-items: flex-start;
 }
-.news-container{
-  padding-top: 30px;
-  display:flex;
-  flex-direction: row;
-  gap:40px;
-  width: 90%;
-  align-items: flex-start;
-}
+
 .aboutUs h3{
   color: white;
   font-size: 48px;

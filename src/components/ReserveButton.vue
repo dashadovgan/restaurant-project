@@ -1,7 +1,9 @@
 <template>
-  <button class="reserve-button">
-    Reserve a Seat
-  </button>
+  <router-link to="/reservation">
+    <button class="reserve-button">
+      Reserve a Seat
+    </button>
+  </router-link>
 </template>
 
 <script>
@@ -27,8 +29,7 @@ export default {
 }
 
 .reserve-button:hover {
- font-weight: 600;
- border: black;
-
+  font-weight: 600;
+  border: black;
 }
 </style>

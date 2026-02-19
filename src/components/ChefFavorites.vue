@@ -27,7 +27,9 @@
         </div>
       </div>
         <div class="favorites-button">
-        <button>Explore our menu</button>
+         <router-link to="/menu" class="ourMenu">
+    Explore Our Menu
+  </router-link>
     </div>
     </div>
   
@@ -184,14 +186,14 @@ export default {
   margin: 0;
   font-weight: 400;
 }
-.favorites-button {
+.ourMenu {
   display: flex;
   justify-content: center;
   margin-top: 40px;
   margin-bottom: 20px;
 }
 
-.favorites-button button {
+.ourMenu {
   background-color: #F4C73F; /* синий фон */
   color: black;
   border: none;
@@ -202,9 +204,10 @@ export default {
   font-family: 'Lora', sans-serif;
   font-weight: 500;
   transition: 0.3s ease;
+   text-decoration: none; /* важно для router-link */
 }
 
-.favorites-button button:hover {
+.ourMenu:hover {
   background-color: #c7980c; /* подсветка при наведении */
 }
 

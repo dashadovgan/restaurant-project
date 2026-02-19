@@ -1,9 +1,20 @@
 <template>
-  <AdminLayout>
     <div class="admin-posts">
       <h2>Create Post</h2>
 
+      <!-- 🖼 Загрузка основной фотографии поста -->
+      <div class="cover-image-upload">
+        <label>
+          Main Cover Image
+          <input type="file" accept="image/*" @change="uploadCoverImage" />
+        </label>
+        <div v-if="coverImage" class="cover-preview">
+          <img :src="coverImage" alt="Cover Image Preview" />
+        </div>
+      </div>
+
       <form @submit.prevent="savePost" class="post-form">
+        <!-- Заголовок и ввод -->
         <input v-model="title" placeholder="Post title" required />
         <textarea v-model="intro" placeholder="Intro (optional)"></textarea>
 
@@ -14,42 +25,30 @@
             <button type="button" class="delete" @click="removeBlock(index)">✖</button>
           </div>
 
-          <!-- ✏️ Текстовый блок -->
+          <!-- Текстовый блок -->
           <div v-if="block.type === 'text'">
-            <textarea
-              v-model="block.content"
-              placeholder="Enter text..."
-            ></textarea>
+            <textarea v-model="block.content" placeholder="Enter text..."></textarea>
           </div>
 
-          <!-- 🟨 Текст с жёлтой полосой -->
+          <!-- Highlight блок -->
           <div v-else-if="block.type === 'highlight'">
-            <textarea
-              v-model="block.content"
-              placeholder="Highlighted text..."
-              class="highlight-text"
-            ></textarea>
+            <textarea v-model="block.content" placeholder="Highlighted text..." class="highlight-text"></textarea>
           </div>
 
-          <!-- 🖼 Фото-блок -->
+          <!-- Фото-блок -->
           <div v-else-if="block.type === 'image'" class="image-row">
             <label v-for="(url, i) in block.urls" :key="i" class="image-upload">
               <input type="file" accept="image/*" @change="uploadImage($event, index, i)" />
               <img v-if="url" :src="url" class="preview-img" />
             </label>
-            <button
-              v-if="block.urls.length < 2"
-              type="button"
-              class="add-photo-btn"
-              @click="addImageSlot(index)"
-            >
+            <button v-if="block.urls.length < 2" type="button" class="add-photo-btn" @click="addImageSlot(index)">
               ➕ Add second photo
             </button>
           </div>
           <hr />
         </div>
 
-        <!-- ➕ Кнопка добавления блока -->
+        <!-- Добавление блока -->
         <div class="add-block">
           <button type="button" @click="showBlockMenu = !showBlockMenu">➕ Add block</button>
           <div v-if="showBlockMenu" class="block-menu">
@@ -59,35 +58,42 @@
           </div>
         </div>
 
+        <!-- Публикация поста -->
         <button type="submit" class="publish-btn">Publish Post</button>
       </form>
     </div>
-  </AdminLayout>
 </template>
 
 <script>
 import { ref } from "vue";
 import { db } from "@/firebase/firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import {
-  getStorage,
-  ref as storageRef,
-  uploadBytes,
-  getDownloadURL,
-} from "firebase/storage";
-import AdminLayout from "@/admin/views/AdminMenuManager.vue";
+import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from "firebase/storage";
+
+
 
 export default {
   name: "AdminPostsStories",
-  components: { AdminLayout },
   setup() {
     const title = ref("");
     const intro = ref("");
+    const coverImage = ref(""); // новое поле для основной фотографии
     const showBlockMenu = ref(false);
     const contentBlocks = ref([]);
 
     const storage = getStorage();
 
+    // Загрузка основной фотографии
+    const uploadCoverImage = async (event) => {
+      const file = event.target.files[0];
+      if (!file) return;
+      const path = `postImages/${Date.now()}_${file.name}`;
+      const refFile = storageRef(storage, path);
+      await uploadBytes(refFile, file);
+      coverImage.value = await getDownloadURL(refFile);
+    };
+
+    // Добавление блока
     const addBlock = (type) => {
       const newBlock =
         type === "text"
@@ -118,7 +124,11 @@ export default {
     };
 
     const savePost = async () => {
-      // минимальная проверка
+      if (!coverImage.value) {
+        alert("Please upload a main cover image.");
+        return;
+      }
+
       const filledBlocks = contentBlocks.value.filter(
         (b) =>
           (b.type === "text" && b.content.trim() !== "") ||
@@ -133,13 +143,15 @@ export default {
       await addDoc(collection(db, "posts"), {
         title: title.value,
         intro: intro.value,
+        coverImage: coverImage.value, // сохраняем coverImage
         contentBlocks: contentBlocks.value,
         date: serverTimestamp(),
       });
 
-      // сброс
+      // сброс формы
       title.value = "";
       intro.value = "";
+      coverImage.value = "";
       contentBlocks.value = [];
       alert("Post published!");
     };
@@ -147,8 +159,10 @@ export default {
     return {
       title,
       intro,
-      contentBlocks,
+      coverImage,
       showBlockMenu,
+      contentBlocks,
+      uploadCoverImage,
       addBlock,
       removeBlock,
       addImageSlot,
@@ -166,12 +180,14 @@ export default {
   gap: 18px;
   max-width: 800px;
 }
+
 textarea,
 input {
   width: 100%;
   padding: 10px;
   font-size: 16px;
 }
+
 button {
   cursor: pointer;
   border: none;
@@ -180,20 +196,42 @@ button {
   color: white;
   border-radius: 6px;
 }
+
 button.delete {
   background: crimson;
 }
+
 button.publish-btn {
   background: #0f5132;
 }
+
+/* cover image */
+.cover-image-upload {
+  margin-bottom: 20px;
+}
+
+.cover-image-upload input {
+  margin-top: 5px;
+}
+
+.cover-preview img {
+  margin-top: 10px;
+  width: 300px;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* content blocks */
 .image-row {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
 }
+
 .image-upload input {
   display: none;
 }
+
 .image-upload {
   width: 150px;
   height: 150px;
@@ -203,12 +241,14 @@ button.publish-btn {
   justify-content: center;
   align-items: center;
 }
+
 .preview-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 10px;
 }
+
 .block-menu {
   display: flex;
   flex-direction: column;
@@ -218,11 +258,13 @@ button.publish-btn {
   border-radius: 6px;
   margin-top: 8px;
 }
+
 .block-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 .highlight-text {
   border-left: 6px solid gold;
   padding-left: 10px;
