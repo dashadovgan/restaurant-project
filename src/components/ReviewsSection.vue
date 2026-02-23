@@ -5,14 +5,16 @@
       Exceptional dining experiences shared by those who've tasted the difference
     </p>
 
-    <swiper
-      ref="swiperRef"
-      :slides-per-view="slidesPerView"
-      :space-between="20"
-      :loop="true"
-      :pagination="paginationOptions"
-      class="reviews-slider"
-    >
+   <swiper
+  @swiper="onSwiper"
+  :modules="[Pagination]"
+  :slides-per-view="slidesPerView"
+  :space-between="20"
+  :loop="true"
+  :pagination="paginationOptions"
+>
+
+
       <swiper-slide
         v-for="(review, index) in reviews"
         :key="index"
@@ -41,20 +43,25 @@
 <script>
 import { ref, onMounted } from "vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
-import SwiperCore, { Pagination } from "swiper";
+import { Pagination } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/pagination";
 
-SwiperCore.use([Pagination]);
+
+
 
 export default {
   name: "ReviewsSection",
   components: { Swiper, SwiperSlide },
   setup() {
-    const swiperRef = ref(null);
+    
     const slidesPerView = ref(window.innerWidth <= 480 ? 1 : 3);
-    const paginationOptions = { el: ".custom-pagination", clickable: true };
+    const paginationOptions = {
+  el: ".custom-pagination",
+  type: "progressbar"
+};
+
 
     
 
@@ -62,13 +69,20 @@ export default {
       slidesPerView.value = window.innerWidth <= 480 ? 1 : 3;
     };
 
-    const nextSlide = () => {
-      if (swiperRef.value && swiperRef.value.swiper) swiperRef.value.swiper.slideNext();
-    };
+  const swiperInstance = ref(null);
 
-    const prevSlide = () => {
-      if (swiperRef.value && swiperRef.value.swiper) swiperRef.value.swiper.slidePrev();
-    };
+const onSwiper = (swiper) => {
+  swiperInstance.value = swiper;
+};
+
+const nextSlide = () => {
+  swiperInstance.value?.slideNext();
+};
+
+const prevSlide = () => {
+  swiperInstance.value?.slidePrev();
+};
+
 
     onMounted(() => {
       window.addEventListener("resize", updateSlides);
@@ -92,17 +106,25 @@ export default {
         text: "The roller coasters were exhilarating! The staff was friendly and the atmosphere was electric.",
         name: "Tommy Thrill",
         role: "Adventure Blogger"
+      },
+      {
+        image: require("@/assets/review3.png"),
+        text: "The roller coasters were exhilarating! The staff was friendly and the atmosphere was electric.",
+        name: "Tommy Thrill",
+        role: "Adventure Blogger"
       }
     ];
 
     return {
-      swiperRef,
-      slidesPerView,
-      paginationOptions,
-      nextSlide,
-      prevSlide,
-      reviews
-    };
+  Pagination,
+  slidesPerView,
+  paginationOptions,
+  nextSlide,
+  prevSlide,
+  reviews,
+  onSwiper
+};
+
   }
 };
 </script>
@@ -167,12 +189,22 @@ export default {
   margin-top: 15px;
 }
 
+/* Контейнер */
 .custom-pagination {
+  position: relative;
   width: 70%;
   height: 4px;
   background: #333;
   border-radius: 2px;
+  overflow: hidden;
 }
+
+/* Сам "живой" рычажок */
+:deep(.swiper-pagination-progressbar-fill) {
+  background: #888; /* или любой серый */
+  border-radius: 2px;
+}
+
 
 .custom-buttons img {
   width: 30px;

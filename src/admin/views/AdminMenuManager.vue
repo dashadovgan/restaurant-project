@@ -35,7 +35,11 @@
         </tbody>
       </table>
 
-      <AdminMenuForm v-if="editingDish" :initialDish="editingDish" @dish-saved="onEditSaved" />
+      <AdminMenuForm 
+      v-if="editingDish" 
+      :initialDish="editingDish" 
+      @dish-saved="onEditSaved" 
+      />
       <AdminUserList />
          <section class="story-container">
 <AdminPostsStories />
