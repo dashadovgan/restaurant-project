@@ -2,7 +2,6 @@
     <div class="admin-posts">
       <h2>Create Post</h2>
 
-      <!-- 🖼 Загрузка основной фотографии поста -->
       <div class="cover-image-upload">
         <label>
           Main Cover Image
@@ -14,28 +13,20 @@
       </div>
 
       <form @submit.prevent="savePost" class="post-form">
-        <!-- Заголовок и ввод -->
         <input v-model="title" placeholder="Post title" required />
         <textarea v-model="intro" placeholder="Intro (optional)"></textarea>
 
-        <!-- 🧩 Контентные блоки -->
         <div v-for="(block, index) in contentBlocks" :key="index" class="content-block">
           <div class="block-header">
             <span>{{ block.typeLabel }}</span>
             <button type="button" class="delete" @click="removeBlock(index)">✖</button>
           </div>
-
-          <!-- Текстовый блок -->
           <div v-if="block.type === 'text'">
             <textarea v-model="block.content" placeholder="Enter text..."></textarea>
           </div>
-
-          <!-- Highlight блок -->
           <div v-else-if="block.type === 'highlight'">
             <textarea v-model="block.content" placeholder="Highlighted text..." class="highlight-text"></textarea>
           </div>
-
-          <!-- Фото-блок -->
           <div v-else-if="block.type === 'image'" class="image-row">
             <label v-for="(url, i) in block.urls" :key="i" class="image-upload">
               <input type="file" accept="image/*" @change="uploadImage($event, index, i)" />

@@ -10,7 +10,7 @@
         <h3 class="title">Our Location</h3>
         <div class="info-content">
           <i class="fas fa-map-marker-alt"></i>
-          <img src="@/assets/location.png" alt="location icon" class="icon-img" />
+          <img src="@/assets/image/location.png" alt="location icon" class="icon-img" />
           <a href="https://www.google.com/maps?q=21+Rue+des+Lilas+75001+Paris" target="_blank">
             21 Rue des Lilas 75001 Paris, France
           </a>
@@ -20,7 +20,7 @@
         <h3 class="title">Phone Number</h3>
         <div class="info-content">
           <i class="fas fa-phone-alt"></i>
-             <img src="@/assets/call.png" alt="call icon" class="icon-img" />
+             <img src="@/assets/image/call.png" alt="call icon" class="icon-img" />
           <a href="tel:+33612345678">+33 6 12 34 56 78</a>
         </div>
       </div>
@@ -32,7 +32,7 @@
         <h3 class="title">Email Address</h3>
         <div class="info-content">
           <i class="fas fa-envelope"></i>
-             <img src="@/assets/sms.png" alt="cmc icon" class="icon-img" />
+             <img src="@/assets/image/sms.png" alt="cmc icon" class="icon-img" />
           <a href="mailto:hello@platieu.com">hello@platieu.com</a>
         </div>
       </div>
@@ -42,11 +42,11 @@
     <i class="fas fa-clock"></i>
     <div class="hours">
       <div class="hour-row">
-        <img src="@/assets/clock.png" alt="clock icon" class="icon-img" />
+        <img src="@/assets/image/clock.png" alt="clock icon" class="icon-img" />
         <p>Monday - Friday: 12:00 PM - 2:30 PM & 7:00 PM - 10:30 PM</p>
       </div>
       <div class="hour-row">
-        <img src="@/assets/clock.png" alt="clock icon" class="icon-img" />
+        <img src="@/assets/image/clock.png" alt="clock icon" class="icon-img" />
         <p>Saturday: 7:00 PM - 11:00 PM</p>
       </div>
     </div>
@@ -83,8 +83,8 @@ export default {
 
 .info-item {
   display: flex;
-  flex-direction: column; /* заголовок сверху, контент снизу */
-  flex: 1 1 45%; /* адаптивная ширина */
+  flex-direction: column; 
+  flex: 1 1 45%; 
   min-width: 200px;
   gap: 8px;
 }
@@ -93,7 +93,7 @@ export default {
   font-size: 16px;
   font-weight: 500;
   margin: 0;    
-  color: #EDEDED; /* цвет заголовка */
+  color: #EDEDED; 
   font-family: 'Cormorant Garamond', sans-serif;
   font-weight: 600;
   font-size: 24px;
@@ -101,7 +101,7 @@ export default {
 
 .info-content {
   display: flex;
-  align-items: flex-start; /* выравнивание иконки и текста */
+  align-items: flex-start; 
   gap: 10px;
   flex-wrap: wrap;
 }
@@ -109,7 +109,7 @@ export default {
 .info-content i {
   color: #FFD600;
   font-size: 20px;
-  margin-top: 2px; /* немного подровнять по вертикали */
+  margin-top: 2px; 
 }
 
 .info-content a {
@@ -144,17 +144,17 @@ font-family: 'Cormorant Garamond', sans-serif;
    
 }
 .icon-img {
-  width: 20px; /* можно в % или em, чтобы было адаптивно */
+  width: 20px; 
   height: 20px;
   object-fit: contain;
-  margin-right: 8px; /* расстояние между иконкой и текстом */
-  vertical-align: middle; /* выравнивание по тексту */
+  margin-right: 8px; 
+  vertical-align: middle;
 }
 .hour-row {
   display: flex;
-  align-items: center; /* выравниваем текст по середине иконки */
-  gap: 16px; /* расстояние между иконкой и текстом */
-  margin-bottom: 8px; /* небольшой отступ между строками */
+  align-items: center;
+  gap: 16px; 
+  margin-bottom: 8px; 
 }
 
 </style>

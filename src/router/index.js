@@ -12,10 +12,8 @@ import PostPage from '@/views/PostPage.vue'
 import AdminMenuManager from '@/admin/views/AdminMenuManager.vue'
 import AdminPostsStories from '@/admin/views/components/AdminPostsStories.vue'
 import AdminPostEditor from '@/admin/views/components/AdminPostEditor.vue'
-import PrivasyPolisy from '@/views/PrivasyPolisy.vue'
+import PrivacyPolicy from '@/views/PrivacyPolicy.vue'
 import TermsOfUse from '@/views/TermsOfUse.vue'
-
-
 
 
 const routes = [
@@ -24,14 +22,14 @@ const routes = [
     name: 'Home',
     component: HomePage
   },
-   { path: '/privasy-policy', 
-    name:"PrivasyPolicy",
-    component: PrivasyPolisy 
-  }, // новый маршрут
+   { path: '/privacy-policy', 
+    name:"PrivacyPolicy",
+    component: PrivacyPolicy 
+  }, 
     { path: '/terms-of-use', 
     name:"TermsOfUse",
     component: TermsOfUse 
-  }, // новый маршрут
+  }, 
   {
 path:'/admin',
 name:"AdminDashboard",

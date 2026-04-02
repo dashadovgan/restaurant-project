@@ -1,0 +1,22 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+:root {
+  --main-font: 'Lora', serif;
+  --heading-font: 'Cormorant Garamond', serif;
+}
+body{
+  font-family: var(--main-font);
+  color:#d7d7d7;
+  font-size: 18px;
+}
+h1,h2,h3,p{
+  font-family: var(--heading-font);
+}
+* {
+  box-sizing: border-box;
+}

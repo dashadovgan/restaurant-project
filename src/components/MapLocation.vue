@@ -21,7 +21,7 @@
 
         <!-- Кнопка сбоку с иконкой -->
         <button class="route-button" @click="openGoogleMaps">
-          <img src="@/assets/Group.png" alt="Route Icon" />
+          <img src="@/assets/image/group.png" alt="Route Icon" />
           Route to restaurant
         </button>
       </div>
@@ -30,20 +30,27 @@
 </template>
 
 <script>
+import { loadGoogleMaps } from '@/services/load-google-maps';
+
 export default {
   name: "GoogleMap",
-  mounted() {
-    const map = new window.google.maps.Map(this.$refs.map, {
+  async mounted() {
+    try{
+      const maps = await loadGoogleMaps(process.env.VUE_APP_GOOGLE_MAPS_API_KEY);
+      const map = new maps.Map(this.$refs.map, {
       center: { lat: 48.8696, lng: 2.3426 },
       zoom: 15,
     });
 
-    new window.google.maps.Marker({
+    new maps.Marker({
       position: { lat: 48.8696, lng: 2.3426 },
       map,
       title: "21 Rue des Lilas, Paris",
     });
-  },
+  }catch(error){
+    console.log("Error loading map", error);
+  }
+},
   methods: {
     openGoogleMaps() {
       window.open(
@@ -105,18 +112,18 @@ export default {
   font-size: 14px;
 }
 
-/* 🔹 Рейтинг с иконками */
+
 .rating .star {
-  color: #ffa500; /* оранжевый */
+  color: #ffa500; 
   margin-right: 2px;
   font-size: 16px;
 }
 
-/* 🔹 Кнопка Route */
+
 .route-button {
   display: flex;
   align-items: center;
-  gap: 8px; /* расстояние между иконкой и текстом */
+  gap: 8px; 
   background: #000;
   color: #fff;
   border: 1px solid #fff;
@@ -132,20 +139,20 @@ export default {
   height: 20px;
 }
 
-/* 🔹 Мобильная адаптация */
-@media (max-width: 768px) {
+
+@media (max-width: 480px) {
   .map-container {
-    width: 95%;      /* почти весь экран по ширине */
-    height: 90vh;    /* 90% высоты экрана */
+    width: 95%;      
+    height: 90vh;    
     border-radius: 12px;
-    margin: 0 auto;  /* центрируем */
+    margin: 0 auto; 
   }
 
   .map-overlay {
     bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
-    width: 85%;      /* почти вся ширина карты */
+    width: 85%;      
     max-width: none;
     text-align: center;
     border-radius: 12px;

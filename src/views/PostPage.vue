@@ -61,7 +61,7 @@ export default {
     const postId = route.params.id;
 
     const loadPost = async () => {
-      console.log("POST ID:", postId); // 👈 ОБЯЗАТЕЛЬНО
+      console.log("POST ID:", postId); 
       if (!postId) return;
 
       const docRef = doc(db, "posts", postId);
@@ -117,7 +117,7 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 21, 40, 0.6); /* полупрозрачный #00152899 */
+  background-color: rgba(0, 21, 40, 0.6); 
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -136,7 +136,6 @@ export default {
   font-size: 20px;
 }
 
-/* Content blocks */
 .content-blocks {
   max-width: 800px;
   margin: 40px auto;
@@ -166,9 +165,8 @@ export default {
   width: 100%;
   max-width: 800px;
   height: 240px;
-
-  border-radius: 20px;     /* ← СКРУГЛЕНИЕ ТУТ */
-  overflow: hidden;        /* ← КРИТИЧЕСКИ ВАЖНО */
+  border-radius: 20px;     
+  overflow: hidden;        
 
   margin: 0 auto 20px;
 }
@@ -179,24 +177,15 @@ export default {
   object-fit: cover;
   display: block;
 
-  /* НИКАКОГО border-radius здесь */
+ 
 }
 
-
-
-
-
-
-
-
-
-/* Loading state */
 .loading {
   text-align: center;
   margin-top: 100px;
   font-size: 24px;
 }
-@media (max-width: 768px) {
+@media (max-width: 480px) {
   .content-blocks{
     width: 80%;
   }

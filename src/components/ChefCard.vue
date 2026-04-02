@@ -64,7 +64,7 @@ const shortText = computed(() =>
   line-height: 22px;
   opacity: 0.8;
 }
-@media (max-width: 768px) {
+@media (max-width: 480px) {
 .chef-card img {
 width: 100%;
   height: 400px;

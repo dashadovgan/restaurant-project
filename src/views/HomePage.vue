@@ -1,12 +1,12 @@
 <template>
   <background-section>
   <section class="welcome">
-<img :src="require('@/assets/diademaDecor.png')" alt="decor"/>
+<img src="@/assets/image/diadem-decor.png" alt="decor"/>
 <h3>Welcome to the restourant</h3>
 <p>Savor exquisite culinary creations prepared with fresh, local ingredients. Each dish celebrates vibrant flavors, presented in an ambiance of sophistication. Join us for an unforgettable dining experience where every bite tells a story.</p>
   <h1>A Symphony of Flavors in Every Bite</h1>
-<div class="offersbtn">
-  <router-link to="/menu" class="ourMenu">
+<div class="offers-btn">
+  <router-link to="/menu" class="our-menu">
     Our Menu
   </router-link>
 
@@ -14,11 +14,11 @@
 </div>
 </section>
   </background-section>
-  <section class="aboutUs">
-   <div class="aboutUsContainer">
+  <section class="about-us">
+   <div class="about-us-container">
   <h3>Our Company</h3>
-  <div class="aboutUsContent">
-    <div class="aboutUsText">
+  <div class="about-us-content">
+    <div class="about-us-text">
       <p>Since its opening, the Restaurant has become a place where taste, quality, and dining experience unite in harmony. We are here with a passion for serving delicious food made from the finest fresh ingredients, combined with a touch of love and creativity from our kitchen.</p>
       <p>We believe that food is not just a means to fill the stomach, but a part of the story, happiness, and togetherness. That’s why every dish at the Restaurant is prepared with great care, to create special moments for you and your loved ones.</p>
     </div>
@@ -35,10 +35,10 @@
   <InfoContact />
   </div>
  </section>
-<section class="mapsection">
+<section class="map-section">
 <MapLocation />
 </section>
-<section class="FAQ-container">
+<section class="faq-container">
   <FAQSection />
 </section>
 <section class="news-section">
@@ -125,13 +125,13 @@ export default {
 }
 
 
-.offersbtn{
+.offers-btn{
   display: flex;
   margin-top: 20px;
   justify-content:center;
   
 }
-.offersbtn .ourMenu {
+.offers-btn .our-menu {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -154,7 +154,7 @@ export default {
   text-decoration: none; /* важно для router-link */
 }
 
-.offersbtn .ourMenu:hover {
+.offers-btn .our-menu:hover {
   font-weight: 600;
 }
 
@@ -190,17 +190,17 @@ font-family: 'Cormorant Garamond', sans-serif;
 font-size: 92px;
 font-weight: 500;
 line-height: 105%;
-height: 194px;
- margin : 0 0 32px 0;
+height: 25%;
+ margin : 0 0 10px 0;
 }
-.aboutUs{
+.about-us{
   background-color: #01101D;
   width: 100%;
   padding-top: 60px 0;
   display: flex;
   justify-content: center;
 }
-.aboutUsContainer{
+.about-us-container{
   padding-top: 30px;
   display:flex;
   flex-direction: row;
@@ -209,7 +209,7 @@ height: 194px;
   align-items: flex-start;
 }
 
-.aboutUs h3{
+.about-us h3{
   color: white;
   font-size: 48px;
   font-weight: 600;
@@ -219,7 +219,7 @@ height: 194px;
   margin-top: 0;
 }
 
-  .aboutUsText{
+  .about-us-text{
     display: flex;
     gap:20px;
     flex-direction: column;
@@ -227,30 +227,30 @@ height: 194px;
     width: 100%;
    
   }
-  .aboutUsText p{
+  .about-us-text p{
     color:white;
     font-size:18px;
     line-height: 1.6;
      font-family: 'Lora', sans-serif;
     font-weight: 400;
   }
-  .aboutUsContent {
+  .about-us-content {
   display: flex;
-  flex-direction: column; /* текст + компонент вертикально */
-  width: 75%; /* чтобы оставалось рядом с заголовком */
+  flex-direction: column; 
+  width: 75%; 
   gap: 20px;
 }
 
 .contact-section {
-  background-color: #05131F; /* темный фон */
-  padding: 5% 5%; /* отступы в процентах */
+  background-color: #05131F; 
+  padding: 5% 5%;
   display: flex;
   justify-content: center;
   width: 100%;
 }
-.FAQ-container {
- background-color: #05131F; /* темный фон */
-  padding: 5% 5%; /* отступы в процентах */
+.faq-container {
+ background-color: #05131F; 
+  padding: 5% 5%;
   display: flex;
   justify-content: center;
   width: 100%;
@@ -258,30 +258,30 @@ height: 194px;
 .contact-container {
   display: flex;
   width: 100%;
-  max-width: 1200px; /* ограничение по ширине */
-  gap: 5%; /* расстояние между колонками в процентах */
-  flex-wrap: nowrap; /* держим колонки в строке */
-  align-items: stretch; /* равная высота колонок */
+  max-width: 1200px; 
+  gap: 5%; 
+  flex-wrap: nowrap; 
+  align-items: stretch; 
   flex-direction: row !important ;  
 }
 
 .contact-container > * {
-  flex: 1 1 0; /* колонки одинаковой ширины, растягиваются */
-  min-width: 40%; /* минимальная ширина для каждой колонки */
+  flex: 1 1 0; 
+  min-width: 40%; 
 }
-.mapsection{
+.map-section{
   display: flex;
    justify-content: center;
     background-color: #05131F;
   width: 100%;
   padding: 60px 60px;
 }
-.mapsection #map{
+.map-section #map{
   
-   width: 80% !important;                 /* карта занимает 80% ширины */
-  height: 400px;              /* высота карты */
-  border-radius: 12px;        /* скруглённые края для красоты */
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* тень */
+   width: 80% !important;                 
+  height: 400px;            
+  border-radius: 12px;       
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2); 
  
 }
 
@@ -289,28 +289,28 @@ height: 194px;
 @media(max-width:480px){
   .mapsection #map{
   
-   width: 100% !important;                 /* карта занимает 80% ширины */
-  height: 900px;              /* высота карты */
-  border-radius: 12px;        /* скруглённые края для красоты */
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* тень */
+   width: 100% !important;              
+  height: 900px;              
+  border-radius: 12px;        
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2); 
  
 }
-.mapsection{
+.map-section{
   
   display: flex;
   justify-content: center;
   background-color: #05131F;
   width: 100%;
-  padding: 20px; /* можно уменьшить сверху/снизу на мобилке */
+  padding: 20px; 
 }
 
 
   .home {
   width: 100%;
   height: auto;
-  background-image: url('@/assets/Background.png');
+  background-image: url('@/assets/image/background.png');
   background-size: cover;
-  background-position: top center; /* верх изображения виден */
+  background-position: top center; 
   background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
@@ -336,10 +336,10 @@ height: 194px;
   font-size: 48px;
   line-height: 1.3;
   max-width: 90%;
-  height: 165px;
+  height: 20%;
   justify-content: center;
   text-align: center;
-  margin:0 auto 32px auto;
+  margin:0 auto 10px auto;
 }
 .welcome h3{
   font-size: 24px;
@@ -350,7 +350,7 @@ height: 194px;
 
   .welcome p {
    font-family: 'Lora', sans-serif;
-font-weight: 300; /* Regular */
+font-weight: 300; 
 font-style: normal;
 font-size: 18px;
 line-height: 26px;
@@ -359,26 +359,26 @@ text-align: center;
   }
 
 
-  .offersbtn {
+  .offers-btn {
     flex-direction: column;
     gap: 16px;
     align-items: center;
   }
 
-  .offersbtn .ourMenu,
-  .offersbtn reserve-button {
-    width: 180px; /* равная ширина кнопок */
+  .offers-btn .ourMenu,
+  .offers-btn reserve-button {
+    width: 180px; 
     margin-right: 0;
   }
-  .aboutUs{
+  .about-us{
     justify-content: center;
   }
-  .aboutUsContainer h3{
+  .about-us-container h3{
     width: auto;
     margin: 0;
     padding: 0;
   }
- .aboutUsContainer{
+ .about-us-container{
   padding-top: 70px;
   display:flex;
   flex-direction: column;
@@ -387,12 +387,12 @@ text-align: center;
   align-items: flex-start;
   text-align:left;
 }
-.aboutUsText{
+.about-us-text{
   width: 100%;
   flex-direction: column;
   gap:10px;
 }
-.aboutUsContent{
+.about-us-content{
     width: 100%;
   }
   .contact-container {

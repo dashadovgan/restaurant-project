@@ -1,19 +1,19 @@
 <template>
   <background-section :style="{ minHeight: '70vh' }">
     <section class="welcome">
-      <img :src="require('@/assets/diademaDecor.png')" alt="decor" />
+      <img src="@/assets/image/diadem-decor.png" alt="decor"/>
       <h1>Where Passion Meets the Plate</h1>
       <p>
         At Platieu, every dish begins with a story—crafted from heart, heritage, and honest ingredients.
       </p>
     </section>
   </background-section>
- <section class="ourStoryContainer">
-  <section class="aboutUs">
-   <div class="aboutUsContainer">
+ <section class="our-story-container">
+  <section class="about-us">
+   <div class="about-us-container">
   <h3>A Culinary Journey Rooted in Tradition</h3>
-  <div class="aboutUsContent">
-    <div class="aboutUsText">
+  <div class="about-us-content">
+    <div class="about-us-text">
       <p>Founded in the heart of France, Platieu is more than just a restaurant—it’s a celebration of flavors, culture, and the joy of gathering. Our mission is simple: to bring soulful dining experiences that blend local ingredients with refined techniques, served with warmth and care.</p>
       <p>From humble beginnings to a thriving culinary destination, our story continues to evolve with each plate we serve and every guest we welcome.</p>
     </div>
@@ -47,7 +47,7 @@ import TeamSection from '@/components/TeamSection.vue';
 </script>
 
 <style scoped>
-.ourStoryContainer{
+.our-story-container{
     background-color: #010614;
 }
 .welcome{
@@ -77,7 +77,7 @@ import TeamSection from '@/components/TeamSection.vue';
   color: white;
   margin : 0 0 20px 0;
 }
-.aboutUs{
+.about-us{
   background-color: #01101D;
   width: 100%;
   padding-top: 60px 0;
@@ -85,7 +85,7 @@ import TeamSection from '@/components/TeamSection.vue';
   justify-content: center;
   padding-bottom: 30px;
 }
-.aboutUsContainer{
+.about-us-container{
   padding-top: 30px;
   display:flex;
   flex-direction: row;
@@ -93,7 +93,7 @@ import TeamSection from '@/components/TeamSection.vue';
   width: 90%;
   align-items: flex-start;
 }
-.aboutUs h3{
+.about-us h3{
   color: white;
   font-size: 48px;
   font-weight: 600;
@@ -103,7 +103,7 @@ import TeamSection from '@/components/TeamSection.vue';
   margin-top: 0;
 }
 
-  .aboutUsText{
+  .about-us-text{
     display: flex;
     gap:20px;
     flex-direction: column;
@@ -111,42 +111,42 @@ import TeamSection from '@/components/TeamSection.vue';
     width: 100%;
    
   }
-  .aboutUsText p{
+  .about-us-text p{
     color:white;
     font-size:18px;
     line-height: 1.6;
      font-family: 'Lora', sans-serif;
     font-weight: 400;
   }
-  .aboutUsContent {
+  .about-us-content {
   display: flex;
-  flex-direction: column; /* текст + компонент вертикально */
-  width: 75%; /* чтобы оставалось рядом с заголовком */
+  flex-direction: column;
+  width: 75%; 
   gap: 20px;
 }
 .cta-section {
   background-color: #05131F;
   padding: 60px 20px;
   display: flex;
-  justify-content: center; /* центрируем блок по горизонтали */
+  justify-content: center; 
 }
 
 .cta-container {
   background-color: #010614;
-  width: 90%;      /* блок занимает 90% ширины секции */
+  width: 90%;      
   border-radius: 12px;
   color: white;
-  display: flex;    /* горизонтальные колонки */
+  display: flex;    
   flex-direction: row;
   padding: 40px;
 }
 
 .cta-content {
-  width: 50%;  /* текст занимает только половину блока */
+  width: 50%; 
 }
 
 .cta-empty {
-  width: 50%;  /* пустое пространство справа */
+  width: 50%;  
 }
 
 .cta-container h2 {
@@ -178,10 +178,10 @@ import TeamSection from '@/components/TeamSection.vue';
   background-color: #e6b936;
 }
 
-/* Адаптив */
-@media (max-width: 768px) {
+
+@media (max-width: 480px) {
   .cta-container {
-    flex-direction: column; /* на мобиле колонки становятся вертикальными */
+    flex-direction: column; 
     padding: 30px;
   }
 
@@ -191,7 +191,7 @@ import TeamSection from '@/components/TeamSection.vue';
   }
 
   .cta-empty {
-    display: none; /* пустое пространство скрываем */
+    display: none; 
   }
 
   .cta-container h2 {
@@ -217,15 +217,15 @@ import TeamSection from '@/components/TeamSection.vue';
     width: 130%;
     margin : 0 0 5px 0;
   }
-  .aboutUs{
+  .about-us{
     justify-content: center;
   }
-  .aboutUsContainer h3{
+  .about-us-container h3{
     width: auto;
     margin: 0;
     padding: 0;
   }
- .aboutUsContainer{
+ .about-us-container{
   padding-top: 70px;
   display:flex;
   flex-direction: column;
@@ -234,12 +234,12 @@ import TeamSection from '@/components/TeamSection.vue';
   align-items: flex-start;
   text-align:left;
 }
-.aboutUsText{
+.about-us-text{
   width: 100%;
   flex-direction: column;
   gap:10px;
 }
-.aboutUsContent{
+.about-us-content{
     width: 100%;
   }
 }

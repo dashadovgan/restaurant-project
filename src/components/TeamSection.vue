@@ -117,7 +117,7 @@ const showAllChefs = () => {
   background: #f4c73f;
   color: #0a0e17;
 }
-@media (max-width: 768px) {
+@media (max-width: 480px) {
   .team-header {
     grid-template-columns: 1fr; /* текст в один столбец */
     gap: 20px;

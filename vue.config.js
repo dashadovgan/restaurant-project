@@ -1,6 +1,8 @@
-const { defineConfig } = require('@vue/cli-service')
+const { defineConfig } = require('@vue/cli-service');
 
 module.exports = defineConfig({
   transpileDependencies: true,
-  publicPath: '/restaurant-project/'  // <-- обязательно имя репозитория
-})
+  publicPath: process.env.NODE_ENV === 'production' 
+    ? '/restaurant-project/'  
+    : '/'                     
+});

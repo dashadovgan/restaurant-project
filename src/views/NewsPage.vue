@@ -1,7 +1,7 @@
 <template>
   <background-section :style="{ minHeight: '70vh' }">
     <section class="welcome">
-      <img :src="require('@/assets/diademaDecor.png')" alt="decor"/>
+      <img src="@/assets/image/diadem-decor.png" alt="decor"/>
       <h1>Stories from the Kitchen & Beyond</h1>
       <p>Stay inspired with the latest from Platieu — from seasonal menu launches and chef spotlights to behind-the-scenes stories and culinary insights.</p>
     </section>
@@ -10,14 +10,14 @@
   <section class="stories-block">
     <div class="stories-block-container">
       <!-- Контейнер с текстом и поиском -->
-      <div class="prePostContainer">
-        <div class="textContainer">
+      <div class="pre-post-container">
+        <div class="text-container">
           <h2>Fresh Stories from the Kitchen</h2>
           <p>Discover the stories behind our kitchen, culinary tips, and flavor inspirations that we pour into every dish. This blog is a place where we share more than just food — we share experiences.</p>
         </div>
 
         <!-- поиск справа -->
-        <div class="finderWrapper">
+        <div class="finder-wrapper">
           <FinderSection @filter="applyFilter" />
 
         </div>
@@ -188,10 +188,10 @@ export default {
   background-color: #ae8e2c;
 }
 
-/* Контейнер с текстом и поиском по центру */
-.prePostContainer {
+
+.pre-post-container {
   display: flex;
-  justify-content: center; /* центрируем весь блок */
+  justify-content: center; 
   align-items: flex-start;
   gap: 20px;
   flex-wrap: wrap;
@@ -199,12 +199,12 @@ export default {
   margin: 0 auto;
 }
 
-/* Поле поиска справа */
-.finderWrapper {
+
+.finder-wrapper {
   flex: 0 0 200px;
 }
 
-.finderWrapper input {
+.finder-wrapper input {
   width: 100%;
   padding: 8px 12px;
   border-radius: 8px;
@@ -215,29 +215,29 @@ export default {
   font-size: 14px;
 }
 
-/* Текст слева */
-.textContainer {
+
+.text-container {
   text-align: start;
   padding: 0;
   margin-bottom: 20px;
   flex: 1 1 60%;
 }
 
-.textContainer h2 {
+.text-container h2 {
   color: white;
   font-size: 58px;
   margin: 0;
   font-family: 'Cormorant Garamond', sans-serif;
 }
 
-.textContainer p {
+.text-container p {
   color: #D7D7D7;
   font-size: 18px;
   font-family: 'Lora', sans-serif;
   margin-bottom: 0;
 }
 
-/* Welcome секция */
+
 .welcome {
   flex-direction: column;
   display: flex;
@@ -270,7 +270,7 @@ export default {
   margin: 0 0 20px 0;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 480px) {
   .welcome p {
     font-size: 18px;
     width: 140%;
@@ -282,17 +282,17 @@ export default {
     margin: 0 0 5px 0;
   }
 
-  .prePostContainer {
+  .pre-post-container {
     justify-content: center;
     flex-direction: column;
     align-items: center;
   }
 
-  .finderWrapper {
+  .finder-wrapper {
     margin-top: 20px;
   }
 
-  .textContainer {
+  .text-container {
     width: 100%;
   }
   .stories-block-container {
@@ -303,27 +303,27 @@ export default {
     flex-direction: column;
     align-items: center;
   }
-  .prePostContainer {
+  .pre-post-container {
     flex-direction: column;
     align-items: stretch;
     gap: 16px;
   }
 
-  .textContainer {
+  .text-container {
     flex: unset;
   }
 
-  .textContainer h2 {
+  .text-container h2 {
     font-size: 36px;
     text-align: center;
   }
 
-  .textContainer p {
+  .text-container p {
     text-align: center;
     font-size: 16px;
   }
 
-  .finderWrapper {
+  .finder-wrapper {
     width: 100%;
   }
   .stories-container > * {

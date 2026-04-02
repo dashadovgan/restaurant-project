@@ -59,14 +59,14 @@ onMounted(async () => {
 </script>
 
 <style scoped>
-/* Стили таблицы оставляем твои */
+
 </style>
 
 
 <style scoped>
 .admin-container {
   padding: 40px;
-  color: black;
+  color: rgb(255, 255, 255);
 }
 
 table {

@@ -19,8 +19,8 @@
 
       <!-- картинки -->
       <div class="experience-images">
-        <img :src="require('@/assets/exp1.png')" alt="Experience photo 1"/>
-        <img :src="require('@/assets/exp2.png')" alt="Experience photo 2"/>
+        <img :src="require('@/assets/image/exp1.png')" alt="Experience photo 1"/>
+        <img :src="require('@/assets/image/exp2.png')" alt="Experience photo 2"/>
       </div>
     </div>
   </section>
@@ -153,16 +153,16 @@ export default {
   object-fit: cover;
   border-radius: 8px;
 }
-/* Мобильная версия полосок */
+
 
   .stat:not(:last-child)::after {
     content: "";
     position: absolute;
-    width: 95%;      /* длина горизонтальной полоски */
-    height: 1px;     /* толщина */
+    width: 95%;     
+    height: 1px;     
     background-color: #2c2c35;
-    top: 100%;       /* сразу под текстом */
-    left: 50%;       /* центрируем по горизонтали */
+    top: 100%;       
+    left: 50%;       
     transform: translateX(-50%);
   }
 

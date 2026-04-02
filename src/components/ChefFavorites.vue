@@ -3,7 +3,7 @@
     <!-- Вступительный блок -->
     <div class="introduse-favorite">
       <h1 class="topic">Chef’s Favorites</h1>
-      <p class="afterTopic">
+      <p class="after-topic">
         The dishes our chef can’t stop thinking about, and neither will you.
       </p>
     </div>
@@ -27,7 +27,7 @@
         </div>
       </div>
         <div class="favorites-button">
-         <router-link to="/menu" class="ourMenu">
+         <router-link to="/menu" class="our-menu">
     Explore Our Menu
   </router-link>
     </div>
@@ -179,22 +179,19 @@ export default {
   line-height: 114.99999999999999%
 }
 
-.afterTopic {
+.after-topic {
   font-size: 18px;
   color: #d7d7d7;
   font-family: "Lora", sans-serif;
   margin: 0;
   font-weight: 400;
 }
-.ourMenu {
+.our-menu {
   display: flex;
   justify-content: center;
   margin-top: 40px;
   margin-bottom: 20px;
-}
-
-.ourMenu {
-  background-color: #F4C73F; /* синий фон */
+  background-color: #F4C73F; 
   color: black;
   border: none;
   border-radius: 50px;
@@ -204,10 +201,10 @@ export default {
   font-family: 'Lora', sans-serif;
   font-weight: 500;
   transition: 0.3s ease;
-   text-decoration: none; /* важно для router-link */
+  text-decoration: none; 
 }
 
-.ourMenu:hover {
+.our-menu:hover {
   background-color: #c7980c; /* подсветка при наведении */
 }
 

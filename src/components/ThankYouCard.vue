@@ -7,7 +7,7 @@
       Our team will review and send a confirmation email shortly.
     </p>
     <hr class="divider" />
-    <h3 class="text-dateil">Detail Transaction</h3>
+    <h3 class="text-detail">Detail Transaction</h3>
 
     <div class="transaction-box">
       <div class="transaction-left">
@@ -48,7 +48,7 @@ const props = defineProps({
   total: Number,
   checkIcon: {
     type: String,
-    default: require('@/assets/IconReady.png')
+    default: require('@/assets/image/icon-ready.png')
   }
 });
 
@@ -115,7 +115,7 @@ const downloadPDF = () => {
   box-sizing: border-box;
   flex-direction: row;
 }
-.text-dateil{
+.text-detail{
     align-items: center;
     font-family: 'Lora', sans-serif;
     font-size: 16px;
@@ -173,7 +173,7 @@ const downloadPDF = () => {
   font-weight: bold;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 480px) {
   .transaction-box {
     flex-direction: row;
     text-align: left;

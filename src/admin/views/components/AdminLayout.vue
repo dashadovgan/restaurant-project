@@ -24,7 +24,7 @@ export default {
 }
 
 .admin-header {
-  background-color: #1b1b1b;
+  background-color: #010614;
   color: #fff;
   padding: 20px;
   text-align: center;
@@ -33,6 +33,6 @@ export default {
 .admin-content {
   flex: 1;
   padding: 30px;
-  background-color: #f5f5f5;
+  background-color: #05131F;
 }
 </style>

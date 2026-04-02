@@ -1,7 +1,7 @@
 <template>
    <background-section :style="{ minHeight: '70vh' }">
   <section class="welcome">
-<img :src="require('@/assets/diademaDecor.png')" alt="decor"/>
+<img src="@/assets/image/diadem-decor.png" alt="decor"/>
   <h1>We’d Love to Hear From You</h1>
 <p>Whether you have a question, special request, or simply want to say hello, our team is here to help.</p>
 </section>
@@ -13,10 +13,10 @@
   <InfoContact />
   </div>
  </section>
- <section class="mapsection">
+ <section class="map-section">
 <MapLocation />
 </section>
-<section class="AllLocationInfo">
+<section class="all-location-info">
   <LocationInfo />
 </section>
   </div>
@@ -38,19 +38,19 @@ export default {
 </script>
 
 <style scoped>
-.mapsection{
+.map-section{
   display: flex;
    justify-content: center;
     background-color: #05131F;
   width: 100%;
   padding: 60px 60px;
 }
-.mapsection #map{
+.map-section #map{
   
-   width: 80% !important;                 /* карта занимает 80% ширины */
-  height: 400px;              /* высота карты */
-  border-radius: 12px;        /* скруглённые края для красоты */
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* тень */
+   width: 80% !important;                 
+  height: 400px;              
+  border-radius: 12px;        
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2); 
  
 }
 .location-page{
@@ -59,22 +59,22 @@ export default {
 .contact-container {
   display: flex;
   width: 100%;
-  max-width: 1200px; /* ограничение по ширине */
-  gap: 5%; /* расстояние между колонками в процентах */
-  flex-wrap: nowrap; /* держим колонки в строке */
-  align-items: stretch; /* равная высота колонок */
+  max-width: 1200px; 
+  gap: 5%; 
+  flex-wrap: nowrap; 
+  align-items: stretch; 
   flex-direction: row !important ;  
 }
 .contact-section {
-  background-color: #05131F; /* темный фон */
-  padding: 5% 5%; /* отступы в процентах */
+  background-color: #05131F; 
+  padding: 5% 5%; 
   display: flex;
   justify-content: center;
   width: 100%;
 }
 .contact-container > * {
-  flex: 1 1 0; /* колонки одинаковой ширины, растягиваются */
-  min-width: 40%; /* минимальная ширина для каждой колонки */
+  flex: 1 1 0;
+  min-width: 40%; 
 }
 .welcome{
   flex-direction: column;
@@ -103,29 +103,29 @@ export default {
   color: white;
    margin : 0 0 20px 0;
 }
-.AllLocationInfo{
+.all-location-info{
   display: flex;
   justify-content: center;
-  margin-left: 120px;
+  
   
 }
-@media (max-width: 768px) {
+@media (max-width: 480px) {
 
-  .mapsection #map{
+  .map-section #map{
   
-   width: 100% !important;                 /* карта занимает 80% ширины */
-  height: 900px;              /* высота карты */
-  border-radius: 12px;        /* скруглённые края для красоты */
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* тень */
+   width: 100% !important;                 
+  height: 900px;              
+  border-radius: 12px;       
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2); 
  
 }
-.mapsection{
+.map-section{
   
   display: flex;
   justify-content: center;
   background-color: #05131F;
   width: 100%;
-  padding: 20px; /* можно уменьшить сверху/снизу на мобилке */
+  padding: 20px; 
 }
   .welcome p{
   font-family: 'Lora', sans-serif;
@@ -146,9 +146,4 @@ width: 130%;
     gap: 30px;
   }
 }
-
-  
-
-
-
 </style>

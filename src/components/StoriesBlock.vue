@@ -141,7 +141,7 @@ export default {
   font-family: 'Lora' sans-serif;
 }
 
-@media (max-width: 768px) {
+@media (max-width:  480px) {
   .stories-container {
     flex-direction: column;
     align-items: center;

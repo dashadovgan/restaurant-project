@@ -46,14 +46,14 @@
             <label>Reservation Date</label>
             <input ref="dateInput" v-model="form.date" type="date" class="hidden-input" />
             <div class="display-text">{{ form.date || 'Select your date of visit' }}</div>
-            <img src="@/assets/icon.png" class="field-icon" alt="calendar" />
+            <img src="@/assets/image/icon.png" class="field-icon" alt="calendar" />
           </div>
 
           <div class="input-group has-icon" @click="triggerTimePicker">
             <label>Reservation Time</label>
             <input ref="timeInput" v-model="form.time" type="time" class="hidden-input" min="10:00" max="21:00" />
             <div class="display-text">{{ form.time || 'Choose preferred time' }}</div>
-            <img src="@/assets/icon.png" class="field-icon" alt="time" />
+            <img src="@/assets/image/icon.png" class="field-icon" alt="time" />
           </div>
         </div>
 
@@ -332,16 +332,16 @@ const handleSubmit = async () => {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(5, 10, 20, 0.85); /* тёмный полупрозрачный фон */
+  background: rgba(5, 10, 20, 0.85); 
   border-radius: 12px;
   z-index: 1;
 }
 
 .thank-you-card {
   position: relative;
-  z-index: 2; /* чтобы карточка была выше overlay */
+  z-index: 2; 
   width: 100%;
-  background-color: #0a0e17; /* можно чуть светлее, чем overlay */
+  background-color: #0a0e17; 
   border-radius: 12px;
   color: white;
   text-align: center;
@@ -389,8 +389,8 @@ const handleSubmit = async () => {
   margin-bottom: 10px;
   align-items: center;
 }
-/* ===== 📱 MOBILE FORM FIX ===== */
-@media (max-width: 768px) {
+
+@media (max-width: 480px) {
   .reservation-container {
     width: 90%;
     padding: 24px 20px;

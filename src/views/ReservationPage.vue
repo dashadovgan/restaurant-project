@@ -1,12 +1,12 @@
 <template>
     <background-section :style="{ minHeight: '70vh' }">
     <section class="welcome">
-      <img :src="require('@/assets/diademaDecor.png')" alt="decor"/>
+      <img src="@/assets/image/diadem-decor.png" alt="decor"/>
       <h1>Reserve Your Table at Platieu</h1>
       <p>We’re excited to host you! Kindly fill out the reservation form below to secure your table. To confirm your booking, a deposit of $25 is required. Please upload proof of payment at the end of the form.</p>
     </section>
   </background-section>
-  <div class="ReservationForm-container">
+  <div class="reservation-form-container">
     <ReservationForm />
   </div>
 </template>
@@ -22,7 +22,7 @@ export default {
 </script>
 
 <style scoped>
-.ReservationForm-container{
+.reservation-form-container{
   background-color:#05131F;
   padding-top: 50px;
   padding-bottom: 50px;
@@ -59,7 +59,7 @@ export default {
   margin: 0 0 20px 0;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 480px) {
   .welcome p {
     font-size: 18px;
     width: 140%;

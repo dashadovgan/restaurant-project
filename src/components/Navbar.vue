@@ -1,31 +1,23 @@
 <template>
   <nav class="navbar">
-    <div class="logo">
-      <img src="@/assets/Logo.png" alt="logo"/>
-    </div>
+    <router-link to="/" class="logo">
+  <img src="@/assets/image/logo.png" alt="Restaurant logo" />
+</router-link>
 
 <div v-if="isMenuOpen" class="menu-overlay"></div>
-
-
-
-    <!-- Бургер -->
     <div class="burger" :class="{active:isMenuOpen}" @click="toggleMenu">
       <div></div>
       <div></div>
       <div></div>
     </div>
-
-    <!-- Меню -->
-    <ul :class="{'nav-links': true, 'active': isMenuOpen}">
-      <li><router-link to="/">Home</router-link></li>
-      <li><router-link to="/menu">Menu</router-link></li>
-      <li><router-link to="/our-story">Our Story</router-link></li>
-      <li><router-link to="/location">Location</router-link></li>
-      <li><router-link to="/news">News</router-link></li>
-      <li class="timeButton"><reserve-button></reserve-button></li> <!-- кнопка внутри меню -->
+    <ul :class="{'nav-links': true, 'active': isMenuOpen}" @click="closeMenu" >
+      <li><router-link to="/" active-class="active-link" >Home</router-link></li>
+      <li><router-link to="/menu" active-class="active-link" >Menu</router-link></li>
+      <li><router-link to="/our-story" active-class="active-link" >Our Story</router-link></li>
+      <li><router-link to="/location" active-class="active-link" >Location</router-link></li>
+      <li><router-link to="/news" active-class="active-link" >News</router-link></li>
+      <li class="timeButton"><reserve-button></reserve-button></li> 
     </ul>
-
-    <!-- Кнопка на десктопе -->
     <div class="action-button">
       <reserve-button></reserve-button>
     </div>
@@ -42,19 +34,27 @@ export default {
   },
   data() {
     return {
-      isMenuOpen: false
+      isMenuOpen: false,
+      scrolled:false
     };
   },
   methods: {
     toggleMenu() {
       this.isMenuOpen = !this.isMenuOpen;
+    },
+    closeMenu(){
+      this.isMenuOpen=false;
     }
+
   }
 }
 </script>
 
 <style scoped>
-
+.active-link {
+  color: white;
+  text-shadow: 0 0 5px white;
+}
  .timeButton{
   display: none;
 }
@@ -74,6 +74,14 @@ ul{
   left:0;
   width: 100%;
   z-index: 1000;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.logo{
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
 }
 .logo img {
   width: 125.83px;
@@ -101,7 +109,7 @@ ul{
 }
 .nav-links li a:hover{
   color:white;
-  font-weight: 600;
+  text-shadow: 0 0 5px white;
 }
 .action-button {
   display: flex;
@@ -116,7 +124,7 @@ ul{
   display: none;
 }
 /* --- мобильная версия через media --- */
-@media (max-width: 480px) {
+@media (max-width: 900px) {
   html, body{
     margin:0;
     padding:0;
@@ -125,6 +133,7 @@ ul{
   }
   .action-button{
     display: none;
+    margin-right:0;
   }
   .nav-links {
     position: fixed;
@@ -149,6 +158,7 @@ ul{
     display: flex;
     justify-content: flex-start;
     padding-top: 120px;
+    width: 100%;
   }
   .timeButton{
     display: flex;
@@ -166,7 +176,7 @@ ul{
     background-color: #fff;
     border-radius: 2px;
     transition: all 0.3s ease;
-  transform-origin: center; 
+    transform-origin: center; 
   }
   .logo img{
     width: 125.83px;
@@ -182,7 +192,7 @@ ul{
     opacity: 0;
   }
   .burger.active div:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
+    transform: rotate(-45deg) translate(6px, -6px);
   }
 
 
@@ -197,14 +207,14 @@ ul{
     width: 100%;
     height: auto;
     align-items: center;
-    padding:15px 20px ;
+    padding:15px 10px ;
     z-index: 1005;
   }
   .menu-overlay {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 100%;
   height: 100vh;   /* занимает весь экран */
   background-color: #010614; /* темный фон */
   }

@@ -47,7 +47,7 @@ export default {
   position: relative;
   width: 100%;
   height: 400px; /* можно менять */
-  background-image: url('@/assets/describe.jpg'); /* твоя картинка */
+  background-image: url('@/assets/image/describe.jpg'); /* твоя картинка */
   background-size: cover;
   background-position: center;
   display: flex;

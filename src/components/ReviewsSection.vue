@@ -33,8 +33,8 @@
     <div class="slider-controls">
       <div class="custom-pagination"></div>
       <div class="custom-buttons">
-        <img src="@/assets/left.png" alt="prev" @click="prevSlide" />
-        <img src="@/assets/right.png" alt="next" @click="nextSlide" />
+        <img src="@/assets/image/left.png" alt="prev" @click="prevSlide" />
+        <img src="@/assets/image/right.png" alt="next" @click="nextSlide" />
       </div>
     </div>
   </section>
@@ -90,25 +90,25 @@ const prevSlide = () => {
 
     const reviews = [
       {
-        image: require("@/assets/review1.png"),
+        image: require("@/assets/image/review1.png"),
         text: "The Wagyu Steak was juicy. The ambiance made it ideal for a memorable evening.",
         name: "James Tortellini",
         role: "Food Blogger"
       },
       {
-        image: require("@/assets/review2.png"),
+        image: require("@/assets/image/review2.png"),
         text: "The cappuccino was rich and smooth. Perfect for a relaxing afternoon with a book.",
         name: "Maria Espresso",
         role: "Coffee Enthusiast"
       },
       {
-        image: require("@/assets/review3.png"),
+        image: require("@/assets/image/review3.png"),
         text: "The roller coasters were exhilarating! The staff was friendly and the atmosphere was electric.",
         name: "Tommy Thrill",
         role: "Adventure Blogger"
       },
       {
-        image: require("@/assets/review3.png"),
+        image: require("@/assets/image/review3.png"),
         text: "The roller coasters were exhilarating! The staff was friendly and the atmosphere was electric.",
         name: "Tommy Thrill",
         role: "Adventure Blogger"

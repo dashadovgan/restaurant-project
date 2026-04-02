@@ -16,7 +16,7 @@
           class="location-item"
         >
           <div class="location-title">
-            <img src="@/assets/Group.png" alt="pin" class="pin-icon" />
+            <img src="@/assets/image/group.png" alt="pin" class="pin-icon" />
             <h3>{{ location.region }}</h3>
           </div>
           <div class="location-details">
@@ -42,17 +42,18 @@ const locations = [
 
 <style scoped>
 .location-section {
-  background-color: #05131F; /* Темный фон как на фото */
+  background-color: #05131F; 
   color: #ffffff;
   padding: 80px 40px;
-  font-family: 'Georgia', serif; /* Или похожий шрифт с засечками */
+  font-family: 'Georgia', serif; 
 }
 
 .container {
-  max-width: 1200px;
+  max-width:100%;
   margin: 0 auto;
   display: flex;
   gap: 60px;
+  width: 70%;
 }
 
 .content-header {
@@ -105,11 +106,11 @@ const locations = [
   margin: 2px 0;
   color: #aaa;
   font-size: 0.95rem;
-  padding-left: 28px; /* Выравнивание текста под заголовком (18px иконка + 10px gap) */
+  padding-left: 28px; 
 }
 
 /* Адаптивность для мобилок */
-@media (max-width: 900px) {
+@media (max-width: 480px) {
   .container {
     flex-direction: column;
   }

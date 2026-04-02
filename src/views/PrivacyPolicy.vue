@@ -129,12 +129,12 @@
     </p>
     </div>
 </div>
-    <!-- Добавляй новые разделы по аналогии -->
+  
   </section>
 </template>
 
 <script setup>
-// Здесь пока ничего не нужно
+
 </script>
 
 <style scoped>

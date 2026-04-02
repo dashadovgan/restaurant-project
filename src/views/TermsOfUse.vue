@@ -5,7 +5,7 @@
     <h1 class="terms-title">Terms of Use</h1>
     <p class="terms-intro">
      These Terms of Use ("Terms") govern your use of the Platieu website and its related services. By accessing or using our website, you agree to be legally bound by these Terms.<br /> 
-      <br /> Update .  ffective Date: 30 May 2025.  10.45 PM
+      <br /> Update .  effective Date: 30 May 2025.  10.45 PM
     </p>
 
     <hr class="terms-divider" />

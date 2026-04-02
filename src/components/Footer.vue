@@ -28,10 +28,10 @@
         <span>Connect us</span>
         <div class="social-icons">
           <!-- Используем картинки вместо иконок FontAwesome -->
-          <a href="#"><img src="@/assets/FacebookIcon.png" alt="Facebook" /></a>
-          <a href="#"><img src="@/assets/InstagramIcon.png" alt="Instagram" /></a>
-          <a href="#"><img src="@/assets/X.com.png" alt="Twitter" /></a>
-          <a href="#"><img src="@/assets/WhatsappIcon.png" alt="WhatsApp" /></a>
+          <a href="#"><img src="@/assets//image/facebook-icon.png" alt="Facebook" /></a>
+          <a href="#"><img src="@/assets/image/instagram-icon.png" alt="Instagram" /></a>
+          <a href="#"><img src="@/assets/image/x-com.png" alt="Twitter" /></a>
+          <a href="#"><img src="@/assets/image/whatsapp-icon.png" alt="WhatsApp" /></a>
         </div>
       </div>
     </div>
@@ -51,7 +51,7 @@
     <div class="footer-bottom">
       <div class="image-container">
         <div class="blue-background"></div>
-        <img src="@/assets/LogoText.png" alt="Footer Photo" />
+        <img src="@/assets/image/logo-text.png" alt="Footer Photo" />
       </div>
     </div>
   </footer>
@@ -112,8 +112,7 @@ export default {
   font-size: 16px;
   font-weight: 500;
   transition: 0.3s ease;
-
-  width: 25%;
+  width: fit-content;
 }
 
 
@@ -211,22 +210,22 @@ export default {
 }
 
 /* Адаптив */
-@media(max-width: 768px) {
+@media(max-width: 480px) {
   .footer-top {
     flex-direction: column;
     gap: 30px;
   }
 
   .social-icons {
-    display: flex !important;       /* горизонтально */
-    flex-direction: row !important;  /* строго в ряд */
-    justify-content: center;         /* по центру */
-    gap: 15px;                       /* расстояние между иконками */
-    flex-wrap: nowrap;               /* не переносить */
+    display: flex !important;       
+    flex-direction: row !important;  
+    justify-content: center;         
+    gap: 15px;                       
+    flex-wrap: nowrap;              
   }
 
   .social-icons a {
-    display: inline-block;           /* чтобы ширина/высота работали */
+    display: inline-block;          
   }
 
   .social-icons img {

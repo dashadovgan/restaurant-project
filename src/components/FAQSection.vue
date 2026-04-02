@@ -2,12 +2,12 @@
   <section class="faq-section">
     <!-- Заголовок с декоративными элементами -->
     <div class="faq-header">
-      <img src="@/assets/rightorn.png" alt="decor" class="decor decor-left" />
+      <img src="@/assets/image/right-torn.png" alt="decor" class="decor decor-left" />
       <div class="faq-title">
         <h2>What’s on Your Mind?</h2>
         <p>We’ve answered the questions you didn’t know you had.</p>
       </div>
-      <img src="@/assets/leftorn.png" alt="decor" class="decor decor-right" />
+      <img src="@/assets/image/left-torn.png" alt="decor" class="decor decor-right" />
     </div>
 
     <!-- Список вопросов -->
@@ -174,7 +174,6 @@ const toggle = (index) => {
   font-size: 16px;
 }
 
-/* ---------- ANIMATION ---------- */
 .fade-enter-active, .fade-leave-active {
   transition: all 0.3s ease;
 }
@@ -183,8 +182,8 @@ const toggle = (index) => {
   transform: translateY(-4px);
 }
 
-/* ---------- MOBILE ---------- */
-@media (max-width: 768px) {
+
+@media (max-width: 480px) {
   .faq-section {
     padding: 60px 12px;
   }

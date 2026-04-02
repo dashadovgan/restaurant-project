@@ -1,7 +1,7 @@
 import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
-import './assets/global.css';
+import './assets/styles/global.css';
 import 'vue-tel-input/dist/vue-tel-input.css';
 import VueTelInput from 'vue-tel-input';
 import { MotionPlugin } from '@vueuse/motion'

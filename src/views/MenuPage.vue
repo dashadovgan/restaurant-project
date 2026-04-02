@@ -1,7 +1,7 @@
 <template>
    <background-section :style="{ minHeight: '70vh' }">
   <section class="welcome">
-<img :src="require('@/assets/diademaDecor.png')" alt="decor"/>
+<img src="@/assets/image/diadem-decor.png" alt="decor"/>
   <h1>Discover Our Curated Culinary Selection</h1>
 <p>From timeless classics to signature creations, our menu is a celebration of fresh ingredients and refined craftsmanship.</p>
 </section>
@@ -288,13 +288,13 @@ height: 20%;
 }
 .mobile-filters { display: none; }
 /* MOBILE */
-@media (max-width: 768px) {
+@media (max-width: 480px) {
   .menu-info{
     height: 30%;
   }
   .menu-grid {
     grid-template-columns: 1fr;
-      gap: 12px; /* уменьшили расстояние между карточками */
+      gap: 12px; 
     
   }
 

@@ -67,15 +67,15 @@ export default {
 }
 
 .image {
-  display: flex;           /* делаем flex-контейнером */
-  justify-content: center; /* горизонтальное центрирование */
+  display: flex;          
+  justify-content: center; 
   align-items: center; 
   padding-top: 10px;
-  border-radius: 20px;    /* вертикальное центрирование, если нужно */
+  border-radius: 20px;    
 }
 
 .image img {
-  width: 90%;             /* оставляем ширину 90% */
+  width: 90%;             
   height: 200px;
   object-fit: cover;
 }

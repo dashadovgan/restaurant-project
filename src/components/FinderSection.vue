@@ -1,7 +1,7 @@
 <template>
   <input
     type="text"
-    class="finderInput"
+    class="finder-input"
     placeholder="Search..."
     v-model="query"
     @input="onInput"
@@ -32,7 +32,7 @@ export default {
 
 
 <style scoped>
-.finderInput {
+.finder-input {
   width: 100%;
   padding: 8px 12px;
   border-radius: 8px;

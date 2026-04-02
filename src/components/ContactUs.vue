@@ -76,7 +76,7 @@ export default {
   name: "ContactUs",
   setup() {
     const fullName = ref('')
-    const phoneNumber = ref('') // теперь без дефолтного текста
+    const phoneNumber = ref('') 
     const email = ref('')
     const request = ref('')
     const agree = ref(false)

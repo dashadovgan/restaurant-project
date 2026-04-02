@@ -13,9 +13,9 @@ export default {
 <style scoped>
 .background-section {
   position: relative;
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
-  background-image: url('@/assets/Background.png');
+  background-image: url('@/assets/image/background.png');
   background-size: cover; /* изображение покрывает весь блок */
   background-position: center;
   background-repeat: no-repeat;
@@ -40,7 +40,7 @@ export default {
 
 .background-section > * {
   position: relative;
-  z-index: 2; /* контент над наложением */
+  z-index: 2; 
 }
 
 /* Мобильная версия */
