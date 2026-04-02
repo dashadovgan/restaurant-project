@@ -1,89 +1,75 @@
 <template>
+  <div class="admin-post-editor">
+    <h2>{{ isEdit ? "Edit Post" : "Create Post" }}</h2>
 
-    <div class="admin-post-editor">
-      <h2>{{ isEdit ? "Edit Post" : "Create Post" }}</h2>
+    <!-- Cover image -->
+    <div class="cover-upload">
+      <label>
+        Cover Image
+        <input type="file" accept="image/*" @change="uploadCoverImage" />
+      </label>
 
-      <!-- Cover image -->
-      <div class="cover-upload">
-        <label>
-          Cover Image
-          <input type="file" accept="image/*" @change="uploadCoverImage" />
-        </label>
+      <img v-if="coverImage" :src="coverImage" class="cover-preview" />
+    </div>
 
-        <img v-if="coverImage" :src="coverImage" class="cover-preview" />
+    <!-- Title / Intro -->
+    <input v-model="title" placeholder="Post title" />
+    <textarea v-model="intro" placeholder="Intro text"></textarea>
+
+    <!-- Content blocks -->
+    <div v-for="(block, index) in contentBlocks" :key="index" class="block">
+      <div class="block-header">
+        <strong>{{ block.type }}</strong>
+        <button class="delete" @click="removeBlock(index)">✖</button>
       </div>
 
-      <!-- Title / Intro -->
-      <input v-model="title" placeholder="Post title" />
-      <textarea v-model="intro" placeholder="Intro text"></textarea>
-
-      <!-- Content blocks -->
+      <!-- text -->
       <div
-        v-for="(block, index) in contentBlocks"
-        :key="index"
-        class="block"
-      >
-        <div class="block-header">
-          <strong>{{ block.type }}</strong>
-          <button class="delete" @click="removeBlock(index)">✖</button>
-        </div>
-
-        <!-- text -->
-       <div
         v-if="block.type === 'text'"
         contenteditable="true"
         class="text-block"
         @input="block.content = $event.target.innerText"
-        >{{ block.content }}
-    </div>
+      >
+        {{ block.content }}
+      </div>
 
+      <!-- highlight -->
+      <textarea
+        v-if="block.type === 'highlight'"
+        v-model="block.content"
+        class="highlight"
+        placeholder="Highlighted text"
+      />
 
-
-        <!-- highlight -->
-        <textarea
-          v-if="block.type === 'highlight'"
-          v-model="block.content"
-          class="highlight"
-          placeholder="Highlighted text"
-        />
-
-        <!-- image -->
-        <div v-if="block.type === 'image'" class="image-row">
-          <div
-            v-for="(url, i) in block.urls"
-            :key="i"
-            class="image-upload"
-          >
-            <input
-              type="file"
-              accept="image/*"
-              @change="uploadImage($event, index, i)"
-            />
-            <img v-if="url" :src="url" />
-          </div>
-
-          <button
-            v-if="block.urls.length < 2"
-            @click="addImageSlot(index)"
-          >
-            ➕ add image
-          </button>
+      <!-- image -->
+      <div v-if="block.type === 'image'" class="image-row">
+        <div v-for="(url, i) in block.urls" :key="i" class="image-upload">
+          <input
+            type="file"
+            accept="image/*"
+            @change="uploadImage($event, index, i)"
+          />
+          <img v-if="url" :src="url" />
         </div>
-      </div>
 
-      <!-- Add block -->
-      <div class="add-block">
-        <button @click="addBlock('text')">📝 Text</button>
-        <button @click="addBlock('highlight')">🟨 Highlight</button>
-        <button @click="addBlock('image')">🖼 Image</button>
+        <button v-if="block.urls.length < 2" @click="addImageSlot(index)">
+          ➕ add image
+        </button>
       </div>
-
-      <!-- Save -->
-      <button class="publish" @click="savePost">
-        {{ isEdit ? "Update Post" : "Publish Post" }}
-      </button>
     </div>
 
+    <!-- Add block -->
+    <div class="add-block">
+      <button @click="addBlock('text')">📝 Text</button>
+      <button @click="addBlock('highlight')">🟨 Highlight</button>
+      <button @click="addBlock('image')">🖼 Image</button>
+    </div>
+
+    <!-- Save -->
+    <button class="publish" @click="savePost">
+      {{ isEdit ? "Update Post" : "Publish Post" }}
+    </button>
+  </div>
 </template>
 
 <script setup>
@@ -96,15 +82,14 @@ import {
   updateDoc,
   doc,
   getDoc,
-  serverTimestamp
+  serverTimestamp,
 } from "firebase/firestore";
 import {
   getStorage,
   ref as storageRef,
   uploadBytes,
-  getDownloadURL
+  getDownloadURL,
 } from "firebase/storage";
-
 
 const route = useRoute();
 const router = useRouter();
@@ -186,7 +171,7 @@ const savePost = async () => {
     intro: intro.value,
     coverImage: coverImage.value,
     contentBlocks: contentBlocks.value,
-    date: serverTimestamp()
+    date: serverTimestamp(),
   };
 
   if (isEdit.value) {
@@ -222,7 +207,6 @@ const savePost = async () => {
 }
 
 .block {
-
   padding: 12px;
   border-radius: 10px;
 }

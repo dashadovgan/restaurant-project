@@ -19,8 +19,14 @@
 
       <!-- картинки -->
       <div class="experience-images">
-        <img :src="require('@/assets/image/exp1.png')" alt="Experience photo 1"/>
-        <img :src="require('@/assets/image/exp2.png')" alt="Experience photo 2"/>
+        <img
+          :src="require('@/assets/image/exp1.png')"
+          alt="Experience photo 1"
+        />
+        <img
+          :src="require('@/assets/image/exp2.png')"
+          alt="Experience photo 2"
+        />
       </div>
     </div>
   </section>
@@ -32,16 +38,16 @@ export default {
   props: {
     widthPercent: {
       type: Number,
-      default: 100
-    }
-  }
+      default: 100,
+    },
+  },
 };
 </script>
 
 <style scoped>
-.experience-content{
+.experience-content {
   width: 100%;
-  display:flex;
+  display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
@@ -57,7 +63,7 @@ export default {
   justify-content: space-between;
   position: relative;
   width: 100%;
-  margin: 0 auto 30px auto
+  margin: 0 auto 30px auto;
 }
 
 .stat {
@@ -65,32 +71,32 @@ export default {
   flex-direction: column;
   align-items: flex-start;
   position: relative;
-  flex:1;
+  flex: 1;
 }
 
 .stat:not(:last-child)::after {
   content: "";
   position: absolute;
   top: 0;
-  right:30px;
+  right: 30px;
   width: 1px; /* тонкая полоска */
   height: 100%;
   background-color: #2c2c35; /* цвет полоски */
 }
 .number {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: "Cormorant Garamond", serif;
   font-size: 48px;
   font-weight: 500;
   margin-bottom: 10px;
-  color:#F4C73F;
+  color: #f4c73f;
   white-space: nowrap;
 }
 
 .description {
-  font-family: 'Lora', serif;
+  font-family: "Lora", serif;
   font-size: 16px;
   line-height: 24px;
-  color: #FDFDFD;
+  color: #fdfdfd;
   white-space: nowrap;
 }
 
@@ -108,7 +114,7 @@ export default {
 }
 
 .experience-images img:first-child {
-  flex:0 0 55%;
+  flex: 0 0 55%;
   width: 55%;
   height: auto;
   object-fit: cover;
@@ -123,8 +129,7 @@ export default {
 }
 
 /* Мобильная версия */
-@media(max-width:480px){
-  
+@media (max-width: 480px) {
   .experience-stats {
     flex-direction: column;
     gap: 20px;
@@ -140,31 +145,29 @@ export default {
     gap: 15px;
   }
   .experience-images img:first-child {
-  flex:0 0 100%;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 8px;
-}
-.experience-images img:last-child {
-  flex: 0 0 100%;
-  width: 100%;
-  height: 50%;
-  object-fit: cover;
-  border-radius: 8px;
-}
-
+    flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  .experience-images img:last-child {
+    flex: 0 0 100%;
+    width: 100%;
+    height: 50%;
+    object-fit: cover;
+    border-radius: 8px;
+  }
 
   .stat:not(:last-child)::after {
     content: "";
     position: absolute;
-    width: 95%;     
-    height: 1px;     
+    width: 95%;
+    height: 1px;
     background-color: #2c2c35;
-    top: 100%;       
-    left: 50%;       
+    top: 100%;
+    left: 50%;
     transform: translateX(-50%);
   }
-
 }
 </style>

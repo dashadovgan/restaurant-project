@@ -4,7 +4,10 @@
     <div class="overlay">
       <div class="content">
         <h2>Subscribe to Our Newsletter</h2>
-        <p>Get the latest updates, recipes, and exclusive offers straight to your inbox.</p>
+        <p>
+          Get the latest updates, recipes, and exclusive offers straight to your
+          inbox.
+        </p>
         <form @submit.prevent="subscribe">
           <input
             type="email"
@@ -47,7 +50,7 @@ export default {
   position: relative;
   width: 100%;
   height: 400px; /* можно менять */
-  background-image: url('@/assets/image/describe.jpg'); /* твоя картинка */
+  background-image: url("@/assets/image/describe.jpg"); /* твоя картинка */
   background-size: cover;
   background-position: center;
   display: flex;
@@ -62,7 +65,7 @@ export default {
   width: 100%;
   height: 100%;
   background-color: rgba(1, 16, 29, 0.48);
- /* полупрозрачный синий */
+  /* полупрозрачный синий */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -106,7 +109,7 @@ button {
   padding: 10px 20px;
   border-radius: 20px;
   border: none;
-  background-color: #F4C73F;
+  background-color: #f4c73f;
   color: black;
   font-weight: bold;
   cursor: pointer;
@@ -120,6 +123,6 @@ button:hover {
 .message {
   margin-top: 15px;
   font-size: 14px;
-  color: #FFD966;
+  color: #ffd966;
 }
 </style>

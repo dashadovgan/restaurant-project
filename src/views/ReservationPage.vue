@@ -1,9 +1,13 @@
 <template>
-    <background-section :style="{ minHeight: '70vh' }">
+  <background-section :style="{ minHeight: '70vh' }">
     <section class="welcome">
-      <img src="@/assets/image/diadem-decor.png" alt="decor"/>
+      <img src="@/assets/image/diadem-decor.png" alt="decor" />
       <h1>Reserve Your Table at Platieu</h1>
-      <p>We’re excited to host you! Kindly fill out the reservation form below to secure your table. To confirm your booking, a deposit of $25 is required. Please upload proof of payment at the end of the form.</p>
+      <p>
+        We’re excited to host you! Kindly fill out the reservation form below to
+        secure your table. To confirm your booking, a deposit of $25 is
+        required. Please upload proof of payment at the end of the form.
+      </p>
     </section>
   </background-section>
   <div class="reservation-form-container">
@@ -12,18 +16,18 @@
 </template>
 
 <script>
-import BackgroundSection from '@/components/BackgroundSection.vue';
-import ReservationForm from '@/components/ReservationForm.vue';
+import BackgroundSection from "@/components/BackgroundSection.vue";
+import ReservationForm from "@/components/ReservationForm.vue";
 
 export default {
-  name: 'ReservationPage',
-  components:{ReservationForm, BackgroundSection}
-}
+  name: "ReservationPage",
+  components: { ReservationForm, BackgroundSection },
+};
 </script>
 
 <style scoped>
-.reservation-form-container{
-  background-color:#05131F;
+.reservation-form-container {
+  background-color: #05131f;
   padding-top: 50px;
   padding-bottom: 50px;
 }
@@ -42,7 +46,7 @@ export default {
 }
 
 .welcome p {
-  font-family: 'Lora', sans-serif;
+  font-family: "Lora", sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 26px;
@@ -50,8 +54,8 @@ export default {
 }
 
 .welcome h1 {
-  font-family: 'Cormorant Garamond', sans-serif;
-  
+  font-family: "Cormorant Garamond", sans-serif;
+
   line-height: 120%;
   font-weight: 400;
   font-size: 58px;
@@ -70,6 +74,5 @@ export default {
     width: 130%;
     margin: 0 0 5px 0;
   }
-
 }
 </style>

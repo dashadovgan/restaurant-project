@@ -1,9 +1,12 @@
 <template>
   <background-section :style="{ minHeight: '70vh' }">
     <section class="welcome">
-      <img src="@/assets/image/diadem-decor.png" alt="decor"/>
+      <img src="@/assets/image/diadem-decor.png" alt="decor" />
       <h1>Stories from the Kitchen & Beyond</h1>
-      <p>Stay inspired with the latest from Platieu — from seasonal menu launches and chef spotlights to behind-the-scenes stories and culinary insights.</p>
+      <p>
+        Stay inspired with the latest from Platieu — from seasonal menu launches
+        and chef spotlights to behind-the-scenes stories and culinary insights.
+      </p>
     </section>
   </background-section>
 
@@ -13,23 +16,22 @@
       <div class="pre-post-container">
         <div class="text-container">
           <h2>Fresh Stories from the Kitchen</h2>
-          <p>Discover the stories behind our kitchen, culinary tips, and flavor inspirations that we pour into every dish. This blog is a place where we share more than just food — we share experiences.</p>
+          <p>
+            Discover the stories behind our kitchen, culinary tips, and flavor
+            inspirations that we pour into every dish. This blog is a place
+            where we share more than just food — we share experiences.
+          </p>
         </div>
 
         <!-- поиск справа -->
         <div class="finder-wrapper">
           <FinderSection @filter="applyFilter" />
-
         </div>
       </div>
 
       <!-- Посты -->
       <div class="stories-container">
-        <PostCard
-          v-for="post in displayedPosts"
-          :key="post.id"
-          :post="post"
-        />
+        <PostCard v-for="post in displayedPosts" :key="post.id" :post="post" />
       </div>
 
       <!-- Кнопка Показать ещё -->
@@ -38,7 +40,7 @@
       </div>
     </div>
     <div class="subscribe-container">
-    <DescribeSection />
+      <DescribeSection />
     </div>
   </section>
 </template>
@@ -46,7 +48,14 @@
 <script>
 import { ref, onMounted, computed } from "vue";
 import { db } from "@/firebase/firebase";
-import { collection, query, orderBy, limit, startAfter, getDocs } from "firebase/firestore";
+import {
+  collection,
+  query,
+  orderBy,
+  limit,
+  startAfter,
+  getDocs,
+} from "firebase/firestore";
 import PostCard from "@/components/PostCard.vue";
 import BackgroundSection from "@/components/BackgroundSection.vue";
 import FinderSection from "@/components/FinderSection.vue";
@@ -82,13 +91,14 @@ export default {
       }
 
       const snapshot = await getDocs(q);
-      const loadedPosts = snapshot.docs.map(doc => ({
+      const loadedPosts = snapshot.docs.map((doc) => ({
         id: doc.id,
-        ...doc.data()
+        ...doc.data(),
       }));
 
       if (loadedPosts.length < POSTS_LIMIT) hasMore.value = false;
-      if (snapshot.docs.length > 0) lastVisible.value = snapshot.docs[snapshot.docs.length - 1];
+      if (snapshot.docs.length > 0)
+        lastVisible.value = snapshot.docs[snapshot.docs.length - 1];
 
       posts.value.push(...loadedPosts);
       applyFilter(searchQuery.value);
@@ -96,10 +106,11 @@ export default {
 
     const applyFilter = (query) => {
       searchQuery.value = query.toLowerCase();
-      let filtered = posts.value.filter(post =>
-        !query ||
-        post.title.toLowerCase().includes(query) ||
-        (post.intro && post.intro.toLowerCase().includes(query))
+      let filtered = posts.value.filter(
+        (post) =>
+          !query ||
+          post.title.toLowerCase().includes(query) ||
+          (post.intro && post.intro.toLowerCase().includes(query))
       );
 
       // показываем только 9 первых постов, остальные по кнопке
@@ -107,21 +118,26 @@ export default {
     };
 
     const loadMorePosts = () => {
-      const filtered = posts.value.filter(post =>
-        !searchQuery.value ||
-        post.title.toLowerCase().includes(searchQuery.value) ||
-        (post.intro && post.intro.toLowerCase().includes(searchQuery.value))
+      const filtered = posts.value.filter(
+        (post) =>
+          !searchQuery.value ||
+          post.title.toLowerCase().includes(searchQuery.value) ||
+          (post.intro && post.intro.toLowerCase().includes(searchQuery.value))
       );
       // добавляем ещё посты после уже показанных
-      const nextPosts = filtered.slice(displayedPosts.value.length, displayedPosts.value.length + POSTS_LIMIT);
+      const nextPosts = filtered.slice(
+        displayedPosts.value.length,
+        displayedPosts.value.length + POSTS_LIMIT
+      );
       displayedPosts.value.push(...nextPosts);
     };
 
     const showLoadMoreButton = computed(() => {
-      const filtered = posts.value.filter(post =>
-        !searchQuery.value ||
-        post.title.toLowerCase().includes(searchQuery.value) ||
-        (post.intro && post.intro.toLowerCase().includes(searchQuery.value))
+      const filtered = posts.value.filter(
+        (post) =>
+          !searchQuery.value ||
+          post.title.toLowerCase().includes(searchQuery.value) ||
+          (post.intro && post.intro.toLowerCase().includes(searchQuery.value))
       );
       return displayedPosts.value.length < filtered.length;
     });
@@ -134,21 +150,20 @@ export default {
       searchQuery,
       loadMorePosts,
       applyFilter,
-      showLoadMoreButton
+      showLoadMoreButton,
     };
   },
 };
 </script>
 
-
 <style scoped>
-.subscribe-container{
+.subscribe-container {
   padding-top: 20px;
 }
 .stories-block {
   width: 100%;
   min-height: 100vh;
-  background-color: #05131F;
+  background-color: #05131f;
   display: flex;
   flex-direction: column;
   padding: 40px 0;
@@ -175,7 +190,7 @@ export default {
 
 .all-news-button button {
   padding: 12px 28px;
-  background-color: #F4C73F;
+  background-color: #f4c73f;
   color: black;
   font-weight: bold;
   border-radius: 20px;
@@ -188,17 +203,15 @@ export default {
   background-color: #ae8e2c;
 }
 
-
 .pre-post-container {
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   align-items: flex-start;
   gap: 20px;
   flex-wrap: wrap;
   width: 90%;
   margin: 0 auto;
 }
-
 
 .finder-wrapper {
   flex: 0 0 200px;
@@ -215,7 +228,6 @@ export default {
   font-size: 14px;
 }
 
-
 .text-container {
   text-align: start;
   padding: 0;
@@ -227,16 +239,15 @@ export default {
   color: white;
   font-size: 58px;
   margin: 0;
-  font-family: 'Cormorant Garamond', sans-serif;
+  font-family: "Cormorant Garamond", sans-serif;
 }
 
 .text-container p {
-  color: #D7D7D7;
+  color: #d7d7d7;
   font-size: 18px;
-  font-family: 'Lora', sans-serif;
+  font-family: "Lora", sans-serif;
   margin-bottom: 0;
 }
-
 
 .welcome {
   flex-direction: column;
@@ -253,7 +264,7 @@ export default {
 }
 
 .welcome p {
-  font-family: 'Lora', sans-serif;
+  font-family: "Lora", sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 26px;
@@ -261,8 +272,8 @@ export default {
 }
 
 .welcome h1 {
-  font-family: 'Cormorant Garamond', sans-serif;
-  
+  font-family: "Cormorant Garamond", sans-serif;
+
   line-height: 120%;
   font-weight: 400;
   font-size: 48px;

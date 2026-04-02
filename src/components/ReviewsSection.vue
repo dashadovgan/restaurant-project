@@ -2,19 +2,18 @@
   <section class="reviews">
     <h2 class="reviews-title">Real talk from real foodies</h2>
     <p class="reviews-subtitle">
-      Exceptional dining experiences shared by those who've tasted the difference
+      Exceptional dining experiences shared by those who've tasted the
+      difference
     </p>
 
-   <swiper
-  @swiper="onSwiper"
-  :modules="[Pagination]"
-  :slides-per-view="slidesPerView"
-  :space-between="20"
-  :loop="true"
-  :pagination="paginationOptions"
->
-
-
+    <swiper
+      @swiper="onSwiper"
+      :modules="[Pagination]"
+      :slides-per-view="slidesPerView"
+      :space-between="20"
+      :loop="true"
+      :pagination="paginationOptions"
+    >
       <swiper-slide
         v-for="(review, index) in reviews"
         :key="index"
@@ -48,41 +47,33 @@ import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
-
-
-
 export default {
   name: "ReviewsSection",
   components: { Swiper, SwiperSlide },
   setup() {
-    
     const slidesPerView = ref(window.innerWidth <= 480 ? 1 : 3);
     const paginationOptions = {
-  el: ".custom-pagination",
-  type: "progressbar"
-};
-
-
-    
+      el: ".custom-pagination",
+      type: "progressbar",
+    };
 
     const updateSlides = () => {
       slidesPerView.value = window.innerWidth <= 480 ? 1 : 3;
     };
 
-  const swiperInstance = ref(null);
+    const swiperInstance = ref(null);
 
-const onSwiper = (swiper) => {
-  swiperInstance.value = swiper;
-};
+    const onSwiper = (swiper) => {
+      swiperInstance.value = swiper;
+    };
 
-const nextSlide = () => {
-  swiperInstance.value?.slideNext();
-};
+    const nextSlide = () => {
+      swiperInstance.value?.slideNext();
+    };
 
-const prevSlide = () => {
-  swiperInstance.value?.slidePrev();
-};
-
+    const prevSlide = () => {
+      swiperInstance.value?.slidePrev();
+    };
 
     onMounted(() => {
       window.addEventListener("resize", updateSlides);
@@ -93,39 +84,38 @@ const prevSlide = () => {
         image: require("@/assets/image/review1.png"),
         text: "The Wagyu Steak was juicy. The ambiance made it ideal for a memorable evening.",
         name: "James Tortellini",
-        role: "Food Blogger"
+        role: "Food Blogger",
       },
       {
         image: require("@/assets/image/review2.png"),
         text: "The cappuccino was rich and smooth. Perfect for a relaxing afternoon with a book.",
         name: "Maria Espresso",
-        role: "Coffee Enthusiast"
+        role: "Coffee Enthusiast",
       },
       {
         image: require("@/assets/image/review3.png"),
         text: "The roller coasters were exhilarating! The staff was friendly and the atmosphere was electric.",
         name: "Tommy Thrill",
-        role: "Adventure Blogger"
+        role: "Adventure Blogger",
       },
       {
         image: require("@/assets/image/review3.png"),
         text: "The roller coasters were exhilarating! The staff was friendly and the atmosphere was electric.",
         name: "Tommy Thrill",
-        role: "Adventure Blogger"
-      }
+        role: "Adventure Blogger",
+      },
     ];
 
     return {
-  Pagination,
-  slidesPerView,
-  paginationOptions,
-  nextSlide,
-  prevSlide,
-  reviews,
-  onSwiper
-};
-
-  }
+      Pagination,
+      slidesPerView,
+      paginationOptions,
+      nextSlide,
+      prevSlide,
+      reviews,
+      onSwiper,
+    };
+  },
 };
 </script>
 
@@ -134,22 +124,22 @@ const prevSlide = () => {
   text-align: center;
   padding: 40px 20px;
   color: white;
-  background-color: #01101D;
+  background-color: #01101d;
 }
 
 .reviews-title {
   font-size: 58px;
   margin-bottom: 10px;
-  color: #FDFDFD;
-  font-family: 'Cormorant Garamond', sans-serif;
+  color: #fdfdfd;
+  font-family: "Cormorant Garamond", sans-serif;
   font-weight: 600;
 }
 
 .reviews-subtitle {
   font-size: 18px;
   margin-bottom: 30px;
-  color: #EDEDED;
-  font-family: 'Lora', sans-serif;
+  color: #ededed;
+  font-family: "Lora", sans-serif;
   font-weight: 400;
 }
 
@@ -176,11 +166,28 @@ const prevSlide = () => {
   box-sizing: border-box;
 }
 
-.review-text * { margin: 0; padding: 0; }
+.review-text * {
+  margin: 0;
+  padding: 0;
+}
 
-.review-text p { font-family: 'Lora', sans-serif; font-weight: 400; font-size: 14px; }
-.review-text h4 { margin: 3px 0; font-family: 'Lora', sans-serif; font-weight: 600; font-size: 14px; }
-.review-text span { font-size: 12px; color: #777; font-family: 'Lora', sans-serif; font-weight: 400; }
+.review-text p {
+  font-family: "Lora", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+}
+.review-text h4 {
+  margin: 3px 0;
+  font-family: "Lora", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+}
+.review-text span {
+  font-size: 12px;
+  color: #777;
+  font-family: "Lora", sans-serif;
+  font-weight: 400;
+}
 
 .slider-controls {
   display: flex;
@@ -205,7 +212,6 @@ const prevSlide = () => {
   border-radius: 2px;
 }
 
-
 .custom-buttons img {
   width: 30px;
   height: 30px;
@@ -215,33 +221,33 @@ const prevSlide = () => {
 
 /* Мобильная версия */
 @media (max-width: 480px) {
-  .review-text 
-  { width: 90%; 
-    padding: 10px 15px; 
-    bottom: 15px; 
-    border-radius: 15px; 
+  .review-text {
+    width: 90%;
+    padding: 10px 15px;
+    bottom: 15px;
+    border-radius: 15px;
   }
-  .review-text h4 { 
-    font-size: 11px; 
+  .review-text h4 {
+    font-size: 11px;
   }
-  .review-text span { 
-    font-size: 10px; 
+  .review-text span {
+    font-size: 10px;
   }
 
-  .slider-controls { 
-    flex-direction: column; 
-    align-items: center; 
+  .slider-controls {
+    flex-direction: column;
+    align-items: center;
   }
-  .custom-pagination { 
-    width: 60%; 
-    margin-bottom: 10px; 
+  .custom-pagination {
+    width: 60%;
+    margin-bottom: 10px;
   }
-  .custom-buttons { 
-    width: 100%; 
-    display: flex; 
-    justify-content: space-between; 
+  .custom-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
   }
-  .review-card{
+  .review-card {
     flex-direction: column;
   }
 }

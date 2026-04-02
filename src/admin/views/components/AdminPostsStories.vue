@@ -1,67 +1,96 @@
 <template>
-    <div class="admin-posts">
-      <h2>Create Post</h2>
+  <div class="admin-posts">
+    <h2>Create Post</h2>
 
-      <div class="cover-image-upload">
-        <label>
-          Main Cover Image
-          <input type="file" accept="image/*" @change="uploadCoverImage" />
-        </label>
-        <div v-if="coverImage" class="cover-preview">
-          <img :src="coverImage" alt="Cover Image Preview" />
+    <div class="cover-image-upload">
+      <label>
+        Main Cover Image
+        <input type="file" accept="image/*" @change="uploadCoverImage" />
+      </label>
+      <div v-if="coverImage" class="cover-preview">
+        <img :src="coverImage" alt="Cover Image Preview" />
+      </div>
+    </div>
+
+    <form @submit.prevent="savePost" class="post-form">
+      <input v-model="title" placeholder="Post title" required />
+      <textarea v-model="intro" placeholder="Intro (optional)"></textarea>
+
+      <div
+        v-for="(block, index) in contentBlocks"
+        :key="index"
+        class="content-block"
+      >
+        <div class="block-header">
+          <span>{{ block.typeLabel }}</span>
+          <button type="button" class="delete" @click="removeBlock(index)">
+            ✖
+          </button>
+        </div>
+        <div v-if="block.type === 'text'">
+          <textarea
+            v-model="block.content"
+            placeholder="Enter text..."
+          ></textarea>
+        </div>
+        <div v-else-if="block.type === 'highlight'">
+          <textarea
+            v-model="block.content"
+            placeholder="Highlighted text..."
+            class="highlight-text"
+          ></textarea>
+        </div>
+        <div v-else-if="block.type === 'image'" class="image-row">
+          <label v-for="(url, i) in block.urls" :key="i" class="image-upload">
+            <input
+              type="file"
+              accept="image/*"
+              @change="uploadImage($event, index, i)"
+            />
+            <img v-if="url" :src="url" class="preview-img" />
+          </label>
+          <button
+            v-if="block.urls.length < 2"
+            type="button"
+            class="add-photo-btn"
+            @click="addImageSlot(index)"
+          >
+            ➕ Add second photo
+          </button>
+        </div>
+        <hr />
+      </div>
+
+      <!-- Добавление блока -->
+      <div class="add-block">
+        <button type="button" @click="showBlockMenu = !showBlockMenu">
+          ➕ Add block
+        </button>
+        <div v-if="showBlockMenu" class="block-menu">
+          <button type="button" @click="addBlock('text')">📝 Text</button>
+          <button type="button" @click="addBlock('highlight')">
+            🟨 Highlighted text
+          </button>
+          <button type="button" @click="addBlock('image')">🖼 Image</button>
         </div>
       </div>
 
-      <form @submit.prevent="savePost" class="post-form">
-        <input v-model="title" placeholder="Post title" required />
-        <textarea v-model="intro" placeholder="Intro (optional)"></textarea>
-
-        <div v-for="(block, index) in contentBlocks" :key="index" class="content-block">
-          <div class="block-header">
-            <span>{{ block.typeLabel }}</span>
-            <button type="button" class="delete" @click="removeBlock(index)">✖</button>
-          </div>
-          <div v-if="block.type === 'text'">
-            <textarea v-model="block.content" placeholder="Enter text..."></textarea>
-          </div>
-          <div v-else-if="block.type === 'highlight'">
-            <textarea v-model="block.content" placeholder="Highlighted text..." class="highlight-text"></textarea>
-          </div>
-          <div v-else-if="block.type === 'image'" class="image-row">
-            <label v-for="(url, i) in block.urls" :key="i" class="image-upload">
-              <input type="file" accept="image/*" @change="uploadImage($event, index, i)" />
-              <img v-if="url" :src="url" class="preview-img" />
-            </label>
-            <button v-if="block.urls.length < 2" type="button" class="add-photo-btn" @click="addImageSlot(index)">
-              ➕ Add second photo
-            </button>
-          </div>
-          <hr />
-        </div>
-
-        <!-- Добавление блока -->
-        <div class="add-block">
-          <button type="button" @click="showBlockMenu = !showBlockMenu">➕ Add block</button>
-          <div v-if="showBlockMenu" class="block-menu">
-            <button type="button" @click="addBlock('text')">📝 Text</button>
-            <button type="button" @click="addBlock('highlight')">🟨 Highlighted text</button>
-            <button type="button" @click="addBlock('image')">🖼 Image</button>
-          </div>
-        </div>
-
-        <!-- Публикация поста -->
-        <button type="submit" class="publish-btn">Publish Post</button>
-      </form>
-    </div>
+      <!-- Публикация поста -->
+      <button type="submit" class="publish-btn">Publish Post</button>
+    </form>
+  </div>
 </template>
 
 <script>
 import { ref } from "vue";
 import { db } from "@/firebase/firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from "firebase/storage";
-
-
+import {
+  getStorage,
+  ref as storageRef,
+  uploadBytes,
+  getDownloadURL,
+} from "firebase/storage";
 
 export default {
   name: "AdminPostsStories",

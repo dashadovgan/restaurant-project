@@ -1,8 +1,5 @@
 <template>
-  <router-link
-    class="post-card"
-    :to="`/post/${post.id}`"
-  >
+  <router-link class="post-card" :to="`/post/${post.id}`">
     <!-- Фото -->
     <div class="image" v-if="post.coverImage">
       <img :src="post.coverImage" alt="" />
@@ -11,9 +8,9 @@
     <div class="content">
       <!-- Дата -->
       <span class="date">{{ formattedDate }}</span>
-      
+
       <h3>{{ post.title }}</h3>
-      
+
       <!-- Ограниченный текст -->
       <p v-if="post.intro">{{ truncatedText }}</p>
     </div>
@@ -33,15 +30,16 @@ export default {
   },
   setup(props) {
     const formattedDate = computed(() => {
-  if (!props.post.date) return ""; 
-  const date = props.post.date.toDate ? props.post.date.toDate() : new Date(props.post.date);
-  return date.toLocaleDateString("en-GB", {
-    day: "2-digit",
-    month: "long",
-    year: "numeric",
-  });
-});
-
+      if (!props.post.date) return "";
+      const date = props.post.date.toDate
+        ? props.post.date.toDate()
+        : new Date(props.post.date);
+      return date.toLocaleDateString("en-GB", {
+        day: "2-digit",
+        month: "long",
+        year: "numeric",
+      });
+    });
 
     const truncatedText = computed(() => {
       const limit = 140;
@@ -67,19 +65,18 @@ export default {
 }
 
 .image {
-  display: flex;          
-  justify-content: center; 
-  align-items: center; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding-top: 10px;
-  border-radius: 20px;    
+  border-radius: 20px;
 }
 
 .image img {
-  width: 90%;             
+  width: 90%;
   height: 200px;
   object-fit: cover;
 }
-
 
 .content {
   padding: 12px;

@@ -4,14 +4,15 @@
       <h1>Restaurant Admin Panel</h1>
     </header>
     <main class="admin-content">
-      <slot></slot> <!-- сюда вставляются страницы админки -->
+      <slot></slot>
+      <!-- сюда вставляются страницы админки -->
     </main>
   </div>
 </template>
 
 <script>
 export default {
-  name: "AdminLayout"
+  name: "AdminLayout",
 };
 </script>
 
@@ -33,6 +34,6 @@ export default {
 .admin-content {
   flex: 1;
   padding: 30px;
-  background-color: #05131F;
+  background-color: #05131f;
 }
 </style>

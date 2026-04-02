@@ -4,12 +4,8 @@
     <div class="footer-top">
       <!-- Левая колонка: текст + кнопка -->
       <div class="footer-col footer-left">
-        <h2>
-          Explore our French  <br />Inspired Dishes
-        </h2>
-         <router-link to="/menu" class="menu-button">
-    See Menu
-  </router-link>
+        <h2>Explore our French <br />Inspired Dishes</h2>
+        <router-link to="/menu" class="menu-button"> See Menu </router-link>
       </div>
 
       <!-- Средняя колонка: навигация -->
@@ -28,10 +24,16 @@
         <span>Connect us</span>
         <div class="social-icons">
           <!-- Используем картинки вместо иконок FontAwesome -->
-          <a href="#"><img src="@/assets//image/facebook-icon.png" alt="Facebook" /></a>
-          <a href="#"><img src="@/assets/image/instagram-icon.png" alt="Instagram" /></a>
+          <a href="#"
+            ><img src="@/assets//image/facebook-icon.png" alt="Facebook"
+          /></a>
+          <a href="#"
+            ><img src="@/assets/image/instagram-icon.png" alt="Instagram"
+          /></a>
           <a href="#"><img src="@/assets/image/x-com.png" alt="Twitter" /></a>
-          <a href="#"><img src="@/assets/image/whatsapp-icon.png" alt="WhatsApp" /></a>
+          <a href="#"
+            ><img src="@/assets/image/whatsapp-icon.png" alt="WhatsApp"
+          /></a>
         </div>
       </div>
     </div>
@@ -40,10 +42,12 @@
     <div class="footer-middle">
       <span class="left">PlatiEU 2025 All Rights Reserved</span>
       <span class="right">
-  <router-link to="/privasy-policy" class="privacy-button">
-  Privacy Policy
-</router-link>,
-        <router-link to="/terms-of-use" class="terms-button">Terms of Service</router-link>
+        <router-link to="/privasy-policy" class="privacy-button">
+          Privacy Policy </router-link
+        >,
+        <router-link to="/terms-of-use" class="terms-button"
+          >Terms of Service</router-link
+        >
       </span>
     </div>
 
@@ -66,9 +70,9 @@ export default {
 <style scoped>
 .site-footer {
   width: 100%;
-  background-color: #05131F;
+  background-color: #05131f;
   color: white;
-  font-family: 'Lora', sans-serif;
+  font-family: "Lora", sans-serif;
 }
 
 /* Верхняя часть */
@@ -94,32 +98,30 @@ export default {
   font-size: 48px;
   line-height: 1.2;
   margin: 0 0 15px 0;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: "Cormorant Garamond", serif;
   font-weight: 600;
 }
 
 .menu-button {
-  display: inline-flex;        /* вместо inline-block */
-  align-items: center;         /* вертикально */
-  justify-content: center;     /* горизонтально */
+  display: inline-flex; /* вместо inline-block */
+  align-items: center; /* вертикально */
+  justify-content: center; /* горизонтально */
 
-  background-color: #F4C73F;
+  background-color: #f4c73f;
   color: black;
   padding: 12px 28px;
   border-radius: 30px;
   text-decoration: none;
-  font-family: 'Lora', sans-serif;
+  font-family: "Lora", sans-serif;
   font-size: 16px;
   font-weight: 500;
   transition: 0.3s ease;
   width: fit-content;
 }
 
-
 .menu-button:hover {
   background-color: #c7980c;
 }
-
 
 /* Средняя колонка */
 .footer-nav-col {
@@ -137,7 +139,7 @@ export default {
 }
 
 .footer-nav-col a {
-  color: #D7D7D7;
+  color: #d7d7d7;
   text-decoration: none;
 }
 
@@ -194,7 +196,7 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #01101D;
+  background-color: #01101d;
   z-index: 1;
 }
 
@@ -210,43 +212,44 @@ export default {
 }
 
 /* Адаптив */
-@media(max-width: 480px) {
+@media (max-width: 480px) {
   .footer-top {
     flex-direction: column;
     gap: 30px;
   }
 
   .social-icons {
-    display: flex !important;       
-    flex-direction: row !important;  
-    justify-content: center;         
-    gap: 15px;                       
-    flex-wrap: nowrap;              
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: nowrap;
   }
 
   .social-icons a {
-    display: inline-block;          
+    display: inline-block;
   }
 
   .social-icons img {
     width: 40px;
     height: 40px;
-    object-fit: contain;             /* сохраняем пропорции */
+    object-fit: contain; /* сохраняем пропорции */
     display: inline-block;
   }
-  .footer-top h2{
+  .footer-top h2 {
     font-size: 32px;
     text-align: center;
   }
-  .footer-left, .footer-nav-col, .footer-social-col {
+  .footer-left,
+  .footer-nav-col,
+  .footer-social-col {
     width: 100%;
     align-items: center;
     text-align: center;
-
   }
   .footer-left button {
     width: 40%;
-    margin-top:20px;
+    margin-top: 20px;
   }
   .footer-bottom img {
     width: 80%;

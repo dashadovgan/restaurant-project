@@ -2,24 +2,30 @@
   <section class="faq-section">
     <!-- Заголовок с декоративными элементами -->
     <div class="faq-header">
-      <img src="@/assets/image/right-torn.png" alt="decor" class="decor decor-left" />
+      <img
+        src="@/assets/image/right-torn.png"
+        alt="decor"
+        class="decor decor-left"
+      />
       <div class="faq-title">
         <h2>What’s on Your Mind?</h2>
         <p>We’ve answered the questions you didn’t know you had.</p>
       </div>
-      <img src="@/assets/image/left-torn.png" alt="decor" class="decor decor-right" />
+      <img
+        src="@/assets/image/left-torn.png"
+        alt="decor"
+        class="decor decor-right"
+      />
     </div>
 
     <!-- Список вопросов -->
     <div class="faq-list">
-      <div
-        v-for="(item, index) in faqItems"
-        :key="index"
-        class="faq-item"
-      >
+      <div v-for="(item, index) in faqItems" :key="index" class="faq-item">
         <div class="faq-question" @click="toggle(index)">
           <h3>{{ item.question }}</h3>
-          <span class="faq-toggle">{{ activeIndex === index ? '−' : '+' }}</span>
+          <span class="faq-toggle">{{
+            activeIndex === index ? "−" : "+"
+          }}</span>
         </div>
 
         <transition name="fade">
@@ -33,49 +39,50 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref } from "vue";
 
-const activeIndex = ref(null)
+const activeIndex = ref(null);
 
 const faqItems = [
   {
     question: "What are the restaurant’s hours of operation?",
-    answer: "We are open every day from 10:00 AM to 10:00 PM."
+    answer: "We are open every day from 10:00 AM to 10:00 PM.",
   },
   {
     question: "Do I need to make a reservation before coming?",
-    answer: "Reservations are not required but recommended on weekends."
+    answer: "Reservations are not required but recommended on weekends.",
   },
   {
     question: "Is there a vegetarian or vegan menu available?",
-    answer: "Yes, we offer a full selection of vegetarian and vegan dishes."
+    answer: "Yes, we offer a full selection of vegetarian and vegan dishes.",
   },
   {
     question: "Does this restaurant offer delivery services?",
-    answer: "Yes, we partner with major delivery apps and offer direct delivery."
+    answer:
+      "Yes, we partner with major delivery apps and offer direct delivery.",
   },
   {
     question: "Can I host a private event at the restaurant?",
-    answer: "Of course! We have a private room for events up to 40 guests."
+    answer: "Of course! We have a private room for events up to 40 guests.",
   },
   {
     question: "Is parking available?",
-    answer: "Yes, we have a private parking area for guests."
-  }
-]
+    answer: "Yes, we have a private parking area for guests.",
+  },
+];
 
 const toggle = (index) => {
-  activeIndex.value = activeIndex.value === index ? null : index
-}
+  activeIndex.value = activeIndex.value === index ? null : index;
+};
 </script>
 
 <style scoped>
 /* ---------- SECTION ---------- */
 .faq-section {
-  background-color: #05131F;
+  background-color: #05131f;
   color: #ffffff;
   text-align: center;
-  padding:  16px;
+  padding: 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -104,7 +111,7 @@ const toggle = (index) => {
   margin-bottom: 8px;
   letter-spacing: 0.5px;
   font-size: 58px;
-  font-family: 'Cormorant Garamond', sans-serif;
+  font-family: "Cormorant Garamond", sans-serif;
 }
 
 .faq-title p {
@@ -112,7 +119,7 @@ const toggle = (index) => {
   font-weight: 300;
   opacity: 0.8;
   margin: 0;
-  font-family: 'Lora', sans-serif;
+  font-family: "Lora", sans-serif;
 }
 
 /* ---------- LIST ---------- */
@@ -135,17 +142,14 @@ const toggle = (index) => {
   align-items: center;
   cursor: pointer;
   transition: color 0.3s ease;
-  
 }
 
 .faq-question h3 {
-  
   font-weight: 400;
   margin: 0;
-  font-family: 'Cormorant Garamond' , sans-serif;
+  font-family: "Cormorant Garamond", sans-serif;
   font-size: 32px;
   padding-bottom: 20px;
-  
 }
 
 .faq-question:hover h3 {
@@ -167,21 +171,22 @@ const toggle = (index) => {
 
 .faq-answer {
   margin-top: 12px;
-  
+
   line-height: 1.6;
   opacity: 0.85;
-  font-family: 'Lora' sans-serif;
+  font-family: "Lora" sans-serif;
   font-size: 16px;
 }
 
-.fade-enter-active, .fade-leave-active {
+.fade-enter-active,
+.fade-leave-active {
   transition: all 0.3s ease;
 }
-.fade-enter-from, .fade-leave-to {
+.fade-enter-from,
+.fade-leave-to {
   opacity: 0;
   transform: translateY(-4px);
 }
-
 
 @media (max-width: 480px) {
   .faq-section {
@@ -207,7 +212,7 @@ const toggle = (index) => {
   .faq-title p {
     font-size: 1rem;
   }
-  .decor{
+  .decor {
     display: none;
   }
   .faq-question h3 {

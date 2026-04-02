@@ -24,12 +24,11 @@ export default {
 
     return {
       query,
-      onInput
+      onInput,
     };
   },
 };
 </script>
-
 
 <style scoped>
 .finder-input {
@@ -39,7 +38,7 @@ export default {
   border: none;
   outline: none;
   background-color: #000; /* черный фон */
-  color: #fff;            /* белый текст */
+  color: #fff; /* белый текст */
   font-size: 14px;
 }
 </style>

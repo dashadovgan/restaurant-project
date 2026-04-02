@@ -3,8 +3,16 @@
     <h2>{{ isEdit ? "Редактировать блюдо" : "Добавить блюдо" }}</h2>
     <form @submit.prevent="submitDish">
       <input v-model="dish.name" placeholder="Название блюда" required />
-      <textarea v-model="dish.description" placeholder="Описание блюда"></textarea>
-      <input v-model.number="dish.price" type="number" placeholder="Цена" required />
+      <textarea
+        v-model="dish.description"
+        placeholder="Описание блюда"
+      ></textarea>
+      <input
+        v-model.number="dish.price"
+        type="number"
+        placeholder="Цена"
+        required
+      />
 
       <select v-model="dish.category" required>
         <option disabled value="">Выбери категорию</option>
@@ -24,23 +32,25 @@
         <input type="file" @change="uploadImage" accept="image/*" />
       </label>
       <div v-if="dish.image">
-        <img :src="dish.image" alt="preview" class="preview"/>
+        <img :src="dish.image" alt="preview" class="preview" />
       </div>
 
-      <button type="submit">{{ isEdit ? "Сохранить изменения" : "Добавить блюдо" }}</button>
+      <button type="submit">
+        {{ isEdit ? "Сохранить изменения" : "Добавить блюдо" }}
+      </button>
     </form>
   </div>
 </template>
 
 <script>
-import { ref, watch } from "vue"; 
+import { ref, watch } from "vue";
 import { MenuService } from "@/services/menu.service";
-export default{
-  name:"AdminMenuForm",
-  props:{
-    initialDish:Object,
+export default {
+  name: "AdminMenuForm",
+  props: {
+    initialDish: Object,
   },
-  setup(props, { emit }) { 
+  setup(props, { emit }) {
     const isEdit = ref(!!props.initialDish);
     const dish = ref({
       name: "",
@@ -48,55 +58,54 @@ export default{
       price: null,
       category: "",
       isFavorite: false,
-      image: ""
+      image: "",
     });
-    if (props.initialDish){
-      dish.value={...props.initialDish}
+    if (props.initialDish) {
+      dish.value = { ...props.initialDish };
     }
     watch(
-      ()=>props.initialDish,
-      (newVal)=>{
-        if(newVal){
-          dish.value={...newVal};
-        }else{
-          dish.value={
-            name:"",
-            description:"",
+      () => props.initialDish,
+      (newVal) => {
+        if (newVal) {
+          dish.value = { ...newVal };
+        } else {
+          dish.value = {
+            name: "",
+            description: "",
             price: null,
-            category:"",
-            isFavorite:false,
-            image:"",
+            category: "",
+            isFavorite: false,
+            image: "",
           };
         }
-        isEdit.value=!!newVal;
+        isEdit.value = !!newVal;
       }
     );
-    const uploadImage=async(event)=>{
-     const file=event.target.files[0];
-     const url=await MenuService.uploadImage(file);
-     dish.value.image=url;
+    const uploadImage = async (event) => {
+      const file = event.target.files[0];
+      const url = await MenuService.uploadImage(file);
+      dish.value.image = url;
     };
-    const submitDish=async()=>{
-      if(isEdit.value && dish.value.id){
+    const submitDish = async () => {
+      if (isEdit.value && dish.value.id) {
         await MenuService.updateDish(dish.value);
-      }else{
+      } else {
         await MenuService.addDish(dish.value);
       }
       emit("dish-saved");
-      dish.value={
-      name: "",
-      description: "",
-      price: null,
-      category: "",
-      isFavorite: false,
-      image: "",
-                 };
-      isEdit.value=false;
+      dish.value = {
+        name: "",
+        description: "",
+        price: null,
+        category: "",
+        isFavorite: false,
+        image: "",
+      };
+      isEdit.value = false;
     };
     return { dish, uploadImage, submitDish, isEdit };
   },
 };
-
 </script>
 
 <style scoped>
@@ -108,22 +117,22 @@ export default{
   gap: 15px;
 }
 input,
-textarea, 
+textarea,
 select,
-button { 
-  width: 100%; 
-  padding: 8px; 
-  font-size: 16px; 
+button {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
 }
-button { 
-  background-color: #1b1b1b; 
-  color: #fff; 
-  border: none; 
-  cursor: pointer; 
+button {
+  background-color: #1b1b1b;
+  color: #fff;
+  border: none;
+  cursor: pointer;
 }
-.preview { 
-  margin-top: 10px; 
-  max-width: 150px; 
-  border-radius: 8px; 
-  }
+.preview {
+  margin-top: 10px;
+  max-width: 150px;
+  border-radius: 8px;
+}
 </style>

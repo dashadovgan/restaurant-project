@@ -1,8 +1,6 @@
 <template>
   <router-link to="/reservation">
-    <button class="reserve-button">
-      Reserve a Seat
-    </button>
+    <button class="reserve-button">Reserve a Seat</button>
   </router-link>
 </template>
 
@@ -14,13 +12,13 @@ export default {
 
 <style scoped>
 .reserve-button {
-  background-color: #F4C73F;
+  background-color: #f4c73f;
   border: none;
   padding: 8px 16px;
   border-radius: 30px;
   color: black;
   cursor: pointer;
-  font-family: 'Lora', sans-serif;
+  font-family: "Lora", sans-serif;
   line-height: 24px;
   width: 153px;
   height: 48px;

@@ -1,15 +1,13 @@
 <template>
   <div
-  class="chef-card"
-  v-motion
-  :initial="{ opacity: 0, y: 40 }"
-  :enter="{ opacity: 1, y: 0 }"
-  :delay="100"
-  @click="$emit('open', chef)"
->
-
+    class="chef-card"
+    v-motion
+    :initial="{ opacity: 0, y: 40 }"
+    :enter="{ opacity: 1, y: 0 }"
+    :delay="100"
+    @click="$emit('open', chef)"
+  >
     <img :src="chef.imageUrl" :alt="chef.name" />
-
 
     <h3>{{ chef.name }}</h3>
     <span>{{ chef.role }}</span>
@@ -19,19 +17,18 @@
 </template>
 
 <script setup>
-import { computed, defineProps } from 'vue'
+import { computed, defineProps } from "vue";
 
 const props = defineProps({
-  chef: Object
-})
+  chef: Object,
+});
 
 const shortText = computed(() =>
   props.chef.description.length > 100
-    ? props.chef.description.slice(0, 100) + '...'
+    ? props.chef.description.slice(0, 100) + "..."
     : props.chef.description
-)
+);
 </script>
-
 
 <style scoped>
 .chef-card {
@@ -47,7 +44,7 @@ const shortText = computed(() =>
 }
 
 .chef-card h3 {
-  font-family: 'Cormorant Garamond';
+  font-family: "Cormorant Garamond";
   font-size: 22px;
   margin-bottom: 4px;
 }
@@ -65,9 +62,9 @@ const shortText = computed(() =>
   opacity: 0.8;
 }
 @media (max-width: 480px) {
-.chef-card img {
-width: 100%;
-  height: 400px;
-}
+  .chef-card img {
+    width: 100%;
+    height: 400px;
+  }
 }
 </style>

@@ -30,27 +30,29 @@
 </template>
 
 <script>
-import { loadGoogleMaps } from '@/services/load-google-maps';
+import { loadGoogleMaps } from "@/services/load-google-maps";
 
 export default {
   name: "GoogleMap",
   async mounted() {
-    try{
-      const maps = await loadGoogleMaps(process.env.VUE_APP_GOOGLE_MAPS_API_KEY);
+    try {
+      const maps = await loadGoogleMaps(
+        process.env.VUE_APP_GOOGLE_MAPS_API_KEY
+      );
       const map = new maps.Map(this.$refs.map, {
-      center: { lat: 48.8696, lng: 2.3426 },
-      zoom: 15,
-    });
+        center: { lat: 48.8696, lng: 2.3426 },
+        zoom: 15,
+      });
 
-    new maps.Marker({
-      position: { lat: 48.8696, lng: 2.3426 },
-      map,
-      title: "21 Rue des Lilas, Paris",
-    });
-  }catch(error){
-    console.log("Error loading map", error);
-  }
-},
+      new maps.Marker({
+        position: { lat: 48.8696, lng: 2.3426 },
+        map,
+        title: "21 Rue des Lilas, Paris",
+      });
+    } catch (error) {
+      console.log("Error loading map", error);
+    }
+  },
   methods: {
     openGoogleMaps() {
       window.open(
@@ -112,18 +114,16 @@ export default {
   font-size: 14px;
 }
 
-
 .rating .star {
-  color: #ffa500; 
+  color: #ffa500;
   margin-right: 2px;
   font-size: 16px;
 }
 
-
 .route-button {
   display: flex;
   align-items: center;
-  gap: 8px; 
+  gap: 8px;
   background: #000;
   color: #fff;
   border: 1px solid #fff;
@@ -131,7 +131,7 @@ export default {
   padding: 8px 16px;
   cursor: pointer;
   font-weight: 500;
-  font-family: 'Lora', sans-serif;
+  font-family: "Lora", sans-serif;
 }
 
 .route-button img {
@@ -139,20 +139,19 @@ export default {
   height: 20px;
 }
 
-
 @media (max-width: 480px) {
   .map-container {
-    width: 95%;      
-    height: 90vh;    
+    width: 95%;
+    height: 90vh;
     border-radius: 12px;
-    margin: 0 auto; 
+    margin: 0 auto;
   }
 
   .map-overlay {
     bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
-    width: 85%;      
+    width: 85%;
     max-width: none;
     text-align: center;
     border-radius: 12px;
@@ -170,5 +169,4 @@ export default {
     justify-content: center;
   }
 }
-
 </style>

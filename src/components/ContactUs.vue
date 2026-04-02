@@ -2,7 +2,6 @@
   <div class="contact-form">
     <h1>Contact Us</h1>
     <form @submit.prevent="submitForm">
-
       <!-- Full name -->
       <div class="form-group field">
         <input
@@ -19,7 +18,7 @@
         <vue-tel-input
           v-model="phoneNumber"
           default-country="ua"
-          :preferred-countries="['us','gb','ua']"
+          :preferred-countries="['us', 'gb', 'ua']"
           :placeholder="'+380 67 123 4567'"
           @country-changed="onCountryChanged"
           required
@@ -52,7 +51,7 @@
 
       <!-- Checkbox -->
       <div class="form-group checkbox-group">
-        <input type="checkbox" v-model="agree" id="terms"/>
+        <input type="checkbox" v-model="agree" id="terms" />
         <label for="terms">
           By checking the box you agree to our
           <a href="#" target="_blank">Terms of Service</a> and
@@ -68,32 +67,32 @@
 </template>
 
 <script>
-import { ref } from 'vue'
-import { db } from '@/firebase/firebase'
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore'
+import { ref } from "vue";
+import { db } from "@/firebase/firebase";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 export default {
   name: "ContactUs",
   setup() {
-    const fullName = ref('')
-    const phoneNumber = ref('') 
-    const email = ref('')
-    const request = ref('')
-    const agree = ref(false)
-    const message = ref('')
-    const selectedCountry=ref('ua')
-    const phonePlaceholder= ref('+380 67 123 4567')
+    const fullName = ref("");
+    const phoneNumber = ref("");
+    const email = ref("");
+    const request = ref("");
+    const agree = ref(false);
+    const message = ref("");
+    const selectedCountry = ref("ua");
+    const phonePlaceholder = ref("+380 67 123 4567");
 
-    const onCountryChanged= (country) =>{
-      selectedCountry.value=country.iso2
-      phonePlaceholder.value= `+${country.dialCode} 123 456 7890`
-      phoneNumber.value= `+${country.dialCode}`
-    }
+    const onCountryChanged = (country) => {
+      selectedCountry.value = country.iso2;
+      phonePlaceholder.value = `+${country.dialCode} 123 456 7890`;
+      phoneNumber.value = `+${country.dialCode}`;
+    };
 
     const submitForm = async () => {
       if (!agree.value) {
-        message.value = "You must agree to the terms."
-        return
+        message.value = "You must agree to the terms.";
+        return;
       }
       try {
         await addDoc(collection(db, "contacts"), {
@@ -101,23 +100,34 @@ export default {
           phoneNumber: phoneNumber.value,
           email: email.value,
           request: request.value,
-          createdAt: serverTimestamp()
-        })
-        message.value = "Thank you! Your message has been sent."
-        fullName.value = ''
-        phoneNumber.value = ''
-        email.value = ''
-        request.value = ''
-        agree.value = false
-      } catch(error) {
-        console.error("Error adding document: ", error)
-        message.value = "Something went wrong. Please try again."
+          createdAt: serverTimestamp(),
+        });
+        message.value = "Thank you! Your message has been sent.";
+        fullName.value = "";
+        phoneNumber.value = "";
+        email.value = "";
+        request.value = "";
+        agree.value = false;
+      } catch (error) {
+        console.error("Error adding document: ", error);
+        message.value = "Something went wrong. Please try again.";
       }
-    }
+    };
 
-    return { fullName, phoneNumber, email, request, agree, message, submitForm, selectedCountry, phonePlaceholder, onCountryChanged }
-  }
-}
+    return {
+      fullName,
+      phoneNumber,
+      email,
+      request,
+      agree,
+      message,
+      submitForm,
+      selectedCountry,
+      phonePlaceholder,
+      onCountryChanged,
+    };
+  },
+};
 </script>
 
 <style scoped>
@@ -147,7 +157,7 @@ export default {
   width: 100%;
   box-sizing: border-box;
   background: #010614;
-  color: #FDFDFD;
+  color: #fdfdfd;
   border: 1px solid #444444;
   border-radius: 12px;
   padding: 28px 14px 12px 14px;
@@ -157,8 +167,8 @@ export default {
 
 .field input::placeholder,
 .field textarea::placeholder {
-  color: #FDFDFD;
-  font-family: 'Lora', sans-serif;
+  color: #fdfdfd;
+  font-family: "Lora", sans-serif;
   font-size: 14px;
   font-weight: 500;
 }
@@ -174,16 +184,16 @@ export default {
   top: 6px;
   left: 14px;
   font-size: 12px;
-  color: #D7D7D7;
+  color: #d7d7d7;
   pointer-events: none;
-  transition: color .12s, transform .12s;
-  font-family: 'Lora', sans-serif;
+  transition: color 0.12s, transform 0.12s;
+  font-family: "Lora", sans-serif;
   font-weight: 400;
 }
 
 .field input:focus + label,
 .field textarea:focus + label {
-  color: #FFD600;
+  color: #ffd600;
 }
 
 /* --- Стилизация vue-tel-input --- */
@@ -193,7 +203,7 @@ export default {
   background-color: #010614 !important;
   color: #fff !important;
   width: 100% !important;
-  border: 1px solid rgba(255,255,255,0.12) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
   border-radius: 12px !important;
   outline: none !important;
   padding-top: 28px !important;
@@ -203,7 +213,7 @@ export default {
 }
 
 .tel-group >>> .vti__input::placeholder {
-  color: rgba(255,255,255,0.6) !important;
+  color: rgba(255, 255, 255, 0.6) !important;
   font-size: 14px !important;
 }
 
@@ -213,9 +223,9 @@ export default {
   top: 6px;
   left: 75px;
   font-size: 12px;
-  color: rgba(255,255,255,0.65);
+  color: rgba(255, 255, 255, 0.65);
   pointer-events: none;
-  font-family: 'Lora', sans-serif;
+  font-family: "Lora", sans-serif;
 }
 
 /* Флаг */
@@ -246,7 +256,7 @@ export default {
 }
 
 .tel-group >>> .vti__dropdown-item:hover {
-  background: #FFD600 !important;
+  background: #ffd600 !important;
   color: #111 !important;
 }
 
@@ -254,7 +264,7 @@ export default {
 .tel-group >>> .vti__input:hover,
 .tel-group >>> .vti__input:focus {
   background-color: #0b0f1f !important;
-  border-color: #FFD600 !important;
+  border-color: #ffd600 !important;
 }
 
 /* Кнопка */
@@ -264,7 +274,7 @@ button {
   font-size: 16px;
   border: none;
   border-radius: 30px;
-  background: #FFD600;
+  background: #ffd600;
   color: #111;
   font-weight: 600;
   cursor: pointer;
@@ -284,16 +294,14 @@ button:disabled {
   align-items: center;
 }
 .checkbox-group a {
-  color: #FFA500;
+  color: #ffa500;
   text-decoration: underline;
 }
 
 p {
-  color: #FDFDFD;
+  color: #fdfdfd;
   font-weight: bold;
   margin-top: 6px;
 }
 /* Фон списка */
-
-
 </style>

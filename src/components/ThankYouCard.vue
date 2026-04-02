@@ -3,8 +3,9 @@
     <img :src="checkIcon" alt="success" class="success-icon" />
     <h2 class="thank-text">Thank you for your reservation</h2>
     <p class="thank-text">
-      Your table has been successfully requested. We've received your reservation details along with your deposit proof.
-      Our team will review and send a confirmation email shortly.
+      Your table has been successfully requested. We've received your
+      reservation details along with your deposit proof. Our team will review
+      and send a confirmation email shortly.
     </p>
     <hr class="divider" />
     <h3 class="text-detail">Detail Transaction</h3>
@@ -28,19 +29,19 @@
     </div>
 
     <div class="button-row">
-  <button class="secondary-btn" @click="downloadPDF">Download receipt</button>
-  <router-link to="/menu">
-  <button class="primary-btn">Explore our menu</button>
-</router-link>
-
-</div>
-
+      <button class="secondary-btn" @click="downloadPDF">
+        Download receipt
+      </button>
+      <router-link to="/menu">
+        <button class="primary-btn">Explore our menu</button>
+      </router-link>
+    </div>
   </div>
 </template>
 
 <script setup>
-import { defineProps } from 'vue';
-import jsPDF from 'jspdf';
+import { defineProps } from "vue";
+import jsPDF from "jspdf";
 
 const props = defineProps({
   transactionId: String,
@@ -48,8 +49,8 @@ const props = defineProps({
   total: Number,
   checkIcon: {
     type: String,
-    default: require('@/assets/image/icon-ready.png')
-  }
+    default: require("@/assets/image/icon-ready.png"),
+  },
 });
 
 // Функция для скачивания PDF
@@ -57,33 +58,33 @@ const downloadPDF = () => {
   const doc = new jsPDF();
 
   doc.setFontSize(20);
-  doc.text('Thank you for your reservation', 20, 20);
+  doc.text("Thank you for your reservation", 20, 20);
 
   doc.setFontSize(14);
-  doc.text('Detail Transaction:', 20, 40);
+  doc.text("Detail Transaction:", 20, 40);
 
   doc.text(`Transaction ID: ${props.transactionId}`, 20, 50);
   doc.text(`Date: ${props.date}`, 20, 60);
-  doc.text('Type: Dine in', 20, 70);
-  doc.text('Services: Table reservation', 20, 80);
+  doc.text("Type: Dine in", 20, 70);
+  doc.text("Services: Table reservation", 20, 80);
   doc.text(`Total: $${props.total.toFixed(2)}`, 20, 90);
 
-  doc.save('reservation.pdf');
-}
+  doc.save("reservation.pdf");
+};
 </script>
 
 <style scoped>
 .divider {
-  border: none;         /* убираем стандартную границу */
-  height: 1px;          /* толщина линии */
+  border: none; /* убираем стандартную границу */
+  height: 1px; /* толщина линии */
   background-color: white; /* цвет линии */
-  margin: 20px 0;       /* отступ сверху и снизу */
-  opacity: 0.5;         /* можно сделать полупрозрачной */
+  margin: 20px 0; /* отступ сверху и снизу */
+  opacity: 0.5; /* можно сделать полупрозрачной */
 }
 
 .thank-you-card {
   background-color: #050a14;
-  
+
   border-radius: 12px;
   max-width: 70%;
   margin: auto;
@@ -96,10 +97,10 @@ const downloadPDF = () => {
   margin-bottom: 20px;
 }
 
-.thank-text p{
+.thank-text p {
   margin-bottom: 30px;
   line-height: 1.5;
-  font-family: 'Lora', sans-serif;
+  font-family: "Lora", sans-serif;
   font-size: 14px;
 }
 
@@ -115,12 +116,13 @@ const downloadPDF = () => {
   box-sizing: border-box;
   flex-direction: row;
 }
-.text-detail{
-    align-items: center;
-    font-family: 'Lora', sans-serif;
-    font-size: 16px;
+.text-detail {
+  align-items: center;
+  font-family: "Lora", sans-serif;
+  font-size: 16px;
 }
-.transaction-left, .transaction-right {
+.transaction-left,
+.transaction-right {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -134,10 +136,10 @@ const downloadPDF = () => {
   align-items: flex-end;
 }
 
-.transaction-left p, .transaction-right p {
+.transaction-left p,
+.transaction-right p {
   margin: 6px 0;
 }
-
 
 .total-price {
   font-weight: bold;
@@ -149,12 +151,12 @@ const downloadPDF = () => {
   justify-content: center;
   flex-wrap: wrap;
 }
-.thank-text h2{
- font-size: 32px;
- font-family: 'Cormorant Garamond', sans-serif;
+.thank-text h2 {
+  font-size: 32px;
+  font-family: "Cormorant Garamond", sans-serif;
 }
 .primary-btn {
-  background: #F4C73F;
+  background: #f4c73f;
   color: #000;
   border: none;
   padding: 15px 25px;
@@ -165,8 +167,8 @@ const downloadPDF = () => {
 
 .secondary-btn {
   background: transparent;
-  border: 2px solid #F4C73F;
-  color: #F4C73F;
+  border: 2px solid #f4c73f;
+  color: #f4c73f;
   padding: 15px 25px;
   border-radius: 30px;
   cursor: pointer;
@@ -187,9 +189,8 @@ const downloadPDF = () => {
     width: 100%;
   }
   .thank-you-card {
-  max-width: 90% !important;
-  padding: 0% ;
-}
-
+    max-width: 90% !important;
+    padding: 0%;
+  }
 }
 </style>

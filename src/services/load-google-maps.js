@@ -7,7 +7,9 @@ export function loadGoogleMaps(apiKey) {
 
     const existingScript = document.getElementById("google-maps-script");
     if (existingScript) {
-      existingScript.addEventListener("load", () => resolve(window.google.maps));
+      existingScript.addEventListener("load", () =>
+        resolve(window.google.maps)
+      );
       existingScript.addEventListener("error", reject);
       return;
     }

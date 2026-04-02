@@ -3,22 +3,16 @@
     <div class="stories-block-container">
       <div class="textContainer">
         <h2>From Our Kitchen to Your Screen</h2>
-        <p> Dive into recipes, behind the scenes, and tasty tales.</p>
+        <p>Dive into recipes, behind the scenes, and tasty tales.</p>
       </div>
 
       <div class="stories-container">
-        <PostCard
-          v-for="post in posts"
-          :key="post.id"
-          :post="post"
-        />
+        <PostCard v-for="post in posts" :key="post.id" :post="post" />
       </div>
 
       <!-- Показываем кнопку только если нет лимита -->
       <div class="all-news-button" v-if="!maxPosts">
-        <router-link to="/news">
-          View All News
-        </router-link>
+        <router-link to="/news"> View All News </router-link>
       </div>
     </div>
   </section>
@@ -36,8 +30,8 @@ export default {
   props: {
     maxPosts: {
       type: Number,
-      default: null
-    }
+      default: null,
+    },
   },
   setup(props) {
     const posts = ref([]);
@@ -51,14 +45,11 @@ export default {
           limit(props.maxPosts)
         );
       } else {
-        q = query(
-          collection(db, "posts"),
-          orderBy("date", "desc")
-        );
+        q = query(collection(db, "posts"), orderBy("date", "desc"));
       }
 
       const snapshot = await getDocs(q);
-      posts.value = snapshot.docs.map(doc => ({
+      posts.value = snapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
       }));
@@ -75,7 +66,7 @@ export default {
 .stories-block {
   width: 100%;
   min-height: auto;
-  background-color: #05131F;
+  background-color: #05131f;
   display: flex;
   flex-direction: column;
   padding: 40px 0;
@@ -86,7 +77,7 @@ export default {
   color: white;
   font-size: 56px;
   margin-bottom: 10px;
-  font-family: 'Sneaky' sans-serif;
+  font-family: "Sneaky" sans-serif;
 }
 
 .textContainer {
@@ -122,7 +113,7 @@ export default {
 .all-news-button a {
   display: inline-block;
   padding: 12px 28px;
-  background-color: #F4C73F;
+  background-color: #f4c73f;
   color: black;
   font-weight: bold;
   text-decoration: none;
@@ -135,13 +126,13 @@ export default {
 }
 
 .stories-block p {
-  color: #D7D7D7;
+  color: #d7d7d7;
   font-size: 18px;
   margin: 0 0 30px 0;
-  font-family: 'Lora' sans-serif;
+  font-family: "Lora" sans-serif;
 }
 
-@media (max-width:  480px) {
+@media (max-width: 480px) {
   .stories-container {
     flex-direction: column;
     align-items: center;

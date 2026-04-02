@@ -3,7 +3,7 @@
     <div class="admin-menu-manager">
       <h2>Управление меню</h2>
       <AdminMenuForm @dish-saved="loadMenu" />
-      
+
       <h3>Все блюда</h3>
       <table>
         <thead>
@@ -35,55 +35,59 @@
         </tbody>
       </table>
 
-      <AdminMenuForm 
-      v-if="editingDish" 
-      :initialDish="editingDish" 
-      @dish-saved="onEditSaved" 
+      <AdminMenuForm
+        v-if="editingDish"
+        :initialDish="editingDish"
+        @dish-saved="onEditSaved"
       />
       <AdminUserList />
-         <section class="story-container">
-<AdminPostsStories />
- 
-  </section>  
-  <AdminPostList />
-  <AdminPostEditor />
-  <AdminReservation />
-  <AdminAddChef />
-    </div>    
-  
- 
+      <section class="story-container">
+        <AdminPostsStories />
+      </section>
+      <AdminPostList />
+      <AdminPostEditor />
+      <AdminReservation />
+      <AdminAddChef />
+    </div>
   </AdminLayout>
- 
-
-
 </template>
 
 <script>
-import AdminLayout from './components/AdminLayout.vue';
-import AdminMenuForm from './components/AdminMenuForm.vue';
-import AdminUserList from './components/AdminUserList.vue';
+import AdminLayout from "./components/AdminLayout.vue";
+import AdminMenuForm from "./components/AdminMenuForm.vue";
+import AdminUserList from "./components/AdminUserList.vue";
 import { ref, onMounted } from "vue";
-import { deleteDoc, doc } from 'firebase/firestore';
+import { deleteDoc, doc } from "firebase/firestore";
 import { db } from "@/firebase/firebase";
 import { collection, getDocs } from "firebase/firestore";
-import AdminPostsStories from './components/AdminPostsStories.vue';
-import AdminPostEditor from './components/AdminPostEditor.vue';
-import AdminPostList from './components/AdminPostList.vue';
-import AdminReservation from './components/AdminReservation.vue';
-import AdminAddChef from './components/AdminAddChef.vue';
-
-
+import AdminPostsStories from "./components/AdminPostsStories.vue";
+import AdminPostEditor from "./components/AdminPostEditor.vue";
+import AdminPostList from "./components/AdminPostList.vue";
+import AdminReservation from "./components/AdminReservation.vue";
+import AdminAddChef from "./components/AdminAddChef.vue";
 
 export default {
   name: "AdminMenuManager",
-  components: { AdminLayout, AdminMenuForm, AdminUserList, AdminPostsStories, AdminPostEditor, AdminPostList, AdminReservation, AdminAddChef},
+  components: {
+    AdminLayout,
+    AdminMenuForm,
+    AdminUserList,
+    AdminPostsStories,
+    AdminPostEditor,
+    AdminPostList,
+    AdminReservation,
+    AdminAddChef,
+  },
   setup() {
     const menu = ref([]);
     const editingDish = ref(null);
 
     const loadMenu = async () => {
       const querySnapshot = await getDocs(collection(db, "menuItems"));
-      menu.value = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      menu.value = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
     };
 
     const deleteDish = async (dish) => {
@@ -105,7 +109,7 @@ export default {
     onMounted(loadMenu);
 
     return { menu, loadMenu, editingDish, editDish, onEditSaved, deleteDish };
-  }
+  },
 };
 </script>
 
@@ -119,7 +123,8 @@ table {
   border-collapse: collapse;
   margin-top: 20px;
 }
-th, td {
+th,
+td {
   border: 1px solid #ddd;
   padding: 10px;
   text-align: center;

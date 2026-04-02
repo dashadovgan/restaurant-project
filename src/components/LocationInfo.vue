@@ -4,15 +4,15 @@
       <div class="content-header">
         <h2>Find Platieu Across France</h2>
         <p>
-          Enjoy Platieu's taste at our locations nationwide. 
-          A memorable dining experience is always nearby.
+          Enjoy Platieu's taste at our locations nationwide. A memorable dining
+          experience is always nearby.
         </p>
       </div>
 
       <div class="locations-grid">
-        <div 
-          v-for="location in locations" 
-          :key="location.city" 
+        <div
+          v-for="location in locations"
+          :key="location.city"
           class="location-item"
         >
           <div class="location-title">
@@ -31,25 +31,55 @@
 
 <script setup>
 const locations = [
-  { region: 'Île-de-France', address: '12 Rue de Rivoli', zip: '75001', city: 'Paris' },
-  { region: 'Auvergne-Rhône-Alpes', address: '22 Rue de la République', zip: '69002', city: 'Lyon' },
-  { region: 'Provence-Alpes-Côte d\'Azur', address: '45 Avenue Jean Médecin', zip: '06000', city: 'Nice' },
-  { region: 'Occitanie', address: '10 Rue Alsace Lorraine', zip: '31000', city: 'Toulouse' },
-  { region: 'Nouvelle-Aquitaine', address: '88 Cours Victor Hugo', zip: '33000', city: 'Bordeaux' },
-  { region: 'Hauts-de-France', address: '19 Place Rihour', zip: '59800', city: 'Lille' },
+  {
+    region: "Île-de-France",
+    address: "12 Rue de Rivoli",
+    zip: "75001",
+    city: "Paris",
+  },
+  {
+    region: "Auvergne-Rhône-Alpes",
+    address: "22 Rue de la République",
+    zip: "69002",
+    city: "Lyon",
+  },
+  {
+    region: "Provence-Alpes-Côte d'Azur",
+    address: "45 Avenue Jean Médecin",
+    zip: "06000",
+    city: "Nice",
+  },
+  {
+    region: "Occitanie",
+    address: "10 Rue Alsace Lorraine",
+    zip: "31000",
+    city: "Toulouse",
+  },
+  {
+    region: "Nouvelle-Aquitaine",
+    address: "88 Cours Victor Hugo",
+    zip: "33000",
+    city: "Bordeaux",
+  },
+  {
+    region: "Hauts-de-France",
+    address: "19 Place Rihour",
+    zip: "59800",
+    city: "Lille",
+  },
 ];
 </script>
 
 <style scoped>
 .location-section {
-  background-color: #05131F; 
+  background-color: #05131f;
   color: #ffffff;
   padding: 80px 40px;
-  font-family: 'Georgia', serif; 
+  font-family: "Georgia", serif;
 }
 
 .container {
-  max-width:100%;
+  max-width: 100%;
   margin: 0 auto;
   display: flex;
   gap: 60px;
@@ -63,7 +93,7 @@ const locations = [
 .content-header h2 {
   margin-bottom: 40px;
   font-size: 48px;
-  font-family: 'Cormorant Garamond' sans-serif;
+  font-family: "Cormorant Garamond" sans-serif;
 }
 
 .content-header p {
@@ -71,7 +101,7 @@ const locations = [
   line-height: 1.6;
   max-width: 350px;
   font-weight: 26px;
-  font-family: 'Lora' sans-serif;
+  font-family: "Lora" sans-serif;
 }
 
 .locations-grid {
@@ -86,7 +116,7 @@ const locations = [
   align-items: center;
   gap: 10px;
   margin-bottom: 8px;
-  font-family: 'Lora' sans-serif;
+  font-family: "Lora" sans-serif;
   font-weight: 28px;
 }
 
@@ -106,7 +136,7 @@ const locations = [
   margin: 2px 0;
   color: #aaa;
   font-size: 0.95rem;
-  padding-left: 28px; 
+  padding-left: 28px;
 }
 
 /* Адаптивность для мобилок */

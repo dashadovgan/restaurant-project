@@ -10,11 +10,7 @@
 
     <!-- Секция избранных блюд -->
     <div class="chef-favorites">
-      <div
-        v-for="dish in favorites"
-        :key="dish.id"
-        class="favorite-item"
-      >
+      <div v-for="dish in favorites" :key="dish.id" class="favorite-item">
         <img :src="dish.image" alt="dish image" />
         <div class="favorite-info">
           <div class="category">{{ dish.category }}</div>
@@ -26,13 +22,12 @@
           <p>{{ dish.description }}</p>
         </div>
       </div>
-        <div class="favorites-button">
-         <router-link to="/menu" class="our-menu">
-    Explore Our Menu
-  </router-link>
+      <div class="favorites-button">
+        <router-link to="/menu" class="our-menu">
+          Explore Our Menu
+        </router-link>
+      </div>
     </div>
-    </div>
-  
   </div>
 </template>
 
@@ -176,7 +171,7 @@ export default {
   font-weight: 600;
   color: white;
   margin-bottom: 1%;
-  line-height: 114.99999999999999%
+  line-height: 114.99999999999999%;
 }
 
 .after-topic {
@@ -191,17 +186,17 @@ export default {
   justify-content: center;
   margin-top: 40px;
   margin-bottom: 20px;
-  background-color: #F4C73F; 
+  background-color: #f4c73f;
   color: black;
   border: none;
   border-radius: 50px;
   padding: 12px 28px;
   font-size: 18px;
   cursor: pointer;
-  font-family: 'Lora', sans-serif;
+  font-family: "Lora", sans-serif;
   font-weight: 500;
   transition: 0.3s ease;
-  text-decoration: none; 
+  text-decoration: none;
 }
 
 .our-menu:hover {
@@ -215,7 +210,7 @@ export default {
     padding: 0;
     font-size: 18px;
     border-radius: 30px;
-    font-family: 'Lora', sans-serif;
+    font-family: "Lora", sans-serif;
     font-weight: 500;
   }
 

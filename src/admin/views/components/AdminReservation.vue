@@ -23,7 +23,7 @@
           <td>{{ item.date }}</td>
           <td>{{ item.time }}</td>
           <td>{{ item.guests }}</td>
-          <td>{{ item.request || '—' }}</td>
+          <td>{{ item.request || "—" }}</td>
         </tr>
       </tbody>
     </table>
@@ -33,8 +33,8 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
-import { db } from '@/firebase/firebase';
+import { ref, onMounted } from "vue";
+import { db } from "@/firebase/firebase";
 import { collection, getDocs, query, orderBy } from "firebase/firestore";
 
 const reservations = ref([]);
@@ -42,15 +42,15 @@ const reservations = ref([]);
 onMounted(async () => {
   try {
     const q = query(
-      collection(db, 'reservations'),
-      orderBy('createdAt', 'desc')
+      collection(db, "reservations"),
+      orderBy("createdAt", "desc")
     );
 
     const snapshot = await getDocs(q);
 
-    reservations.value = snapshot.docs.map(doc => ({
+    reservations.value = snapshot.docs.map((doc) => ({
       id: doc.id,
-      ...doc.data()
+      ...doc.data(),
     }));
   } catch (err) {
     console.error("Failed to fetch reservations:", err);
@@ -58,10 +58,7 @@ onMounted(async () => {
 });
 </script>
 
-<style scoped>
-
-</style>
-
+<style scoped></style>
 
 <style scoped>
 .admin-container {
@@ -75,16 +72,15 @@ table {
   margin-top: 20px;
 }
 
-th, td {
+th,
+td {
   border-bottom: 1px solid #2d3748;
   padding: 12px;
   text-align: left;
 }
 
 th {
-  color: #F4C73F;
+  color: #f4c73f;
   font-weight: 600;
 }
-
-
 </style>

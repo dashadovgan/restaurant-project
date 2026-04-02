@@ -6,25 +6,44 @@
       <form @submit.prevent="handleSubmit" class="res-form">
         <div class="input-group full-width">
           <label>Full name</label>
-          <input v-model="form.fullName" type="text" placeholder="Enter your full name." />
+          <input
+            v-model="form.fullName"
+            type="text"
+            placeholder="Enter your full name."
+          />
         </div>
 
         <div class="form-row">
           <div class="input-group">
             <label>Email</label>
-            <input v-model="form.email" type="email" placeholder="We'll send your confirmation here." />
+            <input
+              v-model="form.email"
+              type="email"
+              placeholder="We'll send your confirmation here."
+            />
           </div>
 
           <div class="input-group phone-group">
-            <div class="country-selector" @click="isDropdownOpen = !isDropdownOpen">
+            <div
+              class="country-selector"
+              @click="isDropdownOpen = !isDropdownOpen"
+            >
               <span class="selected-flag">{{ selectedCountry.flag }}</span>
               <span class="selected-code">{{ selectedCountry.code }}</span>
               <span class="chevron">▼</span>
 
               <div v-if="isDropdownOpen" class="country-dropdown" @click.stop>
-                <input v-model="searchQuery" class="search-countries" placeholder="Search country..." />
+                <input
+                  v-model="searchQuery"
+                  class="search-countries"
+                  placeholder="Search country..."
+                />
                 <ul class="country-list">
-                  <li v-for="country in filteredCountries" :key="country.iso" @click="selectCountry(country)">
+                  <li
+                    v-for="country in filteredCountries"
+                    :key="country.iso"
+                    @click="selectCountry(country)"
+                  >
                     <span>{{ country.flag }}</span>
                     <span>{{ country.name }}</span>
                     <span class="code">({{ country.code }})</span>
@@ -32,10 +51,14 @@
                 </ul>
               </div>
             </div>
-            
+
             <div class="phone-input-stack">
               <label>Phone Number</label>
-              <input v-model="form.phone" type="tel" placeholder="So we can reach you if needed." />
+              <input
+                v-model="form.phone"
+                type="tel"
+                placeholder="So we can reach you if needed."
+              />
             </div>
           </div>
         </div>
@@ -44,33 +67,62 @@
         <div class="form-row">
           <div class="input-group has-icon" @click="triggerDatePicker">
             <label>Reservation Date</label>
-            <input ref="dateInput" v-model="form.date" type="date" class="hidden-input" />
-            <div class="display-text">{{ form.date || 'Select your date of visit' }}</div>
-            <img src="@/assets/image/icon.png" class="field-icon" alt="calendar" />
+            <input
+              ref="dateInput"
+              v-model="form.date"
+              type="date"
+              class="hidden-input"
+            />
+            <div class="display-text">
+              {{ form.date || "Select your date of visit" }}
+            </div>
+            <img
+              src="@/assets/image/icon.png"
+              class="field-icon"
+              alt="calendar"
+            />
           </div>
 
           <div class="input-group has-icon" @click="triggerTimePicker">
             <label>Reservation Time</label>
-            <input ref="timeInput" v-model="form.time" type="time" class="hidden-input" min="10:00" max="21:00" />
-            <div class="display-text">{{ form.time || 'Choose preferred time' }}</div>
+            <input
+              ref="timeInput"
+              v-model="form.time"
+              type="time"
+              class="hidden-input"
+              min="10:00"
+              max="21:00"
+            />
+            <div class="display-text">
+              {{ form.time || "Choose preferred time" }}
+            </div>
             <img src="@/assets/image/icon.png" class="field-icon" alt="time" />
           </div>
         </div>
 
         <div class="input-group full-width">
           <label>Number of Guests</label>
-          <input v-model="form.guests" type="number" placeholder="Let us know how many are dining." />
+          <input
+            v-model="form.guests"
+            type="number"
+            placeholder="Let us know how many are dining."
+          />
         </div>
 
         <div class="input-group full-width textarea-group">
           <label>Special Request</label>
-          <textarea v-model="form.request" placeholder="Input text here"></textarea>
+          <textarea
+            v-model="form.request"
+            placeholder="Input text here"
+          ></textarea>
         </div>
 
         <div class="terms-row">
           <input type="checkbox" id="terms" v-model="form.agreed" />
           <label for="terms">
-            By checking the box you agree to our <router-link to="/terms-of-use">Terms of Service</router-link> and <router-link to="/privasy-policy">Privacy Policy</router-link>.
+            By checking the box you agree to our
+            <router-link to="/terms-of-use">Terms of Service</router-link> and
+            <router-link to="/privasy-policy">Privacy Policy</router-link>.
           </label>
         </div>
 
@@ -80,36 +132,34 @@
 
     <!-- Thank You Card -->
     <div v-else class="thank-card-wrapper">
-  <div class="overlay"></div>
-  <ThankYouCard 
-    :transaction-id="transactionId"
-    :date="form.date"
-    :total="totalPrice"
-  />
-</div>
+      <div class="overlay"></div>
+      <ThankYouCard
+        :transaction-id="transactionId"
+        :date="form.date"
+        :total="totalPrice"
+      />
+    </div>
   </div>
 </template>
 
-
 <script setup>
-import { reactive, ref, computed, onMounted } from 'vue';
-import ThankYouCard from './ThankYouCard.vue';
-import { db } from '@/firebase/firebase';
+import { reactive, ref, computed, onMounted } from "vue";
+import ThankYouCard from "./ThankYouCard.vue";
+import { db } from "@/firebase/firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 const dateInput = ref(null);
 const timeInput = ref(null);
 
 const form = reactive({
-  fullName: '',
-  email: '',
-  phone: '',
-  date: '',
-  time: '',
+  fullName: "",
+  email: "",
+  phone: "",
+  date: "",
+  time: "",
   guests: null,
-  request: '',
-  agreed: false
+  request: "",
+  agreed: false,
 });
-
 
 const formSubmitted = ref(false);
 
@@ -120,29 +170,37 @@ const totalPrice = computed(() => {
 });
 
 const transactionId = computed(() => {
-  return 'TRX-' + Math.random().toString(36).substring(2, 10).toUpperCase();
+  return "TRX-" + Math.random().toString(36).substring(2, 10).toUpperCase();
 });
 
-const triggerDatePicker = () => { dateInput.value.showPicker(); };
-const triggerTimePicker = () => { timeInput.value.showPicker(); };
+const triggerDatePicker = () => {
+  dateInput.value.showPicker();
+};
+const triggerTimePicker = () => {
+  timeInput.value.showPicker();
+};
 
 const countries = ref([]);
 const isDropdownOpen = ref(false);
-const searchQuery = ref('');
-const selectedCountry = ref({ flag: '🌐', code: '+', name: 'Select', iso: '' });
+const searchQuery = ref("");
+const selectedCountry = ref({ flag: "🌐", code: "+", name: "Select", iso: "" });
 
 onMounted(async () => {
   try {
-    const res = await fetch('https://restcountries.com/v3.1/all?fields=name,idd,cca2,flag');
+    const res = await fetch(
+      "https://restcountries.com/v3.1/all?fields=name,idd,cca2,flag"
+    );
     const data = await res.json();
-    countries.value = data.map(c => ({
-      name: c.name.common,
-      flag: c.flag,
-      iso: c.cca2,
-      code: (c.idd.root || '') + (c.idd.suffixes ? c.idd.suffixes[0] : '')
-    })).sort((a, b) => a.name.localeCompare(b.name));
+    countries.value = data
+      .map((c) => ({
+        name: c.name.common,
+        flag: c.flag,
+        iso: c.cca2,
+        code: (c.idd.root || "") + (c.idd.suffixes ? c.idd.suffixes[0] : ""),
+      }))
+      .sort((a, b) => a.name.localeCompare(b.name));
 
-    const defaultCountry = countries.value.find(c => c.iso === 'UA');
+    const defaultCountry = countries.value.find((c) => c.iso === "UA");
     if (defaultCountry) selectedCountry.value = defaultCountry;
   } catch (err) {
     console.error("Failed to load countries", err);
@@ -150,26 +208,36 @@ onMounted(async () => {
 });
 
 const filteredCountries = computed(() => {
-  return countries.value.filter(c => 
-    c.name.toLowerCase().includes(searchQuery.value.toLowerCase()) || 
-    c.code.includes(searchQuery.value)
+  return countries.value.filter(
+    (c) =>
+      c.name.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
+      c.code.includes(searchQuery.value)
   );
 });
 
 const selectCountry = (country) => {
   selectedCountry.value = country;
   isDropdownOpen.value = false;
-  searchQuery.value = '';
+  searchQuery.value = "";
 };
 
 // 🔹 Сохранение бронирования в Firebase
 const handleSubmit = async () => {
-  if (!form.time) { alert('Please choose a time'); return; }
-  if (!form.agreed) { alert('You must agree to Terms'); return; }
-  if (form.time < '10:00' || form.time > '21:00') { alert('Reservations are available only from 10:00 to 21:00'); return; }
+  if (!form.time) {
+    alert("Please choose a time");
+    return;
+  }
+  if (!form.agreed) {
+    alert("You must agree to Terms");
+    return;
+  }
+  if (form.time < "10:00" || form.time > "21:00") {
+    alert("Reservations are available only from 10:00 to 21:00");
+    return;
+  }
 
   try {
-    await addDoc(collection(db, 'reservations'), {
+    await addDoc(collection(db, "reservations"), {
       fullName: form.fullName,
       email: form.email,
       phone: selectedCountry.value.code + form.phone,
@@ -177,7 +245,7 @@ const handleSubmit = async () => {
       time: form.time,
       guests: form.guests,
       request: form.request,
-      createdAt: serverTimestamp()
+      createdAt: serverTimestamp(),
     });
 
     formSubmitted.value = true;
@@ -187,8 +255,6 @@ const handleSubmit = async () => {
     alert("Something went wrong. Try again!");
   }
 };
-
-
 </script>
 
 <style scoped>
@@ -235,7 +301,8 @@ const handleSubmit = async () => {
   margin-bottom: 6px;
 }
 
-.input-group input, .input-group textarea {
+.input-group input,
+.input-group textarea {
   background: transparent;
   border: none;
   color: white;
@@ -281,8 +348,8 @@ const handleSubmit = async () => {
   border-right: 1px solid #2d3748;
   cursor: pointer;
 }
-.terms-row a{
-  color:#F4C73F;
+.terms-row a {
+  color: #f4c73f;
 }
 .phone-input-stack {
   display: flex;
@@ -332,16 +399,16 @@ const handleSubmit = async () => {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(5, 10, 20, 0.85); 
+  background: rgba(5, 10, 20, 0.85);
   border-radius: 12px;
   z-index: 1;
 }
 
 .thank-you-card {
   position: relative;
-  z-index: 2; 
+  z-index: 2;
   width: 100%;
-  background-color: #0a0e17; 
+  background-color: #0a0e17;
   border-radius: 12px;
   color: white;
   text-align: center;
@@ -365,7 +432,7 @@ const handleSubmit = async () => {
 
 .submit-btn {
   width: 100%;
-  background: #F4C73F;
+  background: #f4c73f;
   color: #000;
   padding: 18px;
   border-radius: 35px;
@@ -405,8 +472,6 @@ const handleSubmit = async () => {
     width: 100%;
   }
 
-  
-
   .country-selector {
     border-right: none;
     border-bottom: 1px solid #2d3748;
@@ -435,5 +500,4 @@ const handleSubmit = async () => {
     align-items: flex-start;
   }
 }
-
 </style>

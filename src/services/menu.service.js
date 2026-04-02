@@ -1,6 +1,17 @@
 import { db } from "@/firebase/firebase";
-import { collection, addDoc, updateDoc, doc, getDocs } from "firebase/firestore";
-import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from "firebase/storage";
+import {
+  collection,
+  addDoc,
+  updateDoc,
+  doc,
+  getDocs,
+} from "firebase/firestore";
+import {
+  getStorage,
+  ref as storageRef,
+  uploadBytes,
+  getDownloadURL,
+} from "firebase/storage";
 
 const storage = getStorage();
 const menuCollection = collection(db, "menuItems");

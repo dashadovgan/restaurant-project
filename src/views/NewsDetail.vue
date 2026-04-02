@@ -6,8 +6,8 @@
 
 <script>
 export default {
-  name: 'NewsDeleil'
-}
+  name: "NewsDeleil",
+};
 </script>
 
 <style scoped>

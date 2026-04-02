@@ -38,10 +38,10 @@ export default {
 
     const loadUsers = async () => {
       const querySnapshot = await getDocs(collection(db, "contacts")); // берем данные из contacts
-      users.value = querySnapshot.docs.map(doc => ({
+      users.value = querySnapshot.docs.map((doc) => ({
         id: doc.id,
         called: false, // чекбокс по умолчанию false
-        ...doc.data()
+        ...doc.data(),
       }));
     };
 
@@ -54,7 +54,7 @@ export default {
     onMounted(loadUsers);
 
     return { users, formatDate };
-  }
+  },
 };
 </script>
 
@@ -69,7 +69,8 @@ table {
   margin-top: 15px;
 }
 
-th, td {
+th,
+td {
   border: 1px solid #ddd;
   padding: 10px;
   color: white;

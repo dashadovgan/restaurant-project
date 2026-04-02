@@ -1,12 +1,13 @@
 <template>
   <div class="background-section">
-    <slot></slot> <!-- сюда можно вставлять любой контент поверх фона -->
+    <slot></slot>
+    <!-- сюда можно вставлять любой контент поверх фона -->
   </div>
 </template>
 
 <script>
 export default {
-  name: "BackgroundSection"
+  name: "BackgroundSection",
 };
 </script>
 
@@ -15,7 +16,7 @@ export default {
   position: relative;
   width: 100%;
   min-height: 100vh;
-  background-image: url('@/assets/image/background.png');
+  background-image: url("@/assets/image/background.png");
   background-size: cover; /* изображение покрывает весь блок */
   background-position: center;
   background-repeat: no-repeat;
@@ -40,11 +41,11 @@ export default {
 
 .background-section > * {
   position: relative;
-  z-index: 2; 
+  z-index: 2;
 }
 
 /* Мобильная версия */
-@media(max-width:480px){
+@media (max-width: 480px) {
   .background-section {
     height: auto;
     background-size: cover;

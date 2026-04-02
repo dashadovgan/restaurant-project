@@ -1,16 +1,14 @@
 <template>
   <div class="overlay" @click.self="$emit('close')">
-<div
-  class="modal"
-  v-motion
-  :initial="{ scale: 0.9, opacity: 0 }"
-  :enter="{ scale: 1, opacity: 1 }"
->
-
+    <div
+      class="modal"
+      v-motion
+      :initial="{ scale: 0.9, opacity: 0 }"
+      :enter="{ scale: 1, opacity: 1 }"
+    >
       <button class="close" @click="$emit('close')">×</button>
 
       <img :src="chef.imageUrl" />
-
 
       <h2>{{ chef.name }}</h2>
       <span>{{ chef.role }}</span>
@@ -21,13 +19,12 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue'
+import { defineProps } from "vue";
 
 defineProps({
-  chef: Object
-})
+  chef: Object,
+});
 </script>
-
 
 <style scoped>
 .overlay {
