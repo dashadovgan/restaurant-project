@@ -1,18 +1,10 @@
 <template>
   <div class="admin-menu-form">
-    <h2>{{ isEdit ? "Редактировать блюдо" : "Добавить блюдо" }}</h2>
+    <h2>{{ editDishOption }}</h2>
     <form @submit.prevent="submitDish">
       <input v-model="dish.name" placeholder="Название блюда" required />
-      <textarea
-        v-model="dish.description"
-        placeholder="Описание блюда"
-      ></textarea>
-      <input
-        v-model.number="dish.price"
-        type="number"
-        placeholder="Цена"
-        required
-      />
+      <textarea v-model="dish.description" placeholder="Описание блюда"></textarea>
+      <input v-model.number="dish.price" type="number" placeholder="Цена" required />
 
       <select v-model="dish.category" required>
         <option disabled value="">Выбери категорию</option>
@@ -36,14 +28,14 @@
       </div>
 
       <button type="submit">
-        {{ isEdit ? "Сохранить изменения" : "Добавить блюдо" }}
+        {{ editSaveButton }}
       </button>
     </form>
   </div>
 </template>
 
 <script>
-import { ref, watch } from "vue";
+import { ref, watch, computed } from "vue";
 import { MenuService } from "@/services/menu.service";
 export default {
   name: "AdminMenuForm",
@@ -51,6 +43,9 @@ export default {
     initialDish: Object,
   },
   setup(props, { emit }) {
+    const editSaveButton = computed(() => {
+      return isEdit.value ? "Сохранить изменения" : "Добавить блюдо"
+    })
     const isEdit = ref(!!props.initialDish);
     const dish = ref({
       name: "",
@@ -81,6 +76,9 @@ export default {
         isEdit.value = !!newVal;
       }
     );
+    const editDishOption = computed(() => {
+      return isEdit.value ? "Редактировать блюдо" : "Добавить блюдо"
+    })
     const uploadImage = async (event) => {
       const file = event.target.files[0];
       const url = await MenuService.uploadImage(file);
@@ -103,7 +101,7 @@ export default {
       };
       isEdit.value = false;
     };
-    return { dish, uploadImage, submitDish, isEdit };
+    return { dish, uploadImage, submitDish, isEdit, editDishOption, editSaveButton };
   },
 };
 </script>
@@ -116,6 +114,7 @@ export default {
   flex-direction: column;
   gap: 15px;
 }
+
 input,
 textarea,
 select,
@@ -124,12 +123,14 @@ button {
   padding: 8px;
   font-size: 16px;
 }
+
 button {
   background-color: #1b1b1b;
   color: #fff;
   border: none;
   cursor: pointer;
 }
+
 .preview {
   margin-top: 10px;
   max-width: 150px;

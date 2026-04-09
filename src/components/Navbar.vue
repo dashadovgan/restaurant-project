@@ -16,14 +16,10 @@
         <router-link to="/menu" active-class="active-link">Menu</router-link>
       </li>
       <li>
-        <router-link to="/our-story" active-class="active-link"
-          >Our Story</router-link
-        >
+        <router-link to="/our-story" active-class="active-link">Our Story</router-link>
       </li>
       <li>
-        <router-link to="/location" active-class="active-link"
-          >Location</router-link
-        >
+        <router-link to="/location" active-class="active-link">Location</router-link>
       </li>
       <li>
         <router-link to="/news" active-class="active-link">News</router-link>
@@ -66,13 +62,16 @@ export default {
   color: white;
   text-shadow: 0 0 5px white;
 }
+
 .timeButton {
   display: none;
 }
+
 ul {
   padding: 0;
   margin: 0;
 }
+
 .navbar {
   display: flex;
   align-items: center;
@@ -93,11 +92,13 @@ ul {
   align-items: center;
   text-decoration: none;
 }
+
 .logo img {
   width: 125.83px;
   height: 40px;
   margin-left: 50px;
 }
+
 .nav-links {
   display: flex;
   gap: 30px;
@@ -115,24 +116,30 @@ ul {
   color: #d7d7d7;
   font-weight: 400;
 }
+
 .nav-links li a:hover {
   color: white;
   text-shadow: 0 0 5px white;
 }
+
 .action-button {
   display: flex;
   margin-right: 50px;
   font-weight: 400;
   font-size: 16px;
 }
+
 .action-button:hover {
   font-weight: 600;
 }
+
 .burger {
   display: none;
 }
+
 /* --- мобильная версия через media --- */
 @media (max-width: 900px) {
+
   html,
   body {
     margin: 0;
@@ -140,10 +147,12 @@ ul {
     height: 100%;
     width: 100%;
   }
+
   .action-button {
     display: none;
     margin-right: 0;
   }
+
   .nav-links {
     position: fixed;
     top: 0;
@@ -159,34 +168,44 @@ ul {
     display: none;
     z-index: 1000;
   }
+
   .nav-links li a {
     font-size: 30px;
     color: white;
   }
+
   .nav-links.active {
     display: flex;
     justify-content: flex-start;
     padding-top: 120px;
     width: 100%;
   }
+
   .timeButton {
     display: flex;
   }
+
   .burger {
     display: flex;
     flex-direction: column;
     gap: 5px;
     cursor: pointer;
+    position: relative;
+    width: 30px;
+    height: 22px;
     z-index: 1001;
   }
+
   .burger div {
     width: 30px;
     height: 4px;
     background-color: #fff;
     border-radius: 2px;
     transition: all 0.3s ease;
-    transform-origin: center;
+
+
   }
+
   .logo img {
     width: 125.83px;
     height: 40px;
@@ -194,14 +213,17 @@ ul {
     z-index: 1006;
     position: relative;
   }
+
   .burger.active div:nth-child(1) {
-    transform: rotate(45deg) translate(7px, 7px);
+    transform: translateY(9px) rotate(45deg);
   }
+
   .burger.active div:nth-child(2) {
     opacity: 0;
   }
+
   .burger.active div:nth-child(3) {
-    transform: rotate(-45deg) translate(6px, -6px);
+    transform: translateY(-9px) rotate(-45deg);
   }
 
   .nav-links li reserve-button {
@@ -209,6 +231,7 @@ ul {
     display: flex;
     justify-content: flex-end;
   }
+
   .navbar {
     justify-content: space-between;
     display: flex;
@@ -218,13 +241,16 @@ ul {
     padding: 15px 10px;
     z-index: 1005;
   }
+
   .menu-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh; /* занимает весь экран */
-    background-color: #010614; /* темный фон */
+    height: 100vh;
+    /* занимает весь экран */
+    background-color: #010614;
+    /* темный фон */
   }
 }
 </style>

@@ -17,7 +17,7 @@ export default {
   width: 100%;
   min-height: 100vh;
   background-image: url("@/assets/image/background.png");
-  background-size: cover; /* изображение покрывает весь блок */
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   display: flex;
@@ -35,11 +35,12 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background: #00152899; /* полупрозрачный наложенный слой */
+  background: #00152899;
+  /* полупрозрачный наложенный слой */
   z-index: 1;
 }
 
-.background-section > * {
+.background-section>* {
   position: relative;
   z-index: 2;
 }

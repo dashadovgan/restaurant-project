@@ -2,7 +2,7 @@
   <background-section>
     <section class="welcome">
       <img src="@/assets/image/diadem-decor.png" alt="decor" />
-      <h3>Welcome to the restourant</h3>
+      <h3>Welcome to the restaurant</h3>
       <p>
         Savor exquisite culinary creations prepared with fresh, local
         ingredients. Each dish celebrates vibrant flavors, presented in an
@@ -102,13 +102,17 @@ export default {
   align-items: flex-start;
   background-color: #01101d;
 }
+
 .news-section {
   background-color: #05131f;
 }
+
 .stories-wrapper {
   display: flex;
-  flex-direction: row; /* карточки в ряд */
-  flex-wrap: wrap; /* переход на новую строку при необходимости */
+  flex-direction: row;
+  /* карточки в ряд */
+  flex-wrap: wrap;
+  /* переход на новую строку при необходимости */
   justify-content: center;
   gap: 20px;
   width: 100%;
@@ -116,7 +120,8 @@ export default {
 
 .news-button {
   display: flex;
-  justify-content: center; /* кнопка по центру под карточками */
+  justify-content: center;
+  /* кнопка по центру под карточками */
 
   width: 100%;
 }
@@ -144,6 +149,7 @@ export default {
   margin-top: 20px;
   justify-content: center;
 }
+
 .offers-btn .our-menu {
   display: inline-flex;
   align-items: center;
@@ -164,7 +170,8 @@ export default {
   font-size: 16px;
 
   margin-right: 50px;
-  text-decoration: none; /* важно для router-link */
+  text-decoration: none;
+  /* важно для router-link */
 }
 
 .offers-btn .our-menu:hover {
@@ -178,9 +185,11 @@ export default {
   width: 55%;
   padding-top: 0;
 }
+
 .welcome img {
   width: 262.5px;
 }
+
 .welcome p {
   font-family: "Lora", sans-serif;
   font-weight: 400;
@@ -188,6 +197,7 @@ export default {
   line-height: 26px;
   margin: 0 0 0 0;
 }
+
 .welcome h3 {
   font-family: "Cormorant Garamond", sans-serif;
   font-style: italic;
@@ -197,6 +207,7 @@ export default {
   color: #f9e68e;
   margin: 0 0 20px 0;
 }
+
 .welcome h1 {
   font-family: "Cormorant Garamond", sans-serif;
   font-size: 92px;
@@ -205,6 +216,7 @@ export default {
   height: 25%;
   margin: 0 0 10px 0;
 }
+
 .about-us {
   background-color: #01101d;
   width: 100%;
@@ -212,6 +224,7 @@ export default {
   display: flex;
   justify-content: center;
 }
+
 .about-us-container {
   padding-top: 30px;
   display: flex;
@@ -238,6 +251,7 @@ export default {
   justify-items: flex-end;
   width: 100%;
 }
+
 .about-us-text p {
   color: white;
   font-size: 18px;
@@ -245,6 +259,7 @@ export default {
   font-family: "Lora", sans-serif;
   font-weight: 400;
 }
+
 .about-us-content {
   display: flex;
   flex-direction: column;
@@ -259,6 +274,7 @@ export default {
   justify-content: center;
   width: 100%;
 }
+
 .faq-container {
   background-color: #05131f;
   padding: 5% 5%;
@@ -266,6 +282,7 @@ export default {
   justify-content: center;
   width: 100%;
 }
+
 .contact-container {
   display: flex;
   width: 100%;
@@ -273,13 +290,14 @@ export default {
   gap: 5%;
   flex-wrap: nowrap;
   align-items: stretch;
-  flex-direction: row !important ;
+  flex-direction: row !important;
 }
 
-.contact-container > * {
+.contact-container>* {
   flex: 1 1 0;
   min-width: 40%;
 }
+
 .map-section {
   display: flex;
   justify-content: center;
@@ -287,6 +305,7 @@ export default {
   width: 100%;
   padding: 60px 60px;
 }
+
 .map-section #map {
   width: 80% !important;
   height: 400px;
@@ -301,6 +320,7 @@ export default {
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   }
+
   .map-section {
     display: flex;
     justify-content: center;
@@ -326,6 +346,7 @@ export default {
     margin: 0;
     padding-top: 141px;
   }
+
   .welcome {
     gap: 16px;
     margin-top: 50px;
@@ -336,6 +357,7 @@ export default {
     max-width: 80%;
     height: auto;
   }
+
   .welcome h1 {
     font-size: 48px;
     line-height: 1.3;
@@ -345,6 +367,7 @@ export default {
     text-align: center;
     margin: 0 auto 10px auto;
   }
+
   .welcome h3 {
     font-size: 24px;
     font-style: normal;
@@ -372,14 +395,17 @@ export default {
     width: 180px;
     margin-right: 0;
   }
+
   .about-us {
     justify-content: center;
   }
+
   .about-us-container h3 {
     width: auto;
     margin: 0;
     padding: 0;
   }
+
   .about-us-container {
     padding-top: 70px;
     display: flex;
@@ -389,16 +415,19 @@ export default {
     align-items: flex-start;
     text-align: left;
   }
+
   .about-us-text {
     width: 100%;
     flex-direction: column;
     gap: 10px;
   }
+
   .about-us-content {
     width: 100%;
   }
+
   .contact-container {
-    flex-direction: column !important ;
+    flex-direction: column !important;
     gap: 30px;
   }
 }

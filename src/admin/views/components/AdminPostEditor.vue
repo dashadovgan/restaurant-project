@@ -24,31 +24,19 @@
       </div>
 
       <!-- text -->
-      <div
-        v-if="block.type === 'text'"
-        contenteditable="true"
-        class="text-block"
-        @input="block.content = $event.target.innerText"
-      >
+      <div v-if="block.type === 'text'" contenteditable="true" class="text-block"
+        @input="block.content = $event.target.innerText">
         {{ block.content }}
       </div>
 
       <!-- highlight -->
-      <textarea
-        v-if="block.type === 'highlight'"
-        v-model="block.content"
-        class="highlight"
-        placeholder="Highlighted text"
-      />
+      <textarea v-if="block.type === 'highlight'" v-model="block.content" class="highlight"
+        placeholder="Highlighted text" />
 
       <!-- image -->
       <div v-if="block.type === 'image'" class="image-row">
         <div v-for="(url, i) in block.urls" :key="i" class="image-upload">
-          <input
-            type="file"
-            accept="image/*"
-            @change="uploadImage($event, index, i)"
-          />
+          <input type="file" accept="image/*" @change="uploadImage($event, index, i)" />
           <img v-if="url" :src="url" />
         </div>
 
@@ -103,7 +91,6 @@ const intro = ref("");
 const coverImage = ref("");
 const contentBlocks = ref([]);
 
-/* LOAD POST FOR EDIT */
 onMounted(async () => {
   if (!postId) return;
 
@@ -119,7 +106,6 @@ onMounted(async () => {
   }
 });
 
-/* COVER IMAGE */
 const uploadCoverImage = async (e) => {
   const file = e.target.files[0];
   if (!file) return;
@@ -130,7 +116,7 @@ const uploadCoverImage = async (e) => {
   coverImage.value = await getDownloadURL(refFile);
 };
 
-/* BLOCKS */
+
 const addBlock = (type) => {
   if (type === "image") {
     contentBlocks.value.push({ type, urls: [""] });
@@ -159,7 +145,7 @@ const uploadImage = async (e, blockIndex, imgIndex) => {
   contentBlocks.value[blockIndex].urls[imgIndex] = url;
 };
 
-/* SAVE */
+
 const savePost = async () => {
   if (!title.value || !coverImage.value) {
     alert("Title and cover image required");
@@ -193,12 +179,14 @@ const savePost = async () => {
   flex-direction: column;
   gap: 16px;
 }
+
 .text-block {
   min-height: 50px;
   padding: 10px;
   background: #bfbcb2;
   border-radius: 8px;
-  white-space: pre-wrap; /* сохраняем переносы строк */
+  white-space: pre-wrap;
+  /* сохраняем переносы строк */
 }
 
 .cover-preview {

@@ -8,7 +8,7 @@
     <textarea v-model="description" placeholder="Full description"></textarea>
     <input type="file" @change="handleFile" />
     <button @click="saveChef" :disabled="loading">
-      {{ loading ? "Saving..." : "Save Chef" }}
+      {{ saveButtonText }}
     </button>
 
     <hr />
@@ -33,10 +33,7 @@
           <td>{{ chef.name }}</td>
           <td>{{ chef.role }}</td>
           <td>
-            {{
-              chef.description.slice(0, 50) +
-              (chef.description.length > 50 ? "..." : "")
-            }}
+            {{ getShortDescription(chef.description) }}
           </td>
           <td>
             <button @click="editChef(chef)">Edit</button>
@@ -47,22 +44,15 @@
     </table>
 
     <!-- Модальное окно редактирования -->
-    <div
-      v-if="editingChef"
-      class="modal-overlay"
-      @click.self="editingChef = null"
-    >
+    <div v-if="editingChef" class="modal-overlay" @click.self="editingChef = null">
       <div class="modal">
         <h3>Edit Chef</h3>
         <input v-model="editingChef.name" placeholder="Name" />
         <input v-model="editingChef.role" placeholder="Role" />
-        <textarea
-          v-model="editingChef.description"
-          placeholder="Full description"
-        ></textarea>
+        <textarea v-model="editingChef.description" placeholder="Full description"></textarea>
         <input type="file" @change="handleEditFile" />
         <button @click="saveEditChef" :disabled="loading">
-          {{ loading ? "Saving..." : "Save Changes" }}
+          {{ editButtonText }}
         </button>
         <button @click="editingChef = null">Cancel</button>
       </div>
@@ -71,7 +61,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, computed } from "vue";
 import { db, storage } from "@/firebase/firebase";
 import {
   collection,
@@ -102,6 +92,17 @@ const editFile = ref(null);
 const handleFile = (e) => (file.value = e.target.files[0]);
 const handleEditFile = (e) => (editFile.value = e.target.files[0]);
 
+const saveButtonText = computed(() => {
+  return loading.value ? "Saving..." : "Save Chef"
+})
+const editButtonText = computed(() => {
+  return loading.value ? "Saving..." : "Save Changes"
+})
+
+const getShortDescription = (text) => {
+  if (!text) return '';
+  return text.length > 50 ? text.slice(0, 50) + '...' : text;
+}
 // Загрузка существующих шефов
 const loadChefs = async () => {
   const snapshot = await getDocs(collection(db, "chefs"));
@@ -196,11 +197,10 @@ const saveEditChef = async () => {
   }
 };
 
-// Удаление шефа
+
 const deleteChef = async (chef) => {
   if (!confirm("Are you sure you want to delete this chef?")) return;
   try {
-    // Удаляем картинку из Storage
     if (chef.imageUrl) {
       try {
         const imageRef = storageRef(storage, chef.imageUrl);
@@ -210,7 +210,6 @@ const deleteChef = async (chef) => {
       }
     }
 
-    // Удаляем документ
     const chefRef = doc(db, "chefs", chef.id);
     await deleteDoc(chefRef);
 
@@ -232,32 +231,38 @@ onMounted(loadChefs);
   flex-direction: column;
   gap: 20px;
 }
+
 input,
 textarea,
 button {
   padding: 12px;
   font-size: 14px;
 }
+
 table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
 }
+
 th,
 td {
   border: 1px solid #ccc;
   padding: 10px;
   text-align: left;
 }
+
 .thumb {
   width: 80px;
   height: 60px;
   object-fit: cover;
   border-radius: 6px;
 }
+
 button {
   cursor: pointer;
 }
+
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -267,6 +272,7 @@ button {
   justify-content: center;
   z-index: 999;
 }
+
 .modal {
   background: #0a0e17;
   padding: 30px;
