@@ -4,48 +4,26 @@
     <form @submit.prevent="submitForm">
       <!-- Full name -->
       <div class="form-group field">
-        <input
-          id="fullName"
-          v-model="fullName"
-          placeholder="Input Text Here"
-          required
-        />
+        <input id="fullName" v-model="fullName" placeholder="Input Text Here" required />
         <label for="fullName">Full Name</label>
       </div>
 
       <!-- Phone number (vue-tel-input) -->
       <div class="form-group field tel-group">
-        <vue-tel-input
-          v-model="phoneNumber"
-          default-country="ua"
-          :preferred-countries="['us', 'gb', 'ua']"
-          :placeholder="'+380 67 123 4567'"
-          @country-changed="onCountryChanged"
-          required
-        />
+        <vue-tel-input v-model="phoneNumber" default-country="ua" :preferred-countries="['us', 'gb', 'ua']"
+          :placeholder="'+380 67 123 4567'" @country-changed="onCountryChanged" required />
         <label>Phone Number</label>
       </div>
 
       <!-- Email -->
       <div class="form-group field">
-        <input
-          id="email"
-          v-model="email"
-          type="email"
-          placeholder="Input Text Here"
-          required
-        />
+        <input id="email" v-model="email" type="email" placeholder="Input Text Here" required />
         <label for="email">Email</label>
       </div>
 
       <!-- Special request (big textarea) -->
       <div class="form-group field">
-        <textarea
-          id="request"
-          v-model="request"
-          placeholder="Input Text Here"
-          rows="6"
-        ></textarea>
+        <textarea id="request" v-model="request" placeholder="Input Text Here" rows="6"></textarea>
         <label for="request">Special Request</label>
       </div>
 
@@ -67,9 +45,10 @@
 </template>
 
 <script>
+import { createContactMessage } from "@/services/contact.service";
+import { serverTimestamp } from "firebase/firestore";
 import { ref } from "vue";
-import { db } from "@/firebase/firebase";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+
 
 export default {
   name: "ContactUs",
@@ -95,7 +74,7 @@ export default {
         return;
       }
       try {
-        await addDoc(collection(db, "contacts"), {
+        await createContactMessage({
           fullName: fullName.value,
           phoneNumber: phoneNumber.value,
           email: email.value,
@@ -191,15 +170,15 @@ export default {
   font-weight: 400;
 }
 
-.field input:focus + label,
-.field textarea:focus + label {
+.field input:focus+label,
+.field textarea:focus+label {
   color: #ffd600;
 }
 
 /* --- Стилизация vue-tel-input --- */
 
 /* Поле ввода */
-.tel-group >>> .vti__input {
+.tel-group>>>.vti__input {
   background-color: #010614 !important;
   color: #fff !important;
   width: 100% !important;
@@ -208,11 +187,12 @@ export default {
   outline: none !important;
   padding-top: 28px !important;
   padding-bottom: 12px !important;
-  padding-left: 15px !important; /* место под флаг */
+  padding-left: 15px !important;
+  /* место под флаг */
   font-size: 14px !important;
 }
 
-.tel-group >>> .vti__input::placeholder {
+.tel-group>>>.vti__input::placeholder {
   color: rgba(255, 255, 255, 0.6) !important;
   font-size: 14px !important;
 }
@@ -229,7 +209,7 @@ export default {
 }
 
 /* Флаг */
-.tel-group >>> .vti__selected-flag {
+.tel-group>>>.vti__selected-flag {
   position: absolute !important;
   left: 14px !important;
   top: 50% !important;
@@ -242,7 +222,7 @@ export default {
 }
 
 /* Дропдаун */
-.tel-group >>> .vti__dropdown {
+.tel-group>>>.vti__dropdown {
   background-color: #0b0f1f !important;
   color: #fff !important;
   border-radius: 12px !important;
@@ -250,19 +230,19 @@ export default {
   margin-top: 4px !important;
 }
 
-.tel-group >>> .vti__dropdown-item {
+.tel-group>>>.vti__dropdown-item {
   padding: 6px 10px !important;
   background-color: #010614;
 }
 
-.tel-group >>> .vti__dropdown-item:hover {
+.tel-group>>>.vti__dropdown-item:hover {
   background: #ffd600 !important;
   color: #111 !important;
 }
 
 /* Hover & Focus */
-.tel-group >>> .vti__input:hover,
-.tel-group >>> .vti__input:focus {
+.tel-group>>>.vti__input:hover,
+.tel-group>>>.vti__input:focus {
   background-color: #0b0f1f !important;
   border-color: #ffd600 !important;
 }
@@ -293,6 +273,7 @@ button:disabled {
   gap: 10px;
   align-items: center;
 }
+
 .checkbox-group a {
   color: #ffa500;
   text-decoration: underline;
@@ -303,5 +284,6 @@ p {
   font-weight: bold;
   margin-top: 6px;
 }
+
 /* Фон списка */
 </style>

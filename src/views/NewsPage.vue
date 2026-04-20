@@ -36,7 +36,7 @@
 
       <!-- Кнопка Показать ещё -->
       <div class="all-news-button" v-if="showLoadMoreButton">
-        <button @click="loadMorePosts">View more</button>
+        <AppButton @click="loadMorePosts">View more</AppButton>
       </div>
     </div>
     <div class="subscribe-container">
@@ -60,10 +60,11 @@ import PostCard from "@/components/PostCard.vue";
 import BackgroundSection from "@/components/BackgroundSection.vue";
 import FinderSection from "@/components/FinderSection.vue";
 import DescribeSection from "@/components/DescribeSection.vue";
+import AppButton from "@/components/ui/AppButton.vue";
 
 export default {
   name: "OurStoryPage",
-  components: { PostCard, BackgroundSection, FinderSection, DescribeSection },
+  components: { PostCard, BackgroundSection, FinderSection, DescribeSection, AppButton },
   setup() {
     const posts = ref([]); // все загруженные посты
     const displayedPosts = ref([]); // посты, которые показываются
@@ -160,6 +161,7 @@ export default {
 .subscribe-container {
   padding-top: 20px;
 }
+
 .stories-block {
   width: 100%;
   min-height: 100vh;
@@ -186,21 +188,6 @@ export default {
   display: flex;
   justify-content: center;
   margin-top: 30px;
-}
-
-.all-news-button button {
-  padding: 12px 28px;
-  background-color: #f4c73f;
-  color: black;
-  font-weight: bold;
-  border-radius: 20px;
-  cursor: pointer;
-  border: none;
-  transition: background 0.3s;
-}
-
-.all-news-button button:hover {
-  background-color: #ae8e2c;
 }
 
 .pre-post-container {
@@ -306,6 +293,7 @@ export default {
   .text-container {
     width: 100%;
   }
+
   .stories-block-container {
     width: 95%;
   }
@@ -314,6 +302,7 @@ export default {
     flex-direction: column;
     align-items: center;
   }
+
   .pre-post-container {
     flex-direction: column;
     align-items: stretch;
@@ -337,10 +326,12 @@ export default {
   .finder-wrapper {
     width: 100%;
   }
-  .stories-container > * {
+
+  .stories-container>* {
     width: 100%;
     max-width: 95%;
   }
+
   .all-news-button button {
     width: 100%;
     max-width: 240px;

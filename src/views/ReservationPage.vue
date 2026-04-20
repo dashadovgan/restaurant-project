@@ -31,6 +31,7 @@ export default {
   padding-top: 50px;
   padding-bottom: 50px;
 }
+
 .welcome {
   flex-direction: column;
   display: flex;

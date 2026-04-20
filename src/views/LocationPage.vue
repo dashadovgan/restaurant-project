@@ -52,15 +52,18 @@ export default {
   width: 100%;
   padding: 60px 60px;
 }
+
 .map-section #map {
   width: 80% !important;
   height: 400px;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
+
 .location-page {
-  background-color: #01101d;
+  background-color: var(--color-main);
 }
+
 .contact-container {
   display: flex;
   width: 100%;
@@ -68,8 +71,9 @@ export default {
   gap: 5%;
   flex-wrap: nowrap;
   align-items: stretch;
-  flex-direction: row !important ;
+  flex-direction: row !important;
 }
+
 .contact-section {
   background-color: #05131f;
   padding: 5% 5%;
@@ -77,10 +81,12 @@ export default {
   justify-content: center;
   width: 100%;
 }
-.contact-container > * {
+
+.contact-container>* {
   flex: 1 1 0;
   min-width: 40%;
 }
+
 .welcome {
   flex-direction: column;
   display: flex;
@@ -90,9 +96,11 @@ export default {
   width: 55%;
   padding-top: 0;
 }
+
 .welcome img {
   width: 262.5px;
 }
+
 .welcome p {
   font-family: "Lora", sans-serif;
   font-weight: 400;
@@ -100,6 +108,7 @@ export default {
   line-height: 26px;
   margin: 0 0 0 0;
 }
+
 .welcome h1 {
   font-family: "Cormorant Garamond", sans-serif;
   line-height: 120%;
@@ -108,10 +117,18 @@ export default {
   color: white;
   margin: 0 0 20px 0;
 }
+
 .all-location-info {
   display: flex;
   justify-content: center;
 }
+
+@media (max-width: 750px) {
+  .contact-container {
+    flex-direction: column !important;
+  }
+}
+
 @media (max-width: 480px) {
   .map-section #map {
     width: 100% !important;
@@ -119,6 +136,7 @@ export default {
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   }
+
   .map-section {
     display: flex;
     justify-content: center;
@@ -126,6 +144,7 @@ export default {
     width: 100%;
     padding: 20px;
   }
+
   .welcome p {
     font-family: "Lora", sans-serif;
     font-size: 18px;
@@ -140,8 +159,9 @@ export default {
     width: 130%;
     margin: 0 0 5px 0;
   }
+
   .contact-container {
-    flex-direction: column !important ;
+    flex-direction: column !important;
     gap: 30px;
   }
 }

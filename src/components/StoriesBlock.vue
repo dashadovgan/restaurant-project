@@ -12,7 +12,11 @@
 
       <!-- Показываем кнопку только если нет лимита -->
       <div class="all-news-button" v-if="!maxPosts">
-        <router-link to="/news"> View All News </router-link>
+        <router-link to="/news">
+          <AppButton>
+            View All News
+          </AppButton>
+        </router-link>
       </div>
     </div>
   </section>
@@ -20,13 +24,13 @@
 
 <script>
 import { ref, onMounted } from "vue";
-import { collection, getDocs, query, orderBy, limit } from "firebase/firestore";
-import { db } from "@/firebase/firebase";
 import PostCard from "@/components/PostCard.vue";
+import AppButton from "./ui/AppButton.vue";
+import { fetchPosts } from "@/services/post.service";
 
 export default {
   name: "StoriesBlock",
-  components: { PostCard },
+  components: { PostCard, AppButton },
   props: {
     maxPosts: {
       type: Number,
@@ -37,22 +41,7 @@ export default {
     const posts = ref([]);
 
     const loadPosts = async () => {
-      let q;
-      if (props.maxPosts) {
-        q = query(
-          collection(db, "posts"),
-          orderBy("date", "desc"),
-          limit(props.maxPosts)
-        );
-      } else {
-        q = query(collection(db, "posts"), orderBy("date", "desc"));
-      }
-
-      const snapshot = await getDocs(q);
-      posts.value = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
+      posts.value = await fetchPosts(props.maxPosts)
     };
 
     onMounted(loadPosts);
@@ -110,21 +99,6 @@ export default {
   padding-top: 20px;
 }
 
-.all-news-button a {
-  display: inline-block;
-  padding: 12px 28px;
-  background-color: #f4c73f;
-  color: black;
-  font-weight: bold;
-  text-decoration: none;
-  border-radius: 20px;
-  transition: background 0.3s;
-}
-
-.all-news-button a:hover {
-  background-color: #ae8e2c;
-}
-
 .stories-block p {
   color: #d7d7d7;
   font-size: 18px;
@@ -132,13 +106,13 @@ export default {
   font-family: "Lora" sans-serif;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 791px) {
   .stories-container {
     flex-direction: column;
     align-items: center;
   }
 
-  .stories-container > * {
+  .stories-container>* {
     width: 100%;
     max-width: 400px;
   }

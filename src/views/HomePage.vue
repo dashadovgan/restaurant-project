@@ -13,7 +13,7 @@
       <div class="offers-btn">
         <router-link to="/menu" class="our-menu"> Our Menu </router-link>
 
-        <reserve-button></reserve-button>
+        <app-button>Reserve a Seat</app-button>
       </div>
     </section>
   </background-section>
@@ -59,13 +59,15 @@
       <StoriesBlock :maxPosts="3" />
     </div>
     <div class="news-button">
-      <router-link to="/news"> View All </router-link>
+      <router-link to="/news">
+        <app-button>View News</app-button>
+      </router-link>
     </div>
   </section>
 </template>
 
 <script>
-import ReserveButton from "@/components/ReserveButton.vue";
+import AppButton from "@/components/ui/AppButton.vue";
 import BackgroundSection from "@/components/BackgroundSection.vue";
 import ExperienceBlock from "@/components/ExperienceBlock.vue";
 import ChefFavorites from "@/components/ChefFavorites.vue";
@@ -79,7 +81,7 @@ import StoriesBlock from "@/components/StoriesBlock.vue";
 export default {
   name: "HomePage",
   components: {
-    "reserve-button": ReserveButton,
+    "app-button": AppButton,
     BackgroundSection,
     ExperienceBlock,
     ChefFavorites,
@@ -100,7 +102,7 @@ export default {
   gap: 40px;
   width: 100%;
   align-items: flex-start;
-  background-color: #01101d;
+  background-color: var(--color-main);
 }
 
 .news-section {
@@ -126,28 +128,13 @@ export default {
   width: 100%;
 }
 
-.news-button a {
-  background-color: #f4c73f;
-  color: black;
-  border: none;
-  border-radius: 50px;
-  padding: 12px 28px;
-  font-size: 18px;
-  cursor: pointer;
-  font-family: "Lora", sans-serif;
-  font-weight: 500;
-  text-decoration: none;
-  transition: 0.3s ease;
-}
-
-.news-button a:hover {
-  background-color: #c7980c;
-}
-
 .offers-btn {
   display: flex;
   margin-top: 20px;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 400px;
+  margin: 20px auto 0 auto;
 }
 
 .offers-btn .our-menu {
@@ -169,7 +156,7 @@ export default {
   font-weight: 400;
   font-size: 16px;
 
-  margin-right: 50px;
+
   text-decoration: none;
   /* важно для router-link */
 }
@@ -184,6 +171,7 @@ export default {
   justify-content: center;
   width: 55%;
   padding-top: 0;
+  margin-bottom: 15px;
 }
 
 .welcome img {
@@ -218,7 +206,7 @@ export default {
 }
 
 .about-us {
-  background-color: #01101d;
+  background-color: var(--color-main);
   width: 100%;
   padding-top: 60px 0;
   display: flex;
@@ -232,6 +220,7 @@ export default {
   gap: 40px;
   width: 90%;
   align-items: flex-start;
+  flex-wrap: wrap;
 }
 
 .about-us h3 {
@@ -239,9 +228,10 @@ export default {
   font-size: 48px;
   font-weight: 600;
   flex-shrink: 0;
-  width: 25%;
+  width: auto;
   font-family: "Cormorant Garamond", sans-serif;
-  margin-top: 0;
+  margin: 0;
+  flex: 0 0 50px;
 }
 
 .about-us-text {
@@ -265,6 +255,8 @@ export default {
   flex-direction: column;
   width: 75%;
   gap: 20px;
+  min-width: 300px;
+  margin: auto;
 }
 
 .contact-section {
@@ -332,7 +324,7 @@ export default {
   .home {
     width: 100%;
     height: auto;
-    background-image: url("@/assets/image/background.png");
+    background-image: url("@/assets/image/background.webp");
     background-size: cover;
     background-position: top center;
     background-repeat: no-repeat;
@@ -407,7 +399,7 @@ export default {
   }
 
   .about-us-container {
-    padding-top: 70px;
+    padding-top: 40px;
     display: flex;
     flex-direction: column;
     gap: 20px;

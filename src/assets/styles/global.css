@@ -9,6 +9,7 @@ body {
 :root {
   --main-font: "Lora", serif;
   --heading-font: "Cormorant Garamond", serif;
+  --color-main: #01101d
 }
 body {
   font-family: var(--main-font);

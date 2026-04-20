@@ -2,20 +2,12 @@
   <section class="faq-section">
     <!-- Заголовок с декоративными элементами -->
     <div class="faq-header">
-      <img
-        src="@/assets/image/right-torn.png"
-        alt="decor"
-        class="decor decor-left"
-      />
+      <img src="@/assets/image/right-torn.png" alt="decor" class="decor decor-left" />
       <div class="faq-title">
         <h2>What’s on Your Mind?</h2>
         <p>We’ve answered the questions you didn’t know you had.</p>
       </div>
-      <img
-        src="@/assets/image/left-torn.png"
-        alt="decor"
-        class="decor decor-right"
-      />
+      <img src="@/assets/image/left-torn.png" alt="decor" class="decor decor-right" />
     </div>
 
     <!-- Список вопросов -->
@@ -25,7 +17,7 @@
           <h3>{{ item.question }}</h3>
           <span class="faq-toggle">{{
             activeIndex === index ? "−" : "+"
-          }}</span>
+            }}</span>
         </div>
 
         <transition name="fade">
@@ -157,7 +149,7 @@ const toggle = (index) => {
 }
 
 .faq-toggle {
-  font-size: 1.8rem;
+  font-size: 29px;
   font-weight: 600;
   color: #ffffffcc;
   transition: transform 0.2s ease, color 0.3s ease;
@@ -182,6 +174,7 @@ const toggle = (index) => {
 .fade-leave-active {
   transition: all 0.3s ease;
 }
+
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
@@ -206,18 +199,21 @@ const toggle = (index) => {
   }
 
   .faq-title h2 {
-    font-size: 2.5rem;
+    font-size: 40px;
   }
 
   .faq-title p {
-    font-size: 1rem;
+    font-size: 16px;
   }
+
   .decor {
     display: none;
   }
+
   .faq-question h3 {
     font-size: 24px;
   }
+
   .faq-answer {
     font-size: 16px;
   }

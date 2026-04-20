@@ -5,7 +5,9 @@
       <!-- Левая колонка: текст + кнопка -->
       <div class="footer-col footer-left">
         <h2>Explore our French <br />Inspired Dishes</h2>
-        <router-link to="/menu" class="menu-button"> See Menu </router-link>
+        <router-link to="/menu" class="menu-button">
+          <AppButton>See Menu</AppButton>
+        </router-link>
       </div>
 
       <!-- Средняя колонка: навигация -->
@@ -24,16 +26,10 @@
         <span>Connect us</span>
         <div class="social-icons">
           <!-- Используем картинки вместо иконок FontAwesome -->
-          <a href="#"
-            ><img src="@/assets//image/facebook-icon.png" alt="Facebook"
-          /></a>
-          <a href="#"
-            ><img src="@/assets/image/instagram-icon.png" alt="Instagram"
-          /></a>
+          <a href="#"><img src="@/assets//image/facebook-icon.png" alt="Facebook" /></a>
+          <a href="#"><img src="@/assets/image/instagram-icon.png" alt="Instagram" /></a>
           <a href="#"><img src="@/assets/image/x-com.png" alt="Twitter" /></a>
-          <a href="#"
-            ><img src="@/assets/image/whatsapp-icon.png" alt="WhatsApp"
-          /></a>
+          <a href="#"><img src="@/assets/image/whatsapp-icon.png" alt="WhatsApp" /></a>
         </div>
       </div>
     </div>
@@ -43,11 +39,8 @@
       <span class="left">PlatiEU 2025 All Rights Reserved</span>
       <span class="right">
         <router-link to="/privasy-policy" class="privacy-button">
-          Privacy Policy </router-link
-        >,
-        <router-link to="/terms-of-use" class="terms-button"
-          >Terms of Service</router-link
-        >
+          Privacy Policy </router-link>,
+        <router-link to="/terms-of-use" class="terms-button">Terms of Service</router-link>
       </span>
     </div>
 
@@ -55,15 +48,17 @@
     <div class="footer-bottom">
       <div class="image-container">
         <div class="blue-background"></div>
-        <img src="@/assets/image/logo-text.png" alt="Footer Photo" />
+        <img src="@/assets/image/logo-text.webp" alt="Footer Photo" />
       </div>
     </div>
   </footer>
 </template>
 
 <script>
+import AppButton from './ui/AppButton.vue';
 export default {
   name: "FooterComponent",
+  components: { AppButton }
 };
 </script>
 
@@ -80,7 +75,8 @@ export default {
   display: flex;
   justify-content: space-between;
   padding: 40px 10%;
-  gap: 20px; /* расстояние между колонками */
+  gap: 20px;
+  /* расстояние между колонками */
 }
 
 /* Общий класс для колонок */
@@ -100,27 +96,6 @@ export default {
   margin: 0 0 15px 0;
   font-family: "Cormorant Garamond", serif;
   font-weight: 600;
-}
-
-.menu-button {
-  display: inline-flex; /* вместо inline-block */
-  align-items: center; /* вертикально */
-  justify-content: center; /* горизонтально */
-
-  background-color: #f4c73f;
-  color: black;
-  padding: 12px 28px;
-  border-radius: 30px;
-  text-decoration: none;
-  font-family: "Lora", sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  transition: 0.3s ease;
-  width: fit-content;
-}
-
-.menu-button:hover {
-  background-color: #c7980c;
 }
 
 /* Средняя колонка */
@@ -162,10 +137,12 @@ export default {
   color: white;
   font-size: 18px;
 }
+
 .social-icons img {
   width: 10%;
   align-items: center;
 }
+
 /* Средняя полоса футера */
 .footer-middle {
   display: flex;
@@ -196,7 +173,7 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #01101d;
+  background-color: var(--color-main);
   z-index: 1;
 }
 
@@ -205,7 +182,8 @@ export default {
   position: relative;
   width: 90%;
   height: auto;
-  object-fit: contain; /* сохраняем пропорции */
+  object-fit: contain;
+  /* сохраняем пропорции */
   z-index: 2;
   display: flex;
   justify-self: center;
@@ -233,13 +211,16 @@ export default {
   .social-icons img {
     width: 40px;
     height: 40px;
-    object-fit: contain; /* сохраняем пропорции */
+    object-fit: contain;
+    /* сохраняем пропорции */
     display: inline-block;
   }
+
   .footer-top h2 {
     font-size: 32px;
     text-align: center;
   }
+
   .footer-left,
   .footer-nav-col,
   .footer-social-col {
@@ -247,10 +228,12 @@ export default {
     align-items: center;
     text-align: center;
   }
+
   .footer-left button {
     width: 40%;
     margin-top: 20px;
   }
+
   .footer-bottom img {
     width: 80%;
     display: flex;

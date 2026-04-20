@@ -16,7 +16,7 @@ export default {
   position: relative;
   width: 100%;
   min-height: 100vh;
-  background-image: url("@/assets/image/background.png");
+  background-image: url("@/assets/image/background.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

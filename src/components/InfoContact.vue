@@ -10,15 +10,8 @@
         <h3 class="title">Our Location</h3>
         <div class="info-content">
           <i class="fas fa-map-marker-alt"></i>
-          <img
-            src="@/assets/image/location.png"
-            alt="location icon"
-            class="icon-img"
-          />
-          <a
-            href="https://www.google.com/maps?q=21+Rue+des+Lilas+75001+Paris"
-            target="_blank"
-          >
+          <img src="@/assets/image/location.png" alt="location icon" class="icon-img" />
+          <a href="https://www.google.com/maps?q=21+Rue+des+Lilas+75001+Paris" target="_blank">
             21 Rue des Lilas 75001 Paris, France
           </a>
         </div>
@@ -49,19 +42,11 @@
           <i class="fas fa-clock"></i>
           <div class="hours">
             <div class="hour-row">
-              <img
-                src="@/assets/image/clock.png"
-                alt="clock icon"
-                class="icon-img"
-              />
+              <img src="@/assets/image/clock.png" alt="clock icon" class="icon-img" />
               <p>Monday - Friday: 12:00 PM - 2:30 PM & 7:00 PM - 10:30 PM</p>
             </div>
             <div class="hour-row">
-              <img
-                src="@/assets/image/clock.png"
-                alt="clock icon"
-                class="icon-img"
-              />
+              <img src="@/assets/image/clock.png" alt="clock icon" class="icon-img" />
               <p>Saturday: 7:00 PM - 11:00 PM</p>
             </div>
           </div>
@@ -79,6 +64,7 @@ export default {
 
 <style scoped>
 .contact-info {
+  margin: 70px;
   background-color: transparent;
   color: #ededed;
   padding: 20px;
@@ -141,20 +127,24 @@ export default {
 .hours p {
   margin: 0;
 }
+
 .text {
   flex-direction: column;
 }
+
 .text h3 {
   font-family: "Cormorant Garamond", sans-serif;
   font-weight: 600;
   font-size: 58px;
   margin: 0%;
 }
+
 .text p {
   font-family: "Lora", sans-serif;
   font-weight: 400;
   font-size: 18px;
 }
+
 .icon-img {
   width: 20px;
   height: 20px;
@@ -162,6 +152,7 @@ export default {
   margin-right: 8px;
   vertical-align: middle;
 }
+
 .hour-row {
   display: flex;
   align-items: center;

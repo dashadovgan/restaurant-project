@@ -9,12 +9,7 @@
           inbox.
         </p>
         <form @submit.prevent="subscribe">
-          <input
-            type="email"
-            v-model="email"
-            placeholder="Enter your email"
-            required
-          />
+          <input type="email" v-model="email" placeholder="Enter your email" required />
           <button type="submit">Subscribe</button>
         </form>
         <p v-if="message" class="message">{{ message }}</p>
@@ -49,8 +44,10 @@ export default {
 .email-subscription {
   position: relative;
   width: 100%;
-  height: 400px; /* можно менять */
-  background-image: url("@/assets/image/describe.jpg"); /* твоя картинка */
+  height: 400px;
+  /* можно менять */
+  background-image: url("@/assets/image/describe.webp");
+  /* твоя картинка */
   background-size: cover;
   background-position: center;
   display: flex;
