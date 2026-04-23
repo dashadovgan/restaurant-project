@@ -17,12 +17,8 @@
       <div class="menu-filters">
         <!-- Desktop buttons -->
         <div class="desktop-filters">
-          <button
-            v-for="cat in categories"
-            :key="cat"
-            :class="{ active: selectedCategory === cat }"
-            @click="selectedCategory = cat"
-          >
+          <button v-for="cat in categories" :key="cat" :class="{ active: selectedCategory === cat }"
+            @click="selectedCategory = cat">
             {{ cat }}
           </button>
         </div>
@@ -40,10 +36,7 @@
 
     <!-- Menu -->
     <div class="menu-list">
-      <template
-        v-for="(group, category) in filteredGroupedDishes"
-        :key="category"
-      >
+      <template v-for="(group, category) in filteredGroupedDishes" :key="category">
         <h2>{{ category }}</h2>
 
         <div class="menu-grid">
@@ -140,19 +133,23 @@ export default {
   justify-content: center;
   width: 55%;
   padding-top: 0;
+  margin-bottom: 30px;
 }
+
 .welcome img {
-  width: 262.5px;
+  width: 262px;
 }
+
 .welcome p {
-  font-family: "Lora", sans-serif;
+  font-family: var(--main-font);
   font-weight: 400;
   font-size: 18px;
   line-height: 26px;
-  margin: 0 0 0 0;
+  margin: 0;
 }
+
 .welcome h3 {
-  font-family: "Cormorant Garamond", sans-serif;
+  font-family: var(--heading-font);
   font-style: italic;
   line-height: 120%;
   font-weight: 400;
@@ -160,16 +157,18 @@ export default {
   color: #f9e68e;
   margin: 0 0 20px 0;
 }
+
 .welcome h1 {
-  font-family: "Cormorant Garamond", sans-serif;
+  font-family: var(--heading-font);
   font-size: 92px;
   font-weight: 500;
   line-height: 105%;
   height: 20%;
   margin: 0 0 32px 0;
 }
+
 .menu-page {
-  background: #01101d;
+  background: var(--main-color);
   color: white;
   padding: 4% 6%;
 }
@@ -177,14 +176,15 @@ export default {
 /* Intro */
 .menu-header {
   display: flex;
-  align-items: center; /* выравнивание по одной линии */
+  align-items: center;
+  /* выравнивание по одной линии */
   justify-content: space-between;
-  margin-bottom: 60px;
+  margin-bottom: 0px;
 }
 
 .menu-title {
   font-size: 56px;
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--heading-font);
   margin: 0;
   margin-top: 10px;
 }
@@ -209,7 +209,7 @@ export default {
 }
 
 .menu-filters button.active {
-  background: #f4c73f;
+  background: var(--main-accent-color);
   color: black;
 }
 
@@ -279,14 +279,52 @@ export default {
   color: #d7d7d7;
   margin-top: 6px;
 }
+
 .mobile-filters {
   display: none;
 }
+
+@media (max-width: 950px) {
+  .welcome {
+    padding-top: 15%;
+  }
+}
+
+@media (max-width: 860px) {
+  .menu-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+
+
+}
+
+@media (max-width: 1024px) {
+
+  .menu-page .menu-header {
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+  }
+
+  .menu-title {
+    flex: 0 0 100%;
+    font-size: 48px;
+  }
+
+  .menu-filters {
+    justify-content: flex-start;
+    margin-top: 0;
+  }
+}
+
 /* MOBILE */
 @media (max-width: 480px) {
   .menu-info {
     height: 30%;
   }
+
   .menu-grid {
     grid-template-columns: 1fr;
     gap: 12px;
@@ -300,6 +338,7 @@ export default {
     width: 100%;
     height: auto;
   }
+
   .menu-header {
     flex-direction: row;
     gap: 24px;
@@ -307,20 +346,22 @@ export default {
     flex-wrap: wrap;
     margin-bottom: 0px;
   }
+
   .welcome p {
-    font-family: "Lora", sans-serif;
+    font-family: var(--main-font);
     font-size: 18px;
-    margin: 0 0 0 0;
+    margin: 0;
     width: 140%;
   }
 
   .welcome h1 {
-    font-family: "Cormorant Garamond", sans-serif;
+    font-family: var(--heading-font);
     font-size: 40px;
     font-weight: 500;
     width: 130%;
     margin: 0 0 5px 0;
   }
+
   .desktop-filters {
     display: none;
   }

@@ -11,12 +11,7 @@
     </div>
 
     <div class="team-grid">
-      <ChefCard
-        v-for="chef in visibleChefs"
-        :key="chef.id"
-        :chef="chef"
-        @open="openChef"
-      />
+      <ChefCard v-for="chef in visibleChefs" :key="chef.id" :chef="chef" @open="openChef" />
     </div>
 
     <!-- Кнопка View All -->
@@ -24,11 +19,7 @@
       <button @click="showAllChefs">View All</button>
     </div>
 
-    <ChefModal
-      v-if="selectedChef"
-      :chef="selectedChef"
-      @close="selectedChef = null"
-    />
+    <ChefModal v-if="selectedChef" :chef="selectedChef" @close="selectedChef = null" />
   </section>
 </template>
 
@@ -36,8 +27,8 @@
 import { ref, computed, onMounted } from "vue";
 import ChefCard from "@/components/ChefCard.vue";
 import ChefModal from "@/components/ChefModal.vue";
-import { db } from "@/firebase/firebase";
-import { collection, getDocs } from "firebase/firestore";
+import { fetchChefs } from "@/services/chefs.service";
+
 
 const limit = 8;
 const showAll = ref(false); // реактивная
@@ -46,8 +37,7 @@ const chefs = ref([]);
 
 // Загружаем шефов из Firestore
 onMounted(async () => {
-  const snapshot = await getDocs(collection(db, "chefs"));
-  chefs.value = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+  chefs.value = await fetchChefs();
 });
 
 // Показываем только первые 8, если showAll = false
@@ -106,8 +96,8 @@ const showAllChefs = () => {
 
 .view-all button {
   background: transparent;
-  border: 1px solid #f4c73f;
-  color: #f4c73f;
+  border: 1px solid var(--main-accent-color);
+  color: var(--main-accent-color);
   padding: 14px 40px;
   border-radius: 30px;
   cursor: pointer;
@@ -115,7 +105,7 @@ const showAllChefs = () => {
 }
 
 .view-all button:hover {
-  background: #f4c73f;
+  background: var(--main-accent-color);
   color: #0a0e17;
 }
 

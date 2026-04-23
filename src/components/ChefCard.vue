@@ -1,12 +1,6 @@
 <template>
-  <div
-    class="chef-card"
-    v-motion
-    :initial="{ opacity: 0, y: 40 }"
-    :enter="{ opacity: 1, y: 0 }"
-    :delay="100"
-    @click="$emit('open', chef)"
-  >
+  <div class="chef-card" v-motion :initial="{ opacity: 0, y: 40 }" :enter="{ opacity: 1, y: 0 }" :delay="100"
+    @click="$emit('open', chef)">
     <img :src="chef.imageUrl" :alt="chef.name" />
 
     <h3>{{ chef.name }}</h3>
@@ -37,7 +31,7 @@ const shortText = computed(() =>
 
 .chef-card img {
   width: 100%;
-  height: 330px;
+  height: auto;
   object-fit: cover;
   border-radius: 16px;
   margin-bottom: 20px;
@@ -61,6 +55,7 @@ const shortText = computed(() =>
   line-height: 22px;
   opacity: 0.8;
 }
+
 @media (max-width: 480px) {
   .chef-card img {
     width: 100%;

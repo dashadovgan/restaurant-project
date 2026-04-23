@@ -27,18 +27,20 @@
       <li class="timeButton"><reserve-button></reserve-button></li>
     </ul>
     <div class="action-button">
-      <reserve-button></reserve-button>
+      <router-link to="/reservation">
+        <app-button>Reserve a Seat</app-button>
+      </router-link>
     </div>
   </nav>
 </template>
 
 <script>
-import ReserveButton from "@/components/ReserveButton.vue";
+import AppButton from "./ui/AppButton.vue";
 
 export default {
   name: "AppNavbar",
   components: {
-    "reserve-button": ReserveButton,
+    "app-button": AppButton,
   },
   data() {
     return {
@@ -127,10 +129,6 @@ ul {
   margin-right: 50px;
   font-weight: 400;
   font-size: 16px;
-}
-
-.action-button:hover {
-  font-weight: 600;
 }
 
 .burger {

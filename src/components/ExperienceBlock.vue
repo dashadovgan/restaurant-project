@@ -19,14 +19,8 @@
 
       <!-- картинки -->
       <div class="experience-images">
-        <img
-          :src="require('@/assets/image/exp1.png')"
-          alt="Experience photo 1"
-        />
-        <img
-          :src="require('@/assets/image/exp2.png')"
-          alt="Experience photo 2"
-        />
+        <img :src="require('@/assets/image/exp1.webp')" alt="Experience photo 1" />
+        <img :src="require('@/assets/image/exp2.webp')" alt="Experience photo 2" />
       </div>
     </div>
   </section>
@@ -51,6 +45,7 @@ export default {
   flex-direction: column;
   align-items: flex-start;
 }
+
 .experience {
   width: 100%;
   max-width: 100%;
@@ -64,6 +59,7 @@ export default {
   position: relative;
   width: 100%;
   margin: 0 auto 30px auto;
+  flex-wrap: wrap;
 }
 
 .stat {
@@ -72,6 +68,7 @@ export default {
   align-items: flex-start;
   position: relative;
   flex: 1;
+  padding: 0 20px;
 }
 
 .stat:not(:last-child)::after {
@@ -79,17 +76,26 @@ export default {
   position: absolute;
   top: 0;
   right: 30px;
-  width: 1px; /* тонкая полоска */
+  width: 1px;
+  /* тонкая полоска */
   height: 100%;
-  background-color: #2c2c35; /* цвет полоски */
+  background-color: var(--second-accent-color);
+  /* цвет полоски */
 }
+
+@media(max-width:1050px) {
+  .stat:not(:last-child)::after {
+    display: none;
+  }
+}
+
 .number {
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--heading-font);
   font-size: 48px;
   font-weight: 500;
   margin-bottom: 10px;
-  color: #f4c73f;
-  white-space: nowrap;
+  color: var(--main-accent-color);
+  white-space: normal;
 }
 
 .description {
@@ -120,6 +126,7 @@ export default {
   object-fit: cover;
   border-radius: 8px;
 }
+
 .experience-images img:last-child {
   flex: 0 0 43%;
   width: 43%;
@@ -134,16 +141,19 @@ export default {
     flex-direction: column;
     gap: 20px;
   }
+
   .divider {
     width: 60%;
     height: 1px;
     background-color: #cccccc;
     margin: 10px auto;
   }
+
   .experience-images {
     flex-direction: column;
     gap: 15px;
   }
+
   .experience-images img:first-child {
     flex: 0 0 100%;
     width: 100%;
@@ -151,6 +161,7 @@ export default {
     object-fit: cover;
     border-radius: 8px;
   }
+
   .experience-images img:last-child {
     flex: 0 0 100%;
     width: 100%;
@@ -164,10 +175,11 @@ export default {
     position: absolute;
     width: 95%;
     height: 1px;
-    background-color: #2c2c35;
+    background-color: var(--second-accent-color);
     top: 100%;
     left: 50%;
     transform: translateX(-50%);
+    display: block;
   }
 }
 </style>

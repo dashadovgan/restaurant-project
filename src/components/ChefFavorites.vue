@@ -23,8 +23,10 @@
         </div>
       </div>
       <div class="favorites-button">
-        <router-link to="/menu" class="our-menu">
-          Explore Our Menu
+        <router-link to="/menu">
+          <app-button width="auto">
+            Explore Our Menu
+          </app-button>
         </router-link>
       </div>
     </div>
@@ -33,8 +35,8 @@
 
 <script>
 import { ref, onMounted } from "vue";
-import { collection, getDocs, query, where } from "firebase/firestore";
-import { db } from "@/firebase/firebase";
+import AppButton from "./ui/AppButton.vue";
+import { fetchFavoriteDishes } from "@/services/chefFavourites.service";
 
 export default {
   name: "ChefFavorites",
@@ -43,15 +45,7 @@ export default {
 
     const loadFavorites = async () => {
       try {
-        const q = query(
-          collection(db, "menuItems"),
-          where("isFavorite", "==", true)
-        );
-        const snapshot = await getDocs(q);
-        favorites.value = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
+        favorites.value = await fetchFavoriteDishes();
       } catch (error) {
         console.error("Error loading favorites:", error);
       }
@@ -61,6 +55,9 @@ export default {
 
     return { favorites };
   },
+  components: {
+    AppButton
+  }
 };
 </script>
 
@@ -69,16 +66,20 @@ export default {
   display: flex;
   flex-wrap: wrap;
   gap: 1.5% 1%;
-  background-color: #01101d;
+  background-color: var(--main-color);
   padding: 4% 2%;
   justify-content: center;
+}
+
+.favorites-button {
+  margin-top: 50px;
 }
 
 .favorite-item {
   display: flex;
   flex-direction: row;
   width: 45%;
-  background-color: #01101d;
+  background-color: var(--main-color);
   padding: 0.5%;
   border-radius: 1%;
   gap: 2%;
@@ -161,7 +162,7 @@ export default {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  background-color: #01101d;
+  background-color: var(--main-color);
   padding: 3% 0;
 }
 
@@ -181,49 +182,90 @@ export default {
   margin: 0;
   font-weight: 400;
 }
-.our-menu {
-  display: flex;
-  justify-content: center;
-  margin-top: 40px;
-  margin-bottom: 20px;
-  background-color: #f4c73f;
-  color: black;
-  border: none;
-  border-radius: 50px;
-  padding: 12px 28px;
-  font-size: 18px;
-  cursor: pointer;
-  font-family: "Lora", sans-serif;
-  font-weight: 500;
-  transition: 0.3s ease;
-  text-decoration: none;
+
+
+
+@media (max-width: 850px) {
+  .favorite-item {
+    border-radius: 14px;
+  }
+
+  .favorite-item img {
+    border-radius: 14px;
+  }
+
 }
 
-.our-menu:hover {
-  background-color: #c7980c; /* подсветка при наведении */
+@media (max-width: 748px) {
+  .chef-favorites {
+    flex-direction: column;
+    gap: 20px;
+    padding: 40px 20px;
+  }
+
+  .favorite-item {
+    flex-direction: column;
+    width: 100%;
+    padding: 20px;
+    gap: 12px;
+    border-radius: 10px;
+    align-items: center;
+    /* центрируем содержимое */
+    text-align: center;
+  }
+
+  .favorite-item img {
+    width: 70%;
+    /* ключевое изменение */
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+
+  .favorite-info {
+    width: 100%;
+    gap: 10px;
+    text-align: center;
+    align-items: center;
+  }
+
+  .favorite-header {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .line {
+    flex-grow: 1;
+  }
+
+  .price {
+    font-size: 16px;
+  }
+
+  .category {
+    margin: 0 auto;
+  }
 }
 
 /* мобильная версия до 480px */
 @media (max-width: 480px) {
-  .favorites-button button {
-    width: 50%;
-    padding: 0;
-    font-size: 18px;
-    border-radius: 30px;
-    font-family: "Lora", sans-serif;
-    font-weight: 500;
+  .favorites-button {
+    display: flex;
+    justify-content: center;
   }
 
   .chef-favorites {
     flex-direction: column;
-    gap: 20px; /* расстояние между карточками */
-    padding: 6% 4%;
+    gap: 20px;
+    /* расстояние между карточками */
+    padding: 30px 15px;
   }
 
   .favorite-item {
-    flex-direction: column; /* картинка сверху */
+    flex-direction: column;
+    /* картинка сверху */
     width: 100%;
-    padding: 4%;
+    padding: 15px;
     gap: 12px;
     border-radius: 8px;
   }
@@ -244,7 +286,8 @@ export default {
     flex-direction: row;
     align-items: center;
     gap: 8px;
-    flex-wrap: wrap; /* чтобы цена не налезала на название */
+    flex-wrap: wrap;
+    /* чтобы цена не налезала на название */
   }
 
   .favorite-header h4 {

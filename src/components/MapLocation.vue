@@ -131,12 +131,25 @@ export default {
   padding: 8px 16px;
   cursor: pointer;
   font-weight: 500;
-  font-family: "Lora", sans-serif;
+  font-family: var(--main-font);
+  width: auto;
+  margin: 10px;
 }
 
 .route-button img {
   width: 20px;
   height: 20px;
+}
+
+@media (max-width: 820px) {
+  .overlay-info {
+    flex-direction: column;
+    align-items: self-start;
+  }
+
+  .route-button {
+    margin: 0px;
+  }
 }
 
 @media (max-width: 480px) {

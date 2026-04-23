@@ -43,7 +43,9 @@
             Have a question, a special request, or just want to say hello? Our
             team would love to hear from you.
           </p>
-          <router-link to="/contact" class="cta-button">Contact Us</router-link>
+          <router-link to="/contact" class="cta-button">
+            <app-button>Contact Us</app-button>
+          </router-link>
         </div>
         <div class="cta-empty"></div>
       </div>
@@ -55,12 +57,15 @@
 import BackgroundSection from "@/components/BackgroundSection.vue";
 import ExperienceBlock from "@/components/ExperienceBlock.vue";
 import TeamSection from "@/components/TeamSection.vue";
+import AppButton from "@/components/ui/AppButton.vue";
+
 </script>
 
 <style scoped>
 .our-story-container {
   background-color: #010614;
 }
+
 .welcome {
   flex-direction: column;
   display: flex;
@@ -70,32 +75,37 @@ import TeamSection from "@/components/TeamSection.vue";
   width: 55%;
   padding-top: 0;
 }
+
 .welcome img {
-  width: 262.5px;
+  width: 262px;
 }
+
 .welcome p {
-  font-family: "Lora", sans-serif;
+  font-family: var(--main-font);
   font-weight: 400;
   font-size: 18px;
   line-height: 26px;
-  margin: 0 0 0 0;
+  margin: 0;
 }
+
 .welcome h1 {
-  font-family: "Cormorant Garamond", sans-serif;
+  font-family: var(--header-font);
   line-height: 120%;
   font-weight: 400;
   font-size: 48px;
   color: white;
   margin: 0 0 20px 0;
 }
+
 .about-us {
-  background-color: #01101d;
+  background-color: var(--main-color);
   width: 100%;
   padding-top: 60px 0;
   display: flex;
   justify-content: center;
   padding-bottom: 30px;
 }
+
 .about-us-container {
   padding-top: 30px;
   display: flex;
@@ -104,14 +114,15 @@ import TeamSection from "@/components/TeamSection.vue";
   width: 90%;
   align-items: flex-start;
 }
+
 .about-us h3 {
   color: white;
   font-size: 48px;
   font-weight: 600;
   flex-shrink: 0;
   width: 25%;
-  font-family: "Cormorant Garamond", sans-serif;
-  margin-top: 0;
+  font-family: var(--header-font);
+  margin: 0;
 }
 
 .about-us-text {
@@ -121,6 +132,7 @@ import TeamSection from "@/components/TeamSection.vue";
   justify-items: flex-end;
   width: 100%;
 }
+
 .about-us-text p {
   color: white;
   font-size: 18px;
@@ -128,12 +140,15 @@ import TeamSection from "@/components/TeamSection.vue";
   font-family: "Lora", sans-serif;
   font-weight: 400;
 }
+
 .about-us-content {
   display: flex;
   flex-direction: column;
   width: 75%;
   gap: 20px;
+  margin: auto;
 }
+
 .cta-section {
   background-color: #05131f;
   padding: 60px 20px;
@@ -163,29 +178,25 @@ import TeamSection from "@/components/TeamSection.vue";
   font-size: 58px;
   font-weight: 600;
   margin: 0 0 20px 0;
-  font-family: "Cormorant Garamond", sans-serif;
+  font-family: var(--header-font);
 }
 
 .cta-container p {
   font-size: 16px;
   line-height: 22px;
   margin-bottom: 30px;
-  font-family: "Lora", sans-serif;
+  font-family: var(--main-font);
 }
 
-.cta-button {
-  display: inline-block;
-  background-color: #f4c73f;
-  color: #0a0e17;
-  padding: 12px 30px;
-  border-radius: 30px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: 0.3s;
-}
+@media(max-width:660px) {
+  .about-us h3 {
+    width: 100%;
+  }
 
-.cta-button:hover {
-  background-color: #e6b936;
+  .about-us-container {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 @media (max-width: 480px) {
@@ -213,27 +224,30 @@ import TeamSection from "@/components/TeamSection.vue";
   }
 
   .welcome p {
-    font-family: "Lora", sans-serif;
+    font-family: var(--main-font);
     font-size: 18px;
     margin: 0 0 0 0;
     width: 140%;
   }
 
   .welcome h1 {
-    font-family: "Cormorant Garamond", sans-serif;
+    font-family: var(--header-font);
     font-size: 40px;
     font-weight: 500;
     width: 130%;
     margin: 0 0 5px 0;
   }
+
   .about-us {
     justify-content: center;
   }
+
   .about-us-container h3 {
     width: auto;
     margin: 0;
     padding: 0;
   }
+
   .about-us-container {
     padding-top: 70px;
     display: flex;
@@ -243,11 +257,13 @@ import TeamSection from "@/components/TeamSection.vue";
     align-items: flex-start;
     text-align: left;
   }
+
   .about-us-text {
     width: 100%;
     flex-direction: column;
     gap: 10px;
   }
+
   .about-us-content {
     width: 100%;
   }

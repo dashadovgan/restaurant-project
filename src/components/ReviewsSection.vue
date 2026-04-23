@@ -6,19 +6,9 @@
       difference
     </p>
 
-    <swiper
-      @swiper="onSwiper"
-      :modules="[Pagination]"
-      :slides-per-view="slidesPerView"
-      :space-between="20"
-      :loop="true"
-      :pagination="paginationOptions"
-    >
-      <swiper-slide
-        v-for="(review, index) in reviews"
-        :key="index"
-        class="review-card"
-      >
+    <swiper @swiper="onSwiper" :modules="[Pagination]" :slides-per-view="slidesPerView" :space-between="20" :loop="true"
+      :pagination="paginationOptions">
+      <swiper-slide v-for="(review, index) in reviews" :key="index" class="review-card">
         <img :src="review.image" :alt="'Review ' + (index + 1)" />
         <div class="review-text">
           <p>{{ review.text }}</p>
@@ -40,7 +30,8 @@
 </template>
 
 <script>
-import { ref, onMounted } from "vue";
+import { ref, computed } from "vue";
+import { useWindowSize } from '@vueuse/core';
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Pagination } from "swiper/modules";
 
@@ -51,15 +42,19 @@ export default {
   name: "ReviewsSection",
   components: { Swiper, SwiperSlide },
   setup() {
-    const slidesPerView = ref(window.innerWidth <= 480 ? 1 : 3);
+    const { width } = useWindowSize();
+
+    const slidesPerView = computed(() => {
+      if (width.value <= 480) return 1;
+      if (width.value <= 860) return 2;
+      return 3;
+    })
+
     const paginationOptions = {
       el: ".custom-pagination",
       type: "progressbar",
     };
 
-    const updateSlides = () => {
-      slidesPerView.value = window.innerWidth <= 480 ? 1 : 3;
-    };
 
     const swiperInstance = ref(null);
 
@@ -75,31 +70,28 @@ export default {
       swiperInstance.value?.slidePrev();
     };
 
-    onMounted(() => {
-      window.addEventListener("resize", updateSlides);
-    });
 
     const reviews = [
       {
-        image: require("@/assets/image/review1.png"),
+        image: require("@/assets/image/review1.webp"),
         text: "The Wagyu Steak was juicy. The ambiance made it ideal for a memorable evening.",
         name: "James Tortellini",
         role: "Food Blogger",
       },
       {
-        image: require("@/assets/image/review2.png"),
+        image: require("@/assets/image/review2.webp"),
         text: "The cappuccino was rich and smooth. Perfect for a relaxing afternoon with a book.",
         name: "Maria Espresso",
         role: "Coffee Enthusiast",
       },
       {
-        image: require("@/assets/image/review3.png"),
+        image: require("@/assets/image/review3.webp"),
         text: "The roller coasters were exhilarating! The staff was friendly and the atmosphere was electric.",
         name: "Tommy Thrill",
         role: "Adventure Blogger",
       },
       {
-        image: require("@/assets/image/review3.png"),
+        image: require("@/assets/image/review3.webp"),
         text: "The roller coasters were exhilarating! The staff was friendly and the atmosphere was electric.",
         name: "Tommy Thrill",
         role: "Adventure Blogger",
@@ -124,7 +116,7 @@ export default {
   text-align: center;
   padding: 40px 20px;
   color: white;
-  background-color: #01101d;
+  background-color: var(--main-color);
 }
 
 .reviews-title {
@@ -176,12 +168,14 @@ export default {
   font-weight: 400;
   font-size: 14px;
 }
+
 .review-text h4 {
   margin: 3px 0;
   font-family: "Lora", sans-serif;
   font-weight: 600;
   font-size: 14px;
 }
+
 .review-text span {
   font-size: 12px;
   color: #777;
@@ -208,7 +202,8 @@ export default {
 
 /* Сам "живой" рычажок */
 :deep(.swiper-pagination-progressbar-fill) {
-  background: #888; /* или любой серый */
+  background: #888;
+  /* или любой серый */
   border-radius: 2px;
 }
 
@@ -227,9 +222,11 @@ export default {
     bottom: 15px;
     border-radius: 15px;
   }
+
   .review-text h4 {
     font-size: 11px;
   }
+
   .review-text span {
     font-size: 10px;
   }
@@ -238,15 +235,18 @@ export default {
     flex-direction: column;
     align-items: center;
   }
+
   .custom-pagination {
     width: 60%;
     margin-bottom: 10px;
   }
+
   .custom-buttons {
     width: 100%;
     display: flex;
     justify-content: space-between;
   }
+
   .review-card {
     flex-direction: column;
   }

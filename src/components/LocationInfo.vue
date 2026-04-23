@@ -10,13 +10,9 @@
       </div>
 
       <div class="locations-grid">
-        <div
-          v-for="location in locations"
-          :key="location.city"
-          class="location-item"
-        >
+        <div v-for="location in locations" :key="location.city" class="location-item">
           <div class="location-title">
-            <img src="@/assets/image/group.png" alt="pin" class="pin-icon" />
+            <img src="@/assets/image/group.png" alt="location pin icon" class="pin-icon" />
             <h3>{{ location.region }}</h3>
           </div>
           <div class="location-details">
@@ -109,6 +105,7 @@ const locations = [
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 30px 40px;
+  margin-top: 40px;
 }
 
 .location-title {
@@ -126,7 +123,7 @@ const locations = [
 }
 
 .location-title h3 {
-  font-size: 1.1rem;
+  font-size: 18px;
   font-weight: 600;
   color: #fff;
   margin: 0;
@@ -135,7 +132,7 @@ const locations = [
 .location-details p {
   margin: 2px 0;
   color: #aaa;
-  font-size: 0.95rem;
+  font-size: 16px;
   padding-left: 28px;
 }
 
@@ -144,6 +141,7 @@ const locations = [
   .container {
     flex-direction: column;
   }
+
   .locations-grid {
     grid-template-columns: 1fr;
   }
