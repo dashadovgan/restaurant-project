@@ -10,7 +10,7 @@
 
       <!-- Phone number (vue-tel-input) -->
       <div class="form-group field tel-group">
-        <vue-tel-input v-model="phoneNumber" default-country="ua" :preferred-countries="['us', 'gb', 'ua']"
+        <vue-tel-input v-model="phoneNumber" default-country="ua" :preferred-countries="preferredCountriesList"
           :placeholder="'+380 67 123 4567'" @country-changed="onCountryChanged" required />
         <label>Phone Number</label>
       </div>
@@ -48,6 +48,7 @@
 import { createContactMessage } from "@/services/contact.service";
 import { serverTimestamp } from "firebase/firestore";
 import { ref } from "vue";
+import { PreferredCountries } from "@/constant/countries";
 
 
 export default {
@@ -61,6 +62,7 @@ export default {
     const message = ref("");
     const selectedCountry = ref("ua");
     const phonePlaceholder = ref("+380 67 123 4567");
+    const preferredCountriesList = Object.values(PreferredCountries);
 
     const onCountryChanged = (country) => {
       selectedCountry.value = country.iso2;
@@ -104,6 +106,7 @@ export default {
       selectedCountry,
       phonePlaceholder,
       onCountryChanged,
+      preferredCountriesList
     };
   },
 };

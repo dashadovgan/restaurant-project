@@ -96,8 +96,8 @@ const showAllChefs = () => {
 
 .view-all button {
   background: transparent;
-  border: 1px solid #f4c73f;
-  color: #f4c73f;
+  border: 1px solid var(--main-accent-color);
+  color: var(--main-accent-color);
   padding: 14px 40px;
   border-radius: 30px;
   cursor: pointer;
@@ -105,7 +105,7 @@ const showAllChefs = () => {
 }
 
 .view-all button:hover {
-  background: #f4c73f;
+  background: var(--main-accent-color);
   color: #0a0e17;
 }
 

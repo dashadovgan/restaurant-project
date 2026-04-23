@@ -61,7 +61,7 @@ export default {
 }
 
 .location-page {
-  background-color: var(--color-main);
+  background-color: var(--main-color);
 }
 
 .contact-container {
@@ -98,11 +98,11 @@ export default {
 }
 
 .welcome img {
-  width: 262.5px;
+  width: 262px;
 }
 
 .welcome p {
-  font-family: "Lora", sans-serif;
+  font-family: var(--main-font);
   font-weight: 400;
   font-size: 18px;
   line-height: 26px;
@@ -110,7 +110,7 @@ export default {
 }
 
 .welcome h1 {
-  font-family: "Cormorant Garamond", sans-serif;
+  font-family: var(--heading-font);
   line-height: 120%;
   font-weight: 400;
   font-size: 48px;
@@ -146,14 +146,14 @@ export default {
   }
 
   .welcome p {
-    font-family: "Lora", sans-serif;
+    font-family: var(--main-font);
     font-size: 18px;
     margin: 0 0 0 0;
     width: 140%;
   }
 
   .welcome h1 {
-    font-family: "Cormorant Garamond", sans-serif;
+    font-family: var(--heading-font);
     font-size: 40px;
     font-weight: 500;
     width: 130%;

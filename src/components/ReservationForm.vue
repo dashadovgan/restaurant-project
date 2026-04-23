@@ -221,13 +221,13 @@ const handleSubmit = async () => {
 /* Общий стиль группы ввода */
 .input-group {
   flex: 1;
-  border: 1px solid #2d3748;
+  border: 1px solid var(--third-accent-color);
   border-radius: 12px;
   padding: 12px 16px;
   display: flex;
   flex-direction: column;
   position: relative;
-  background: #0a0e17;
+  background: var(--main-color);
   margin-bottom: 20px;
   /* ОТСТУП, ЧТОБЫ ПОЛЯ НЕ СКЛЕИВАЛИСЬ */
 }
@@ -287,12 +287,12 @@ const handleSubmit = async () => {
   align-items: center;
   gap: 8px;
   padding: 0 15px;
-  border-right: 1px solid #2d3748;
+  border-right: 1px solid var(--third-accent-color);
   cursor: pointer;
 }
 
 .terms-row a {
-  color: #f4c73f;
+  color: var(--main-accent-color);
 }
 
 .phone-input-stack {
@@ -317,7 +317,7 @@ const handleSubmit = async () => {
 .search-countries {
   width: 100%;
   padding: 12px;
-  background: #2d3748;
+  background: var(--third-accent-color);
   border: none;
   color: white;
   border-bottom: 1px solid #4a5568;
@@ -353,7 +353,7 @@ const handleSubmit = async () => {
   position: relative;
   z-index: 2;
   width: 100%;
-  background-color: #0a0e17;
+  background-color: var(--main-color);
   border-radius: 12px;
   color: white;
   text-align: center;
@@ -402,7 +402,7 @@ const handleSubmit = async () => {
 
   .country-selector {
     border-right: none;
-    border-bottom: 1px solid #2d3748;
+    border-bottom: 1px solid var(--third-accent-color);
     padding: 12px 16px;
   }
 

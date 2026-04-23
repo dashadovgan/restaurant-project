@@ -17,7 +17,7 @@
           <h3>{{ item.question }}</h3>
           <span class="faq-toggle">{{
             activeIndex === index ? "−" : "+"
-            }}</span>
+          }}</span>
         </div>
 
         <transition name="fade">
@@ -149,7 +149,7 @@ const toggle = (index) => {
 }
 
 .faq-toggle {
-  font-size: 29px;
+  font-size: 28px;
   font-weight: 600;
   color: #ffffffcc;
   transition: transform 0.2s ease, color 0.3s ease;

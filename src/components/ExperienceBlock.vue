@@ -79,7 +79,7 @@ export default {
   width: 1px;
   /* тонкая полоска */
   height: 100%;
-  background-color: #2c2c35;
+  background-color: var(--second-accent-color);
   /* цвет полоски */
 }
 
@@ -90,11 +90,11 @@ export default {
 }
 
 .number {
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--heading-font);
   font-size: 48px;
   font-weight: 500;
   margin-bottom: 10px;
-  color: #f4c73f;
+  color: var(--main-accent-color);
   white-space: normal;
 }
 
@@ -175,7 +175,7 @@ export default {
     position: absolute;
     width: 95%;
     height: 1px;
-    background-color: #2c2c35;
+    background-color: var(--second-accent-color);
     top: 100%;
     left: 50%;
     transform: translateX(-50%);

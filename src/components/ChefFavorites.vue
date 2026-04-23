@@ -66,7 +66,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   gap: 1.5% 1%;
-  background-color: var(--color-main);
+  background-color: var(--main-color);
   padding: 4% 2%;
   justify-content: center;
 }
@@ -79,7 +79,7 @@ export default {
   display: flex;
   flex-direction: row;
   width: 45%;
-  background-color: var(--color-main);
+  background-color: var(--main-color);
   padding: 0.5%;
   border-radius: 1%;
   gap: 2%;
@@ -162,7 +162,7 @@ export default {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  background-color: var(--color-main);
+  background-color: var(--main-color);
   padding: 3% 0;
 }
 
@@ -200,13 +200,13 @@ export default {
   .chef-favorites {
     flex-direction: column;
     gap: 20px;
-    padding: 6% 4%;
+    padding: 40px 20px;
   }
 
   .favorite-item {
     flex-direction: column;
     width: 100%;
-    padding: 4%;
+    padding: 20px;
     gap: 12px;
     border-radius: 10px;
     align-items: center;
@@ -258,14 +258,14 @@ export default {
     flex-direction: column;
     gap: 20px;
     /* расстояние между карточками */
-    padding: 6% 4%;
+    padding: 30px 15px;
   }
 
   .favorite-item {
     flex-direction: column;
     /* картинка сверху */
     width: 100%;
-    padding: 4%;
+    padding: 15px;
     gap: 12px;
     border-radius: 8px;
   }

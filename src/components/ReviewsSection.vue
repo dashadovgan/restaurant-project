@@ -30,7 +30,8 @@
 </template>
 
 <script>
-import { ref, onMounted } from "vue";
+import { ref, computed } from "vue";
+import { useWindowSize } from '@vueuse/core';
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Pagination } from "swiper/modules";
 
@@ -41,21 +42,19 @@ export default {
   name: "ReviewsSection",
   components: { Swiper, SwiperSlide },
   setup() {
-    const slidesPerView = ref(window.innerWidth <= 480 ? 1 : window.innerWidth <= 860 ? 2 : 3);
+    const { width } = useWindowSize();
+
+    const slidesPerView = computed(() => {
+      if (width.value <= 480) return 1;
+      if (width.value <= 860) return 2;
+      return 3;
+    })
+
     const paginationOptions = {
       el: ".custom-pagination",
       type: "progressbar",
     };
 
-    const updateSlides = () => {
-      if (window.innerWidth <= 480) {
-        slidesPerView.value = 1;
-      } else if (window.innerWidth <= 860) {
-        slidesPerView.value = 2;
-      } else {
-        slidesPerView.value = 3;
-      }
-    };
 
     const swiperInstance = ref(null);
 
@@ -71,9 +70,6 @@ export default {
       swiperInstance.value?.slidePrev();
     };
 
-    onMounted(() => {
-      window.addEventListener("resize", updateSlides);
-    });
 
     const reviews = [
       {
@@ -120,7 +116,7 @@ export default {
   text-align: center;
   padding: 40px 20px;
   color: white;
-  background-color: var(--color-main);
+  background-color: var(--main-color);
 }
 
 .reviews-title {

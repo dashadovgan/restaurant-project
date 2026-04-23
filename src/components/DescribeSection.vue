@@ -106,7 +106,7 @@ button {
   padding: 10px 20px;
   border-radius: 20px;
   border: none;
-  background-color: #f4c73f;
+  background-color: var(--main-accent-color);
   color: black;
   font-weight: bold;
   cursor: pointer;

@@ -1,5 +1,5 @@
 <template>
-    <button class="yellow-button" :style="{ width: width }" :type="type">
+    <button class="app-button app-button--yellow" :style="{ width: width }" :type="type">
         <slot />
     </button>
 </template>
@@ -14,19 +14,20 @@ export default {
         },
         type: {
             type: String,
-            default: "button"
+            default: "button",
+            validator(value) {
+                return ['button', 'submit', 'reset'].includes(value)// validator это функция  которая принимает значение пропса, includes способ проверки вхождения строки в массив разрешенных слов
+            }
         }
     }
 };
 </script>
 
 <style scoped>
-.yellow-button {
-    background-color: #f4c73f;
+.app-button {
     border: none;
     padding: 8px 16px;
     border-radius: 30px;
-    color: black;
     cursor: pointer;
     font-family: "Lora", sans-serif;
     line-height: 24px;
@@ -36,7 +37,13 @@ export default {
     max-width: 100%;
 }
 
-.yellow-button:hover {
+.app-button--yellow {
+    background-color: var(--main-accent-color);
+    color: var(--main-color);
+
+}
+
+.app-button--yellow:hover {
     background-color: #c7980c;
 }
 </style>

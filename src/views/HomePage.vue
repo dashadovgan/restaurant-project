@@ -12,8 +12,9 @@
       <h1>A Symphony of Flavors in Every Bite</h1>
       <div class="offers-btn">
         <router-link to="/menu" class="our-menu"> Our Menu </router-link>
-
-        <app-button>Reserve a Seat</app-button>
+        <router-link to="/reservation">
+          <AppButton>Reserve a Seat</AppButton>
+        </router-link>
       </div>
     </section>
   </background-section>
@@ -60,7 +61,7 @@
     </div>
     <div class="news-button">
       <router-link to="/news">
-        <app-button>View News</app-button>
+        <AppButton>View News</AppButton>
       </router-link>
     </div>
   </section>
@@ -81,7 +82,7 @@ import StoriesBlock from "@/components/StoriesBlock.vue";
 export default {
   name: "HomePage",
   components: {
-    "app-button": AppButton,
+    AppButton,
     BackgroundSection,
     ExperienceBlock,
     ChefFavorites,
@@ -102,7 +103,7 @@ export default {
   gap: 40px;
   width: 100%;
   align-items: flex-start;
-  background-color: var(--color-main);
+  background-color: var(--main-color);
 }
 
 .news-section {
@@ -206,7 +207,7 @@ export default {
 }
 
 .about-us {
-  background-color: var(--color-main);
+  background-color: var(--main-color);
   width: 100%;
   padding-top: 60px 0;
   display: flex;

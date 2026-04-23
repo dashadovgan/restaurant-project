@@ -26,10 +26,10 @@
         <span>Connect us</span>
         <div class="social-icons">
           <!-- Используем картинки вместо иконок FontAwesome -->
-          <a href="#"><img src="@/assets//image/facebook-icon.png" alt="Facebook" /></a>
-          <a href="#"><img src="@/assets/image/instagram-icon.png" alt="Instagram" /></a>
-          <a href="#"><img src="@/assets/image/x-com.png" alt="Twitter" /></a>
-          <a href="#"><img src="@/assets/image/whatsapp-icon.png" alt="WhatsApp" /></a>
+          <a href="#"><img src="@/assets//image/facebook-icon.png" alt="Facebook icon" /></a>
+          <a href="#"><img src="@/assets/image/instagram-icon.png" alt="Instagram icon" /></a>
+          <a href="#"><img src="@/assets/image/x-com.png" alt="Twitter icon" /></a>
+          <a href="#"><img src="@/assets/image/whatsapp-icon.png" alt="WhatsApp icon" /></a>
         </div>
       </div>
     </div>
@@ -173,7 +173,7 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--color-main);
+  background-color: var(--main-color);
   z-index: 1;
 }
 

@@ -77,19 +77,19 @@ import AppButton from "@/components/ui/AppButton.vue";
 }
 
 .welcome img {
-  width: 262.5px;
+  width: 262px;
 }
 
 .welcome p {
-  font-family: "Lora", sans-serif;
+  font-family: var(--main-font);
   font-weight: 400;
   font-size: 18px;
   line-height: 26px;
-  margin: 0 0 0 0;
+  margin: 0;
 }
 
 .welcome h1 {
-  font-family: "Cormorant Garamond", sans-serif;
+  font-family: var(--header-font);
   line-height: 120%;
   font-weight: 400;
   font-size: 48px;
@@ -98,7 +98,7 @@ import AppButton from "@/components/ui/AppButton.vue";
 }
 
 .about-us {
-  background-color: var(--color-main);
+  background-color: var(--main-color);
   width: 100%;
   padding-top: 60px 0;
   display: flex;
@@ -121,7 +121,7 @@ import AppButton from "@/components/ui/AppButton.vue";
   font-weight: 600;
   flex-shrink: 0;
   width: 25%;
-  font-family: "Cormorant Garamond", sans-serif;
+  font-family: var(--header-font);
   margin: 0;
 }
 
@@ -178,14 +178,14 @@ import AppButton from "@/components/ui/AppButton.vue";
   font-size: 58px;
   font-weight: 600;
   margin: 0 0 20px 0;
-  font-family: "Cormorant Garamond", sans-serif;
+  font-family: var(--header-font);
 }
 
 .cta-container p {
   font-size: 16px;
   line-height: 22px;
   margin-bottom: 30px;
-  font-family: "Lora", sans-serif;
+  font-family: var(--main-font);
 }
 
 @media(max-width:660px) {
@@ -224,14 +224,14 @@ import AppButton from "@/components/ui/AppButton.vue";
   }
 
   .welcome p {
-    font-family: "Lora", sans-serif;
+    font-family: var(--main-font);
     font-size: 18px;
     margin: 0 0 0 0;
     width: 140%;
   }
 
   .welcome h1 {
-    font-family: "Cormorant Garamond", sans-serif;
+    font-family: var(--header-font);
     font-size: 40px;
     font-weight: 500;
     width: 130%;

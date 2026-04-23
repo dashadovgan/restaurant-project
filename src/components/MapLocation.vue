@@ -131,7 +131,7 @@ export default {
   padding: 8px 16px;
   cursor: pointer;
   font-weight: 500;
-  font-family: "Lora", sans-serif;
+  font-family: var(--main-font);
   width: auto;
   margin: 10px;
 }

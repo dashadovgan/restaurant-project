@@ -12,7 +12,7 @@
       <div class="locations-grid">
         <div v-for="location in locations" :key="location.city" class="location-item">
           <div class="location-title">
-            <img src="@/assets/image/group.png" alt="pin" class="pin-icon" />
+            <img src="@/assets/image/group.png" alt="location pin icon" class="pin-icon" />
             <h3>{{ location.region }}</h3>
           </div>
           <div class="location-details">
@@ -123,7 +123,7 @@ const locations = [
 }
 
 .location-title h3 {
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 600;
   color: #fff;
   margin: 0;
@@ -132,7 +132,7 @@ const locations = [
 .location-details p {
   margin: 2px 0;
   color: #aaa;
-  font-size: 15px;
+  font-size: 16px;
   padding-left: 28px;
 }
 

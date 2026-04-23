@@ -75,11 +75,16 @@ const downloadPDF = () => {
 
 <style scoped>
 .divider {
-  border: none; /* убираем стандартную границу */
-  height: 1px; /* толщина линии */
-  background-color: white; /* цвет линии */
-  margin: 20px 0; /* отступ сверху и снизу */
-  opacity: 0.5; /* можно сделать полупрозрачной */
+  border: none;
+  /* убираем стандартную границу */
+  height: 1px;
+  /* толщина линии */
+  background-color: white;
+  /* цвет линии */
+  margin: 20px 0;
+  /* отступ сверху и снизу */
+  opacity: 0.5;
+  /* можно сделать полупрозрачной */
 }
 
 .thank-you-card {
@@ -112,15 +117,18 @@ const downloadPDF = () => {
   padding: 20px;
   margin-bottom: 30px;
   gap: 20px;
-  width: 100%; /* чтобы колонки тянулись на всю ширину контейнера */
+  width: 100%;
+  /* чтобы колонки тянулись на всю ширину контейнера */
   box-sizing: border-box;
   flex-direction: row;
 }
+
 .text-detail {
   align-items: center;
   font-family: "Lora", sans-serif;
   font-size: 16px;
 }
+
 .transaction-left,
 .transaction-right {
   flex: 1;
@@ -151,12 +159,14 @@ const downloadPDF = () => {
   justify-content: center;
   flex-wrap: wrap;
 }
+
 .thank-text h2 {
   font-size: 32px;
   font-family: "Cormorant Garamond", sans-serif;
 }
+
 .primary-btn {
-  background: #f4c73f;
+  background: var(--main-accent-color);
   color: #000;
   border: none;
   padding: 15px 25px;
@@ -167,8 +177,8 @@ const downloadPDF = () => {
 
 .secondary-btn {
   background: transparent;
-  border: 2px solid #f4c73f;
-  color: #f4c73f;
+  border: 2px solid var(--main-accent-color);
+  color: var(--main-accent-color);
   padding: 15px 25px;
   border-radius: 30px;
   cursor: pointer;
@@ -188,6 +198,7 @@ const downloadPDF = () => {
   .button-row button {
     width: 100%;
   }
+
   .thank-you-card {
     max-width: 90% !important;
     padding: 0%;

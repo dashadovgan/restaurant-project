@@ -137,19 +137,19 @@ export default {
 }
 
 .welcome img {
-  width: 262.5px;
+  width: 262px;
 }
 
 .welcome p {
-  font-family: "Lora", sans-serif;
+  font-family: var(--main-font);
   font-weight: 400;
   font-size: 18px;
   line-height: 26px;
-  margin: 0 0 0 0;
+  margin: 0;
 }
 
 .welcome h3 {
-  font-family: "Cormorant Garamond", sans-serif;
+  font-family: var(--heading-font);
   font-style: italic;
   line-height: 120%;
   font-weight: 400;
@@ -159,7 +159,7 @@ export default {
 }
 
 .welcome h1 {
-  font-family: "Cormorant Garamond", sans-serif;
+  font-family: var(--heading-font);
   font-size: 92px;
   font-weight: 500;
   line-height: 105%;
@@ -168,7 +168,7 @@ export default {
 }
 
 .menu-page {
-  background: var(--color-main);
+  background: var(--main-color);
   color: white;
   padding: 4% 6%;
 }
@@ -184,7 +184,7 @@ export default {
 
 .menu-title {
   font-size: 56px;
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--heading-font);
   margin: 0;
   margin-top: 10px;
 }
@@ -209,7 +209,7 @@ export default {
 }
 
 .menu-filters button.active {
-  background: #f4c73f;
+  background: var(--main-accent-color);
   color: black;
 }
 
@@ -348,14 +348,14 @@ export default {
   }
 
   .welcome p {
-    font-family: "Lora", sans-serif;
+    font-family: var(--main-font);
     font-size: 18px;
-    margin: 0 0 0 0;
+    margin: 0;
     width: 140%;
   }
 
   .welcome h1 {
-    font-family: "Cormorant Garamond", sans-serif;
+    font-family: var(--heading-font);
     font-size: 40px;
     font-weight: 500;
     width: 130%;
