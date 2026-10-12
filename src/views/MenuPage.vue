@@ -41,7 +41,7 @@
 
         <div class="menu-grid">
           <div v-for="dish in group" :key="dish.id" class="menu-item">
-            <img :src="dish.image" alt="dish" />
+            <img :src="dish.image" alt="dish" loading="lazy" decoding="async" />
 
             <div class="menu-info">
               <span class="category">{{ dish.category }}</span>

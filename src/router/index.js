@@ -1,18 +1,20 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 import HomePage from "../views/HomePage.vue";
-import MenuPage from "../views/MenuPage.vue";
-import OurStoryPage from "../views/OurStoryPage.vue";
-import LocationPage from "../views/LocationPage.vue";
-import NewsPage from "../views/NewsPage.vue";
-import ReservationPage from "../views/ReservationPage.vue";
-import PostPage from "@/views/PostPage.vue";
 
-import AdminMenuManager from "@/admin/views/AdminMenuManager.vue";
-import AdminPostsStories from "@/admin/views/components/AdminPostsStories.vue";
-import AdminPostEditor from "@/admin/views/components/AdminPostEditor.vue";
-import PrivacyPolicy from "@/views/PrivacyPolicy.vue";
-import TermsOfUse from "@/views/TermsOfUse.vue";
+// Остальные страницы грузятся по требованию, чтобы не утяжелять первый экран
+const MenuPage = () => import("../views/MenuPage.vue");
+const OurStoryPage = () => import("../views/OurStoryPage.vue");
+const LocationPage = () => import("../views/LocationPage.vue");
+const NewsPage = () => import("../views/NewsPage.vue");
+const ReservationPage = () => import("../views/ReservationPage.vue");
+const PostPage = () => import("@/views/PostPage.vue");
+
+const AdminMenuManager = () => import("@/admin/views/AdminMenuManager.vue");
+const AdminPostsStories = () => import("@/admin/views/components/AdminPostsStories.vue");
+const AdminPostEditor = () => import("@/admin/views/components/AdminPostEditor.vue");
+const PrivacyPolicy = () => import("@/views/PrivacyPolicy.vue");
+const TermsOfUse = () => import("@/views/TermsOfUse.vue");
 
 const routes = [
   {

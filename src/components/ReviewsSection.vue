@@ -9,7 +9,7 @@
     <swiper @swiper="onSwiper" :modules="[Pagination]" :slides-per-view="slidesPerView" :space-between="20" :loop="true"
       :pagination="paginationOptions">
       <swiper-slide v-for="(review, index) in reviews" :key="index" class="review-card">
-        <img :src="review.image" :alt="'Review ' + (index + 1)" />
+        <img :src="review.image" :alt="'Review ' + (index + 1)" loading="lazy" decoding="async" />
         <div class="review-text">
           <p>{{ review.text }}</p>
           <h4>{{ review.name }}</h4>

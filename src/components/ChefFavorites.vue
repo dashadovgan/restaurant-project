@@ -11,7 +11,7 @@
     <!-- Секция избранных блюд -->
     <div class="chef-favorites">
       <div v-for="dish in favorites" :key="dish.id" class="favorite-item">
-        <img :src="dish.image" alt="dish image" />
+        <img :src="dish.image" alt="dish image" loading="lazy" decoding="async" />
         <div class="favorite-info">
           <div class="category">{{ dish.category }}</div>
           <div class="favorite-header">

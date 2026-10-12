@@ -19,8 +19,8 @@
 
       <!-- картинки -->
       <div class="experience-images">
-        <img :src="require('@/assets/image/exp1.webp')" alt="Experience photo 1" />
-        <img :src="require('@/assets/image/exp2.webp')" alt="Experience photo 2" />
+        <img :src="require('@/assets/image/exp1.webp')" alt="Experience photo 1" loading="lazy" decoding="async" />
+        <img :src="require('@/assets/image/exp2.webp')" alt="Experience photo 2" loading="lazy" decoding="async" />
       </div>
     </div>
   </section>

@@ -146,7 +146,7 @@ onMounted(async () => {
   countries.value = await fetchCountries();
   const defaultCountry = countries.value.find((c) => c.iso === "UA");
   if (defaultCountry) {
-    selectCountry.value = defaultCountry;
+    selectedCountry.value = defaultCountry;
   }
 });
 

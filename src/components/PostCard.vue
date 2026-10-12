@@ -2,7 +2,7 @@
   <router-link class="post-card" :to="`/post/${post.id}`">
     <!-- Фото -->
     <div class="image" v-if="post.coverImage">
-      <img :src="post.coverImage" alt="" />
+      <img :src="post.coverImage" alt="" loading="lazy" decoding="async" />
     </div>
 
     <div class="content">

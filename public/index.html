@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title><%= htmlWebpackPlugin.options.title %></title>
+    <!-- Hero-фон (BackgroundSection) начинает грузиться сразу, не дожидаясь JS -->
+    <link rel="preload" as="image" fetchpriority="high"
+      href="<%= BASE_URL %>img/hero/hero-1600.webp"
+      imagesrcset="<%= BASE_URL %>img/hero/hero-960.webp 960w, <%= BASE_URL %>img/hero/hero-1600.webp 1600w, <%= BASE_URL %>img/hero/hero-2560.webp 2560w"
+      imagesizes="100vw">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet">

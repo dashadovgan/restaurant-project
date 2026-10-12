@@ -48,7 +48,7 @@
     <div class="footer-bottom">
       <div class="image-container">
         <div class="blue-background"></div>
-        <img src="@/assets/image/logo-text.webp" alt="Footer Photo" />
+        <img src="@/assets/image/logo-text.webp" alt="Footer Photo" loading="lazy" decoding="async" />
       </div>
     </div>
   </footer>

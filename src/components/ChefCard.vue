@@ -1,7 +1,7 @@
 <template>
   <div class="chef-card" v-motion :initial="{ opacity: 0, y: 40 }" :enter="{ opacity: 1, y: 0 }" :delay="100"
     @click="$emit('open', chef)">
-    <img :src="chef.imageUrl" :alt="chef.name" />
+    <img :src="chef.imageUrl" :alt="chef.name" loading="lazy" decoding="async" />
 
     <h3>{{ chef.name }}</h3>
     <span>{{ chef.role }}</span>

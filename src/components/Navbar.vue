@@ -24,7 +24,11 @@
       <li>
         <router-link to="/news" active-class="active-link">News</router-link>
       </li>
-      <li class="timeButton"><reserve-button></reserve-button></li>
+      <li class="timeButton">
+        <router-link to="/reservation">
+          <app-button>Reserve a Seat</app-button>
+        </router-link>
+      </li>
     </ul>
     <div class="action-button">
       <router-link to="/reservation">
@@ -222,12 +226,6 @@ ul {
 
   .burger.active div:nth-child(3) {
     transform: translateY(-9px) rotate(-45deg);
-  }
-
-  .nav-links li reserve-button {
-    width: 153px;
-    display: flex;
-    justify-content: flex-end;
   }
 
   .navbar {

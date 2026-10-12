@@ -306,6 +306,22 @@ export default {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
+/* Планшеты и широкие телефоны: десктопный заголовок 92px в колонке 55%
+   не помещается в первый экран, и кнопки уходят за его пределы */
+@media (min-width: 481px) and (max-width: 900px) {
+  .welcome {
+    width: 80%;
+  }
+
+  .welcome h3 {
+    font-size: 40px;
+  }
+
+  .welcome h1 {
+    font-size: 64px;
+  }
+}
+
 @media (max-width: 480px) {
   .mapsection #map {
     width: 100% !important;
@@ -320,24 +336,6 @@ export default {
     background-color: #05131f;
     width: 100%;
     padding: 20px;
-  }
-
-  .home {
-    width: 100%;
-    height: auto;
-    background-image: url("@/assets/image/background.webp");
-    background-size: cover;
-    background-position: top center;
-    background-repeat: no-repeat;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    color: white;
-    text-align: center;
-    position: relative;
-    margin: 0;
-    padding-top: 141px;
   }
 
   .welcome {
@@ -383,10 +381,10 @@ export default {
     align-items: center;
   }
 
-  .offers-btn .ourMenu,
-  .offers-btn reserve-button {
+  /* одинаковая ширина, чтобы кнопки в колонке были выровнены */
+  .offers-btn .our-menu,
+  .offers-btn .app-button {
     width: 180px;
-    margin-right: 0;
   }
 
   .about-us {

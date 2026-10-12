@@ -10,7 +10,8 @@ export default {
     props: {
         width: {
             type: String,
-            default: "auto"
+            // без явной ширины инлайн-стиль не ставится, и ширину можно задать из CSS родителя
+            default: null
         },
         type: {
             type: String,
