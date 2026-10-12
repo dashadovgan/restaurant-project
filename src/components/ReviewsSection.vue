@@ -6,7 +6,7 @@
       difference
     </p>
 
-    <swiper @swiper="onSwiper" :modules="[Pagination]" :slides-per-view="slidesPerView" :space-between="20" :loop="true"
+    <swiper @swiper="onSwiper" :modules="[Pagination]" :slides-per-view="slidesPerView" :space-between="20" :loop="reviews.length > slidesPerView" :center-insufficient-slides="true"
       :pagination="paginationOptions">
       <swiper-slide v-for="(review, index) in reviews" :key="index" class="review-card">
         <img :src="review.image" :alt="'Review ' + (index + 1)" loading="lazy" decoding="async" />
@@ -83,18 +83,6 @@ export default {
         text: "The cappuccino was rich and smooth. Perfect for a relaxing afternoon with a book.",
         name: "Maria Espresso",
         role: "Coffee Enthusiast",
-      },
-      {
-        image: require("@/assets/image/review3.webp"),
-        text: "The roller coasters were exhilarating! The staff was friendly and the atmosphere was electric.",
-        name: "Tommy Thrill",
-        role: "Adventure Blogger",
-      },
-      {
-        image: require("@/assets/image/review3.webp"),
-        text: "The roller coasters were exhilarating! The staff was friendly and the atmosphere was electric.",
-        name: "Tommy Thrill",
-        role: "Adventure Blogger",
       },
     ];
 
@@ -224,7 +212,7 @@ export default {
   }
 
   .review-text h4 {
-    font-size: 11px;
+    font-size: 10px;
   }
 
   .review-text span {

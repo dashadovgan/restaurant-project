@@ -20,7 +20,6 @@
       <!-- картинки -->
       <div class="experience-images">
         <img :src="require('@/assets/image/exp1.webp')" alt="Experience photo 1" loading="lazy" decoding="async" />
-        <img :src="require('@/assets/image/exp2.webp')" alt="Experience photo 2" loading="lazy" decoding="async" />
       </div>
     </div>
   </section>
@@ -127,14 +126,6 @@ export default {
   border-radius: 8px;
 }
 
-.experience-images img:last-child {
-  flex: 0 0 43%;
-  width: 43%;
-  height: 50%;
-  object-fit: cover;
-  border-radius: 8px;
-}
-
 /* Мобильная версия */
 @media (max-width: 480px) {
   .experience-stats {
@@ -158,14 +149,6 @@ export default {
     flex: 0 0 100%;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    border-radius: 8px;
-  }
-
-  .experience-images img:last-child {
-    flex: 0 0 100%;
-    width: 100%;
-    height: 50%;
     object-fit: cover;
     border-radius: 8px;
   }

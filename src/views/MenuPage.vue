@@ -217,7 +217,7 @@ export default {
 .menu-list h2 {
   margin: 50px 0 30px;
   font-size: 36px;
-  font-family: "Cormorant Garamond", serif;
+  font-family:var(--heading-font);
 }
 
 /* GRID — ВАЖНО */

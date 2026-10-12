@@ -11,6 +11,8 @@ body {
   --heading-font: "Cormorant Garamond", serif;
   --main-color: #01101d;
   --main-accent-color:#f4c73f;
+  --second-accent-color:#2c2c35;
+  --third-accent-color:#2d3748;
 }
 body {
   font-family: var(--main-font);
