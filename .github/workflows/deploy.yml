@@ -29,6 +29,11 @@ jobs:
       - name: Build
         run: npm run build
 
+      # GitHub Pages отдаёт 404.html на неизвестные пути — это даёт открывать
+      # внутренние страницы (/menu, /admin и т.д.) по прямой ссылке
+      - name: SPA fallback
+        run: cp dist/index.html dist/404.html
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
 

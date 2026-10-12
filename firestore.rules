@@ -1,0 +1,46 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Единственный аккаунт с доступом к админке
+    function isAdmin() {
+      return request.auth != null
+        && request.auth.token.email == "dasha.dovgan@gmail.com"
+        && request.auth.token.email_verified == true;
+    }
+
+    // Публичный контент сайта: читают все, меняет только админ
+    match /menuItems/{id} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    match /posts/{id} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    match /chefs/{id} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Формы на сайте: гости только создают записи, читает и правит админ
+    match /reservations/{id} {
+      allow create: if true;
+      allow read, update, delete: if isAdmin();
+    }
+    match /contacts/{id} {
+      allow create: if true;
+      allow read, update, delete: if isAdmin();
+    }
+
+    // Проверка доступа к админке со стороны сайта (admin-auth.service.js)
+    match /adminAccess/{id} {
+      allow read: if isAdmin();
+    }
+
+    // Всё остальное закрыто
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

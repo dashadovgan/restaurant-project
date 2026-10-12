@@ -1,0 +1,17 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    function isAdmin() {
+      return request.auth != null
+        && request.auth.token.email == "dasha.dovgan@gmail.com"
+        && request.auth.token.email_verified == true;
+    }
+
+    // Фото блюд, постов и шефов показываются на сайте, загружает только админ
+    match /{allPaths=**} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+  }
+}

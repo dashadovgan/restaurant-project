@@ -15,6 +15,7 @@ const AdminPostsStories = () => import("@/admin/views/components/AdminPostsStori
 const AdminPostEditor = () => import("@/admin/views/components/AdminPostEditor.vue");
 const PrivacyPolicy = () => import("@/views/PrivacyPolicy.vue");
 const TermsOfUse = () => import("@/views/TermsOfUse.vue");
+const AdminLogin = () => import("@/admin/views/AdminLogin.vue");
 
 const routes = [
   {
@@ -28,6 +29,12 @@ const routes = [
     path: "/admin",
     name: "AdminDashboard",
     component: AdminMenuManager,
+    meta: { requiresAdmin: true },
+  },
+  {
+    path: "/admin/login",
+    name: "AdminLogin",
+    component: AdminLogin,
   },
   {
     path: "/menu",
@@ -58,6 +65,7 @@ const routes = [
     path: "/admin/posts",
     name: "AdminPostsStories",
     component: AdminPostsStories,
+    meta: { requiresAdmin: true },
   },
   {
     path: "/post/:id",
@@ -67,16 +75,32 @@ const routes = [
   {
     path: "/admin/posts/new",
     component: AdminPostEditor,
+    meta: { requiresAdmin: true },
   },
   {
     path: "/admin/posts/edit/:id",
     component: AdminPostEditor,
+    meta: { requiresAdmin: true },
   },
 ];
 
 const router = createRouter({
   history: createWebHistory('/restaurant-project/'),
   routes,
+});
+
+// Админка доступна только после входа через разрешённый Google-аккаунт
+router.beforeEach(async (to) => {
+  if (!to.matched.some((record) => record.meta.requiresAdmin)) return true;
+
+  const { getCurrentUser, hasAdminAccess } = await import("@/services/admin-auth.service");
+  try {
+    const user = await getCurrentUser();
+    if (user && (await hasAdminAccess())) return true;
+  } catch (error) {
+    console.error(error);
+  }
+  return { name: "AdminLogin", query: { redirect: to.fullPath } };
 });
 
 export default router;
